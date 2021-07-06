@@ -1,0 +1,458 @@
+---
+title: "Dr. Sun's Project"
+author: "Cheng Hua"
+date: "1/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Import the dataset
+
+```{r}
+library(readxl)
+Teacher_Leadership <- read_excel("Teacher_Leadership.xlsx")
+```
+
+## Descriptive Data Analysis
+
+First, we take a look at the overall data.
+
+```{r}
+library(psych)
+summary <- describe(Teacher_Leadership)
+mean(summary$mean) # Total_mean=4.44
+mean(summary$sd) # Mean_sd=0.72
+```
+
+Then, we take out these data that contains all unique responses.
+
+```{r message=FALSE}
+library(dplyr)
+## Take the observation with non-unique values
+TL_data_clean <- Teacher_Leadership[rowSums(Teacher_Leadership[-1] != Teacher_Leadership[[2]], na.rm = TRUE) != 0,]
+## Descriptive Analysis
+summary <- describe(TL_data_clean)
+summary
+mean(summary$mean) # Total_mean=4.12 Dropped from 4.44
+mean(summary$sd) # Mean_sd=0.83 increased from 0.72
+```
+
+```{r}
+library("Hmisc")
+# Check the correlation matrix
+cor(TL_data_clean, method = "pearson", use = "complete.obs")
+```
+
+
+
+## Principal Components / Factor Analysis
+
+```{r}
+# Principal Components Analysis
+# entering raw data and extracting PCs from the correlation matrix
+fit <- princomp(TL_data_clean, cor=TRUE)
+summary(fit) # print variance accounted for
+loadings(fit) # pc loadings
+plot(fit,type="lines") # scree plot
+fit$scores # the principal components
+biplot(fit)
+```
+
+```{r}
+# Varimax Rotated Principal Components
+# retaining 5 components
+fit <- principal(TL_data_clean, nfactors=4, rotate="varimax")
+fit # print results
+summary(fit) # print variance accounted for
+# the principal components
+biplot(fit)
+```
+
+```{r}
+# Let's run another factor anlaysis function on our data set
+TL.fa <- factanal(TL_data_clean, factors=4)
+TL.fa
+# The first chunk provides the uniquenesses, which range from 0 to 1. The uniqueness, sometimes referred to as noise, corresponds to the proportion of variability, which can not be explained by a linear combination of the factors. A high uniqueness for a variable indicates that the factors do not account well for its variance.
+# The next section is the loadings, which range from −1 to 1. The loadings are the contribution of each original variable to the factor. Variables with a high loading are well explained by the factor. Notice there is no entry for certain variables.
+```
+
+## One-level CFA
+
+Now, Let's do a CFA to confirm the factor.
+
+```{r}
+# Load the R packages that needed for the analysis
+library(foreign) 
+library(lavaan)
+# Establish our model
+model <-'TL=~Direction+Cultivation+Organization+Tutor
+Direction=~JS58+JS59+JS60+JS61
+Cultivation=~JS62+JS63+JS64+JS65+JS66+JS67
+Organization=~JS68+JS69+JS70+JS71
+Tutor=~JS72+JS73+JS74+JS75+JS76+JS77'
+# Factor 1 = Setting the Direction
+# Factor 2 = Teacher Development
+# Factor 3 = Establish Organization
+# Factor 4 = Improving Tutor
+str(TL_data_clean)
+# Fit the CFA model
+fit <- cfa(model, data=TL_data_clean)
+# Check the model summary
+summary(fit,fit.measure=TRUE,standardized=TRUE)
+```
+
+```{r}
+# Print out the paramarter Estimates
+parameterEstimates(fit)
+# 
+modificationindices(fit)
+```
+
+```{r}
+# Print out the path diagram
+library("lavaanPlot")
+lavaanPlot(model=fit,node_options=list(shape="box",fontname="Helvetica"),edge_options=list(color="blue"),coefs=TRUE, covs=TRUE, stars=c("regress"),stand = FALSE)
+```
+
+
+## Two-level CFA with "SchoolID" as cluster
+
+Prepare a function to calculate the between and with-in covariate
+retrived from: http://faculty.missouri.edu/huangf/data/mcfa/MCFA%20in%20R%20HUANG.pdf
+
+```{r}
+mcfa.input<-function(gp,dat){
+   dat1<-dat[complete.cases(dat),]
+   g<-dat1[,gp] #grouping
+   freq<-data.frame(table(g))
+   gn<-grep(gp,names(dat1)) #which column number is the grouping var
+   dat2<-dat1[,-gn] #raw only
+   G<-length(table(g))
+   n<-nrow(dat2)
+   k<-ncol(dat2)
+   scaling<-(n^2-sum(freq$Freq^2)) / (n*(G-1))
+   varn<-names(dat1[,-gn])
+   ms<-matrix(0,n,k)
+   for (i in 1:k){
+      ms[,i]<-ave(dat2[,i],g)
+   }   
+   cs<-dat2-ms #deviation matrix, centered scores
+   colnames(ms)<-colnames(cs)<-varn
+   b.cov<-(cov(ms) * (n - 1))/(G-1) #group level cov matrix
+   w.cov<-(cov(cs) * (n - 1))/(n-G) #individual level cov matrix
+   pb.cov<-(b.cov-w.cov)/scaling #estimate of pure/adjusted between cov matrix
+   w.cor<-cov2cor(w.cov) #individual level cor matrix
+   b.cor<-cov2cor(b.cov) #group level cor matrix
+   pb.cor<-cov2cor(pb.cov) #estimate of pure between cor matrix
+   icc<-round(diag(pb.cov)/(diag(w.cov)+diag(pb.cov)),3) #iccs
+   return(list(b.cov=b.cov,pw.cov=w.cov,ab.cov=pb.cov,pw.cor=w.cor,
+         b.cor=b.cor,ab.cor=pb.cor,
+         n=n,G=G,c.=scaling,sqc=sqrt(scaling),
+         icc=icc,dfw=n-G,dfb=G) )
+}
+
+alpha<-function(dat){
+   covar<-dat[lower.tri(dat)] #get unique covariances
+   n<-ncol(dat) #number of items in the scale
+   al<-((sum(covar)/length(covar))*n^2/sum(dat))
+   cat("alpha:",return(al),"\n")   
+}
+```
+
+
+### Prepare the dataset
+
+```{r}
+# Load the data with 2-level information
+TL_ML <- read_excel("Teacher_Leadership_ML.xlsx")
+# Prepare the data set
+TL_ML <- as.data.frame(TL_ML)
+TL_ML_data <- mcfa.input("SchoolID",TL_ML)
+combined.cov <- list(within = TL_ML_data$pw.cov, between = TL_ML_data$b.cov)
+combined.n <- list(within = TL_ML_data$n - TL_ML_data$G, between = TL_ML_data$G)
+TL_ML_data$icc #view intraclass correlation (ICCs) of the 20 variables
+```
+
+### Specify the model
+
+```{r}
+# Specify the model
+twolevelmodel <- '
+    level: 1
+        TL=~Direction+Cultivation+Organization+Tutor
+          Direction=~JS58+JS59+JS60+JS61
+          Cultivation=~JS62+JS63+JS64+JS65+JS66+JS67
+          Organization=~JS68+JS69+JS70+JS71
+          Tutor=~JS72+JS73+JS74+JS75+JS76+JS77
+    level: 2
+        School =~JS58+JS59+JS60+JS61+JS62+JS63+JS64+JS65+JS66+JS67+JS68+JS69+JS70+JS71+JS72+JS73+JS74+JS75+JS76+JS77
+'
+# Run a two-level CFA
+ML.fit <- cfa(twolevelmodel,data=TL_ML,cluster="SchoolID")
+# Check the summary
+summary(ML.fit, fit.measures = T, standardized = T)
+```
+
+## Two Level model using "TeachYear" as the cluster
+
+### Prepare the dataset
+
+```{r}
+# Load the data with 2-level information
+TL_MLTY <- read_excel("Teacher_Leadership_MLTY.xlsx")
+# Prepare the data set
+TL_MLTY <- as.data.frame(TL_MLTY)
+TL_MLTY_data <- mcfa.input("TeachYear",TL_MLTY)
+combined.cov <- list(within = TL_MLTY_data$pw.cov, between = TL_MLTY_data$b.cov)
+combined.n <- list(within = TL_MLTY_data$n - TL_MLTY_data$G, between = TL_MLTY_data$G)
+TL_MLTY_data$icc #view intraclass correlation (ICCs) of the 20 variables
+```
+
+### Specify the model
+
+```{r}
+# Specify the model
+twolevelmodel <- '
+    level: 1
+        TL=~Direction+Cultivation+Organization+Tutor
+          Direction=~JS58+JS59+JS60+JS61
+          Cultivation=~JS62+JS63+JS64+JS65+JS66+JS67
+          Organization=~JS68+JS69+JS70+JS71
+          Tutor=~JS72+JS73+JS74+JS75+JS76+JS77
+    level: 2
+        TY =~JS58+JS59+JS60+JS61+JS62+JS63+JS64+JS65+JS66+JS67+JS68+JS69+JS70+JS71+JS72+JS73+JS74+JS75+JS76+JS77
+'
+# Run a two-level CFA
+MLTY.fit <- cfa(twolevelmodel,data=TL_MLTY,cluster="Teacher_Year")
+# Check the summary
+summary(ML.fit, fit.measures = T, standardized = T)
+```
+
+## Rasch Partial Credit Model
+
+### Prepare the data and Rasch package
+```{r}
+# Load the package
+library(eRm) # For running the Partial Credit Model
+library(plyr) # For plot the Item characteristic curves
+library(WrightMap)# For plot the variable map
+```
+
+```{r}
+# Prepare the data set
+# Add ID column for test takers
+ID <- 1:400
+TL_data_PC <- TL_data_clean
+# Centering the 1st category to zero
+TL_data_PC <- TL_data_PC-1
+```
+
+### Run the Partial Credit Model
+```{r}
+# Run the Partial Credit Model
+PC_model <- PCM(TL_data_PC)
+```
+
+### Wright Map & Expected Response Curves & Item characteristic curves
+
+```{r}
+# Plot the Variable Map
+plotPImap(PC_model)
+# Item characteristic curves
+plotICC(PC_model, ask = FALSE)
+```
+
+### Item diffculty and threshold SEs values
+
+```{r}
+### Examine item difficulty values:
+item.estimates <- thresholds(PC_model)
+item.estimates
+item_difficulty <- item.estimates[["threshtable"]][["1"]]
+item_difficulty
+## Get threshold SEs values:
+item.se <- item.estimates$se.thresh
+item.se
+```
+
+### Examine Person locations (theta) and SEs
+```{r}
+# Standard errors for theta estimates:
+person.locations.estimate <- person.parameter(PC_model)
+summary(person.locations.estimate)
+# Build a table for person locations
+person_theta <- person.locations.estimate$theta.table
+person_theta
+```
+
+### Exam the item and person fit statistics
+
+```{r}
+item.fit <- itemfit(person.locations.estimate)
+item.fit
+
+pfit <- personfit(person.locations.estimate)
+pfit
+```
+
+### Calculate the Item/Person Separation Reliability
+
+```{r}
+# compute item separation reliability
+# Get Item scores
+ItemScores <- colSums(TL_data_PC)
+
+# Get Item SD
+ItemSD <- apply(TL_data_PC,2,sd)
+
+# Calculate the se of the Item
+ItemSE <- ItemSD/sqrt(length(ItemSD))
+
+# compute the Observed Variance (also known as Total Person Variability or Squared Standard Deviation)
+SSD.ItemScores <- var(ItemScores)
+
+# compute the Mean Square Measurement error (also known as Model Error variance)
+Item.MSE <- sum((ItemSE)^2) / length(ItemSE)
+
+# compute the Item Separation Reliability
+item.separation.reliability <- (SSD.ItemScores-Item.MSE) / SSD.ItemScores
+item.separation.reliability
+```
+
+```{r}
+# compute person separation reliability
+
+# Get Person scores
+PersonScores <- rowSums(TL_data_PC)
+
+# Get Person SD
+PersonSD <- apply(TL_data_PC,1,sd)
+
+# Calculate the se of the Person
+PersonSE <- PersonSD/sqrt(length(PersonSD))
+
+# compute the Observed Variance (also known as Total Person Variability or Squared Standard Deviation)
+SSD.PersonScores <- var(PersonScores)
+
+# compute the Mean Square Measurement error (also known as Model Error variance)
+Person.MSE <- sum((PersonSE)^2) / length(PersonSE)
+
+# compute the Person Separation Reliability
+person.separation.reliability <- (SSD.PersonScores-Person.MSE) / SSD.PersonScores
+person.separation.reliability
+```
+
+## Many-facet Rasch Model
+
+### Prepare the data set
+```{r}
+# Import the original dataset for more information
+library(readxl)
+Teacher_Leadership_O <- read_excel("Teacher_Leadership_O.xlsx")
+# Add an ID column for TL clean data
+ID <- c(1:958)
+Teacher_Leadership_ID <- cbind(ID,Teacher_Leadership_O)
+# Build a long list for response matrix
+library(reshape)
+TL_response <- Teacher_Leadership_ID[,1:21]
+mdata <- melt(TL_response, id=c("ID"))
+# sort by ID
+library(dplyr)
+ordered_mdata <- arrange(mdata,mdata$ID)
+# Rename column "variable" to "Item"
+ordered_mdata$item <- ordered_mdata$variable
+
+ordered_mdata <- cbind.data.frame(ordered_mdata$ID,
+                                  ordered_mdata$item,
+                                  ordered_mdata$value)
+# Adding a component column
+comp_list <- c(1,1,1,1,2,2,2,2,2,2,3,3,3,3,4,4,4,4,4,4)
+component <- rep(comp_list,958)
+# Adding gender column
+TL_gender <- rep(Teacher_Leadership_O$Gender,each=20)
+# Adding Teacher_year column
+TL_TY <- rep(Teacher_Leadership_O$Teacher_year,each=20)
+# Adding Education_background column
+TL_EB <- rep(Teacher_Leadership_O$Education_background,each=20)
+```
+
+### Run the MFR model using Gender + Component
+
+```{r}
+# Build the dataset Gender+Component
+MFR_GC <- cbind(ordered_mdata,component,TL_gender)
+# Reorder the dataset
+# Get column names
+colnames(MFR_GC)
+MFR_GC <- MFR_GC[, c(1, 5, 4, 2, 3)]
+write.csv(MFR_GC,"MFR_GC",row.names=FALSE)
+```
+
+Now, we can run the MFRM using the dataset we previously prepared
+
+```{r}
+library(TAM)
+g.facet <- MFR_GC[,c("item","TL_gender","component"),drop=FALSE] # specify which facets will be included in the model 
+g.pid <- MFR_GC$ID # specify the ID for the object of measurement (Here, this is the participant's ID)
+g.resp <- MFR_GC$value # Indicate the response matrix
+
+g.formulaA <- ~ item + component + TL_gender * step # Model formula for RS-MFR model (multiply (raters * step) to specify a PC-MFR model where the scale varies by rater)
+
+g.model <- tam.mml.mfr(resp=g.resp,facets=g.facet,formulaA=g.formulaA,pid=g.pid)
+# Run the many-facet model
+summary(g.model) # Check the model summaries
+```
+
+```{r}
+
+## Person (test-taker) Estimates
+# Compute person fit statistics
+person.fit <- tam.personfit(g.model)
+person.fit # Check the person infit/outfit
+# Person's Ability
+persons.mod <- tam.wle(g.model)
+theta <- persons.mod$theta
+theta # Print out the person's ability
+max(theta)
+min(theta)
+```
+
+```{r}
+## Compute Item fit statistics
+item.fit <- msq.itemfit(g.model)
+summary(item.fit) # fit is shown for the rater*item combinations
+```
+
+```{r}
+library(knitr) # Use the knitr package to print out the result table
+kable(g.model$xsi.facets,digits=2)
+```
+
+
+```{r}
+# Build the dataset TeachYear+Component
+MFR_TC <- cbind(ordered_mdata,component,TL_TY)
+# Reorder the dataset
+# Get column names
+colnames(MFR_TC)
+MFR_TC <- MFR_TC[, c(1, 5, 4, 2, 3)]
+MFR_TC$item <- as.integer(MFR_TC$item)   
+write.csv(MFR_TC,"MFR_TC",row.names=FALSE)
+```
+
+```{r}
+# Build the dataset Education_background+Component
+MFR_EB <- cbind(ordered_mdata,component,TL_EB)
+# Reorder the dataset
+# Get column names
+colnames(MFR_EB)
+MFR_EB <- MFR_EB[, c(1, 5, 4, 2, 3)]
+MFR_EB$`ordered_mdata$variable` <- as.integer(MFR_EB$`ordered_mdata$variable`) 
+write.csv(MFR_EB,"MFR_EB",row.names=FALSE)
+```
+
+
+

@@ -1,0 +1,8 @@
+"0","gender_group <- clean_data %>%
+    group_by(tbi2) %>%
+    count()
+"
+"2","Error: Must group by variables found in `.data`.
+* Column `tbi2` is not found.
+[90mRun `rlang::last_error()` to see where the error occurred.[39m
+"

@@ -1,0 +1,12 @@
+name: bayes_r_book
+title: Bayes_R_Book
+username: chua
+account: chua
+server: bookdown.org
+hostUrl: https://bookdown.org/__api__
+appId: 7851
+bundleId: 47388
+url: https://bookdown.org/chua/bayes_r_book/
+when: 1625537218.45436
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Beyes R Book</title>
+  <meta name="description" content="This book is a R guide book for UA course BER 695: Introduction to Bayesian Analysis." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Beyes R Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book is a R guide book for UA course BER 695: Introduction to Bayesian Analysis." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Beyes R Book" />
+  
+  <meta name="twitter:description" content="This book is a R guide book for UA course BER 695: Introduction to Bayesian Analysis." />
+  
+
+<meta name="author" content="Dr. Man Kai Wen &amp; Cheng Hua" />
+
+
+<meta name="date" content="2021-07-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="intro.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Beyes R Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to this book</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction to R</a></li>
+<li class="chapter" data-level="3" data-path="Prob.html"><a href="Prob.html"><i class="fa fa-check"></i><b>3</b> Introduction/Interpretation to Probability</a></li>
+<li class="chapter" data-level="4" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html"><i class="fa fa-check"></i><b>4</b> Introduction to Bayesian Inference</a></li>
+<li class="chapter" data-level="5" data-path="Posterior.html"><a href="Posterior.html"><i class="fa fa-check"></i><b>5</b> Summarizing Posterior Distributions</a></li>
+<li class="chapter" data-level="6" data-path="Gra-Model.html"><a href="Gra-Model.html"><i class="fa fa-check"></i><b>6</b> Introduction to Graphical Models</a></li>
+<li class="chapter" data-level="7" data-path="Bayes-Theorem.html"><a href="Bayes-Theorem.html"><i class="fa fa-check"></i><b>7</b> Bayes’ Theorem: Accumulation of Evidence</a></li>
+<li class="chapter" data-level="8" data-path="Normal-Dis.html"><a href="Normal-Dis.html"><i class="fa fa-check"></i><b>8</b> Normal Distribution Models</a></li>
+<li class="chapter" data-level="9" data-path="MCMC.html"><a href="MCMC.html"><i class="fa fa-check"></i><b>9</b> Markov Chain Monte Carlo: A Practical Introduction</a></li>
+<li class="chapter" data-level="10" data-path="Bayes-Reg.html"><a href="Bayes-Reg.html"><i class="fa fa-check"></i><b>10</b> Bayesian based Regression Models</a></li>
+<li class="chapter" data-level="11" data-path="Specify-Prior.html"><a href="Specify-Prior.html"><i class="fa fa-check"></i><b>11</b> Strategies for Specifying prior distributions</a></li>
+<li class="chapter" data-level="12" data-path="Post-Pred.html"><a href="Post-Pred.html"><i class="fa fa-check"></i><b>12</b> Posterior Predictive Model Checking</a></li>
+<li class="chapter" data-level="13" data-path="Model-Comp.html"><a href="Model-Comp.html"><i class="fa fa-check"></i><b>13</b> Model Comparison</a></li>
+<li class="chapter" data-level="14" data-path="Adv-Bayes.html"><a href="Adv-Bayes.html"><i class="fa fa-check"></i><b>14</b> Advance Bayesian Models</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Beyes R Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Beyes R Book</h1>
+<p class="author"><em>Dr. Man Kai Wen &amp; Cheng Hua</em></p>
+<p class="date"><em>2021-07-05</em></p>
+</div>
+<div id="introduction-to-this-book" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction to this book</h1>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Bayes_R_Book.pdf", "Bayes_R_Book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

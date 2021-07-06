@@ -1,0 +1,21 @@
+"0","MFR_TC <- cbind(ordered_mdata,component,TL_TY)
+# Reorder the dataset
+# Get column names
+colnames(MFR_TC)
+"
+"1","[1]"
+"1"," ""ordered_mdata$ID""   "
+"1"," ""ordered_mdata$item"" "
+"1"," ""ordered_mdata$value"""
+"1"," ""component""          "
+"1","
+"
+"1","[5]"
+"1"," ""TL_TY""              "
+"1","
+"
+"0","MFR_TC <- MFR_TC[, c(1, 5, 4, 2, 3)]"
+"0","MFR_TC$item <- as.integer(MFR_TC$item)   "
+"2","Error in `$<-.data.frame`(`*tmp*`, item, value = integer(0)) : 
+  replacement has 0 rows, data has 30822
+"

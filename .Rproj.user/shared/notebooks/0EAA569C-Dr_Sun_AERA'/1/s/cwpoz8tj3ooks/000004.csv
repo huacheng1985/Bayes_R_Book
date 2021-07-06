@@ -1,0 +1,9 @@
+"0","TL_gender <- rep(clean_data$Gender,each=22)
+# Adding Teacher_year column
+TL_TY <- rep(clean_data$Teach_year,each=22)
+"
+"2","Warning:"
+"2"," Unknown or uninitialised column: `Teach_year`.
+"
+"0","# Adding Education_background column"
+"0","TL_EB <- rep(clean_data$Edu_level,each=22)"

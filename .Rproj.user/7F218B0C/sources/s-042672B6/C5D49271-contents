@@ -1,0 +1,257 @@
+---
+title: "TLQ_US"
+author: "Cheng Hua"
+date: "6/29/2021"
+output: html_document
+---
+
+## Import the original data
+
+```{r}
+library(haven)
+Ori_data <- read_sav("Downloads/teaching_leading_oct2018_v12_leadership_copy.sav")
+summary(Ori_data)
+```
+
+## Clean the data
+
+```{r}
+# Select the data we need
+target_data <- Ori_data[,-c(1,2,25)]
+# Remove observations has more than 5 missing values
+cnt_na <- apply(target_data, 1, function(z) sum(is.na(z)))
+cleaned_data <- target_data[cnt_na<5,]
+# Omit the missing data
+clean_data <- na.omit(Ori_data)
+# Take out the response matrix
+clean_matrix <- clean_data[,c(3:24)]
+# After kicking out all the observations contains missing value, we still have 1322 completed observations left which still will be regarded as a decent number of our analysis.
+```
+
+## Descriptive Analysis
+
+First, we take a look at the overall data.
+
+```{r}
+library("dplyr")
+info_group <- clean_data %>%
+    group_by(School_ID) %>%
+    count()
+gender_group <- clean_data %>%
+    group_by(Gender) %>%
+    count()
+EB_group <- clean_data %>%
+    group_by(Edu_level)%>%
+    count()
+TY_group <- clean_data %>%
+    group_by(Teach_Year)%>%
+    count()
+```
+
+
+
+
+```{r}
+library(psych)
+summary_big <- describe(clean_data)
+summary <- describe(clean_matrix)
+mean(summary$mean) # Total_mean=4.00
+mean(summary$sd) # Mean_sd=0.97
+```
+
+Then, we take out these data that contains all unique responses.
+
+```{r message=FALSE}
+library(dplyr)
+## Take the observation with non-unique values
+TL_data_clean <- clean_matrix[rowSums(clean_matrix[-1] != clean_matrix[[2]], na.rm = TRUE) != 0,]
+## Descriptive Analysis
+summary <- describe(TL_data_clean)
+summary
+mean(summary$mean) # Total_mean=3.89 Dropped from 4.0
+mean(summary$sd) # Mean_sd=0.97 almost the same
+```
+
+```{r}
+library("Hmisc")
+# Check the correlation matrix
+cor(TL_data_clean, method = "pearson", use = "complete.obs")
+```
+
+## Principal Components / Factor Analysis
+
+```{r}
+# Principal Components Analysis
+# entering raw data and extracting PCs from the correlation matrix
+fit <- princomp(TL_data_clean, cor=TRUE)
+summary(fit) # print variance accounted for
+loadings(fit) # pc loadings
+plot(fit,type="lines") # scree plot
+fit$scores # the principal components
+biplot(fit)
+```
+
+```{r}
+# Varimax Rotated Principal Components
+# retaining 5 components
+fit <- principal(TL_data_clean, nfactors=4, rotate="varimax")
+fit # print results
+summary(fit) # print variance accounted for
+# the principal components
+biplot(fit)
+```
+
+## One-level CFA
+
+Now, Let's do a CFA to confirm the factor.
+
+
+```{r}
+# Load the R packages that needed for the analysis
+library(foreign) 
+library(lavaan)
+# Establish our model
+model <-'TL=~Direction+Developing+Organization+Tutor
+Direction=~tsl1+tsl2+tsl3+tsl4
+Developing=~tsl5+tsl6+tsl7+tsl8+tsl9+tsl10
+Organization=~tsl11+tsl12+tsl13+tsl14+tsl15+tsl16
+Tutor=~tsl17+tsl18+tsl19+tsl20+tsl21+tsl22'
+# Factor 1 = Setting Direction
+# Factor 2 = Developping people
+# Factor 3 = Redesigning Organization
+# Factor 4 = Improving Instructional Program
+str(TL_data_clean)
+# Fit the CFA model
+fit <- cfa(model, data=TL_data_clean)
+# Check the model summary
+summary(fit,fit.measure=TRUE,standardized=TRUE)
+```
+
+```{r}
+# Print out the paramarter Estimates
+parameterEstimates(fit)
+# 
+modificationindices(fit)
+```
+
+```{r}
+# Print out the path diagram
+library("lavaanPlot")
+lavaanPlot(model=fit,node_options=list(shape="box",fontname="Helvetica"),edge_options=list(color="blue"),coefs=TRUE, covs=TRUE, stars=c("regress"),stand = FALSE)
+```
+
+## Rasch Partial Credit Model
+
+### Prepare the data and Rasch package
+```{r}
+# Load the package
+library(eRm) # For running the Partial Credit Model
+library(plyr) # For plot the Item characteristic curves
+library(WrightMap)# For plot the variable map
+```
+
+```{r}
+# Prepare the data set
+# Add ID column for test takers
+ID <- 1:1090
+TL_data_PC <- TL_data_clean
+# Centering the 1st category to zero
+TL_data_PC <- TL_data_PC-1
+```
+
+
+### Run the Partial Credit Model
+```{r}
+# Run the Partial Credit Model
+PC_model <- PCM(TL_data_PC)
+summary(PC_model)
+```
+
+### Wright Map & Expected Response Curves & Item characteristic curves
+
+```{r}
+# Plot the Variable Map
+plotPImap(PC_model)
+# Item characteristic curves
+plotICC(PC_model, ask = FALSE)
+```
+
+### Item diffculty and threshold SEs values
+
+```{r}
+### Examine item difficulty values:
+item.estimates <- thresholds(PC_model)
+item.estimates
+item_difficulty <- item.estimates[["threshtable"]][["1"]]
+item_difficulty
+## Get threshold SEs values:
+item.se <- item.estimates$se.thresh
+item.se
+```
+
+### Examine Person locations (theta) and SEs
+```{r}
+# Standard errors for theta estimates:
+person.locations.estimate <- person.parameter(PC_model)
+summary(person.locations.estimate)
+# Build a table for person locations
+person_theta <- person.locations.estimate$theta.table
+person_theta
+```
+
+### Exam the item and person fit statistics
+
+```{r}
+item.fit <- itemfit(person.locations.estimate)
+item.fit
+
+pfit <- personfit(person.locations.estimate)
+pfit
+```
+
+### Calculate the Item/Person Separation Reliability
+
+```{r}
+# compute item separation reliability
+# Get Item scores
+ItemScores <- colSums(TL_data_PC)
+
+# Get Item SD
+ItemSD <- apply(TL_data_PC,2,sd)
+
+# Calculate the se of the Item
+ItemSE <- ItemSD/sqrt(length(ItemSD))
+
+# compute the Observed Variance (also known as Total Person Variability or Squared Standard Deviation)
+SSD.ItemScores <- var(ItemScores)
+
+# compute the Mean Square Measurement error (also known as Model Error variance)
+Item.MSE <- sum((ItemSE)^2) / length(ItemSE)
+
+# compute the Item Separation Reliability
+item.separation.reliability <- (SSD.ItemScores-Item.MSE) / SSD.ItemScores
+item.separation.reliability
+```
+
+```{r}
+# compute person separation reliability
+
+# Get Person scores
+PersonScores <- rowSums(TL_data_PC)
+
+# Get Person SD
+PersonSD <- apply(TL_data_PC,1,sd)
+
+# Calculate the se of the Person
+PersonSE <- PersonSD/sqrt(length(PersonSD))
+
+# compute the Observed Variance (also known as Total Person Variability or Squared Standard Deviation)
+SSD.PersonScores <- var(PersonScores)
+
+# compute the Mean Square Measurement error (also known as Model Error variance)
+Person.MSE <- sum((PersonSE)^2) / length(PersonSE)
+
+# compute the Person Separation Reliability
+person.separation.reliability <- (SSD.PersonScores-Person.MSE) / SSD.PersonScores
+person.separation.reliability
+```

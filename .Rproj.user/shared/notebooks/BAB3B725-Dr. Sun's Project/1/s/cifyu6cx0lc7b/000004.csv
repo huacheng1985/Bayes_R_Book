@@ -1,0 +1,17 @@
+"0","MFR_EB <- cbind(ordered_mdata,component,TL_EB)
+# Reorder the dataset
+# Get column names
+colnames(MFR_EB)
+"
+"1","[1]"
+"1"," ""ordered_mdata$ID""   "
+"1"," ""ordered_mdata$item"" "
+"1"," ""ordered_mdata$value"""
+"1"," ""component""          "
+"1","
+"
+"1","[5]"
+"1"," ""TL_EB""              "
+"1","
+"
+"0","MFR_EB <- MFR_EB[, c(1, 5, 4, 2, 3)]"
