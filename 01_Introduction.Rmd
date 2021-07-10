@@ -1,2 +1,543 @@
 # Introduction to R {#intro}
 
+## Part 1: Vector
+
+Define variable / vector
+
+### Numbers
+
+```{r}
+# Type in a numerical data, assign them to the variable: weight
+weight = c(60,72,57,90,95,72)
+# Print out the variable
+weight
+# You can also type in decimals
+height = c(1.75,1.80,1.65,1.90,1.74,1.91)
+# Or even formulas, assign to the variable.
+bmi = weight/(height)^2
+bmi
+```
+
+### Strings (nominal)
+
+```{r}
+# Characters between the quotation marks are consider strings
+A = c("NewYork","London","San Francisco")
+A
+```
+
+### Logical
+
+```{r}
+# A logical vector is a vector that only contains TRUE and FALSE values. In R, true values are designated with TRUE, and false values with FALSE.
+B=c(T,T,F,F)
+B
+bmi > 25  # relational expressions
+```
+
+### Create vectors
+
+```{r}
+seq(4,9) #sequence from 4 to 9, increment defaults to 1, alternatively, 4:9
+seq(4,10,2) #sequence from 4 to 10, increment is 2
+seq(1,10,.1) #sequence from 1 to 10, increment is .1
+seq(-8,9,.5) #sequence from -8 to 9, increment is .5
+```
+
+### Replicate values
+
+```{r}
+ha=c(1,2,3,"sun")
+rep(ha,4) #repeat "ha" four times
+rep(ha,1:4) #each element is repeated different times, according to the second argument
+rep(3:4,c(100,200)) #the first element repeat 100 time, the second 200 times
+```
+
+### Practice Questions
+
+#### Question 1
+
+Create a sequence variable (name it with your first name) ranging from 1 to 100, increment is 2
+
+#### Question 2
+
+Create a variable (name it with your last name). repeat 5 by 50 times
+
+#### Question 3
+
+Calculate the ratios between the two variables as last/first, and multiply by 2.
+
+## Part 2: Basic Statistical Analysis
+
+### Buiding a simulated data set
+
+```{r}
+# We use the following functions to build a simulated data set.
+ACT_score <- round(runif(n=100,min=18,max=25),0)
+```
+
+### Basic Statistical function
+
+```{r}
+# calculate summation
+sum(ACT_score) 
+# calculate average score
+mean(ACT_score)
+# calculate median score
+median(ACT_score) 
+# calculate variance
+var(ACT_score) 
+# calculate standard deviation
+sd(ACT_score) 
+# print vector length (sample size)
+length(ACT_score) 
+# calculate square root of each number
+sqrt(ACT_score) 
+#--with NA, print order of each number in the vector
+order(ACT_score)    
+# calculate range of the vector
+range(ACT_score) 
+#--omit NA, sort date from low to hight
+sort(ACT_score)  
+#--make a table of counts
+table(ACT_score)  
+```
+
+### Practice Questions
+
+Use the Data set bellow:
+
+```{r}
+GRE_score <- round(runif(250,130,170),0)
+```
+
+#### Question 1
+
+Report summation of all reported scores.
+
+#### Question 2
+
+Report average score based on all reported scores
+
+#### Question 3
+
+Report median score based on all reported scores
+
+#### Question 4
+
+Report variance of all reported scores
+
+#### Question 5
+
+Reorder all scores
+
+#### Question 6
+
+Build a table of counts of each score
+
+## Part 3: Matrix Computation
+
+### Build a matrix
+
+```{r}
+x=1:12 
+#set the dimension of the matrix
+dim(x)=c(3,4) 
+x
+```
+
+### Define a matrix
+
+```{r}
+# Different from the above matrix, we define a matrix use matrix function
+matrix(1:12,nrow=3,byrow=T) 
+```
+
+### Name the rows/columns
+
+rownames(); colnames()----can be used to a data matrix
+
+```{r}
+x=matrix(1:12, nrow=3,byrow=T)
+rownames(x)=LETTERS[1:3]
+colnames(x)=LETTERS[4:7]
+x
+```
+
+### Operation on matrix
+
+```{r}
+# The transpose of a matrix is simply a flipped version of the original matrix. We can transpose a matrix by switching its rows with its columns.  
+t(x)
+#multiply two matrix, if they are conformable
+x%*%t(x) 
+t(x)%*%x
+```
+
+### Glue vectors together
+
+```{r}
+# Using cbind() function to combine columns
+cbind(A=1:4,B=5:8,C=9:12)
+# Using rbind() function to combine rows
+rbind(A=1:4,B=5:8,C=9:12)
+```
+
+### Inverse the matrix
+
+The inverse of a square matrix A, sometimes called a reciprocal matrix, is a matrix $A^{-1}$ such that $AA^{-1}=I$ , where $I$ is the identity matrix.
+
+[C] The fractions() need load "MASS" Package.
+
+```{r}
+# Load the package "MASS" to use the fractions function
+library(MASS)
+# Build a square matrix A. 
+# A <- matrix(1:16, nrow=4,byrow=T)
+# Print out
+# A 
+#inverse the matrix       
+# solve(A,tol=1e-19)
+#round              
+# round(solve(A,tol=1e-19),3) #to the third digits
+#show as rationals  
+# fractions(solve(A,tol=1e-19))
+# Q? solve equation 
+# Ax=b: solve(A,b)
+```
+
+### Practice Questions
+
+#### Questions 1
+
+Create a 2 by 2 matrix named "MM" with c(1,5,9,10) arranged by row
+
+#### Questions 2
+
+Please inverse the matrix "MM"
+
+## Part 4: Data Manipulation
+
+### Load the Data
+
+```{r}
+# Load the package for illustrations
+library(car)
+# Load the data set
+data(Prestige)
+# Check the dimension of the data
+dim(Prestige) # 102 observations, each observation has 6 variables.
+# subset the data
+Prestige[1:10,1:3]
+Prestige[,1:3]
+```
+
+### Select Specific Data
+
+```{r}
+# put 1's in the first col., others in 2-4th
+X=cbind(1,as.matrix(Prestige[,1:3])) 
+X
+# select only the 4th column of the dataset: Prestige
+y=Prestige[,4] 
+y
+# select the first five subjects with all columns
+X[1:5,] 
+#select variables ("education" ,"prestige") and the first five subjects
+Prestige[1:5,c("prestige","education")] 
+```
+
+### Correlation and Covariate Matrix
+
+```{r}
+# Calculate the correlations among three variables
+R=cor(cbind(Prestige$education,Prestige$income,Prestige$women))
+R # Correlation matrix
+plot(Prestige$education,Prestige$income)
+# Calculate the covariance among three variables
+S =cov(cbind(Prestige$education,Prestige$income,Prestige$women))
+S # Covariance matrix
+```
+
+### Matrix Diagonals
+
+```{r}
+# extract diagonal of R (correlation matrix)
+diag(R)    
+# set diagonal of R
+diag(R)=NA 
+# make diagonal matrix
+diag(1:3)  
+# order-3 identity matrix
+diag(3)
+```
+
+### Practice Questions
+
+#### Question 1
+
+Subsetting: select the 10 subjects with IDs from 11 to 20, under two variables:women and education.
+
+#### Question 2
+
+Calculate the correlation and covariance between the two variables:women and education
+
+#### Question 3
+
+Extract the diagonal elements of the covariance matrix
+
+#### Question 4
+
+Calculate the inverse matrix of the covariance matrix
+
+## Part 5: Factor, List, and Dataframe
+
+### Factors
+
+Categorical variables whose input are numeric: "factors" Terminology: a factor has a set of "levels"
+
+```{r}
+## build a continuous variable
+pain=c(0,3,2,2,1) 
+## set the level of pain as a factor
+fpain=factor(pain,levels=0:3) ## categorical has a order: ordinal scale
+## rename the factors of our "fpain" variable
+levels(fpain)=c("none","mild","medium","sever") 
+# Print pain (show as only numbers)
+pain
+# Print fpain (show as categorical names)
+fpain
+# Turn the categorizes into numbers 
+as.numeric(fpain)-1
+# Check the levels of a variable
+levels(fpain)
+# Internally, the 4-level factor above consists of 2 items 
+# (a)a vector of integers between 1 and 4
+# (b)a character vector of length 4 containing strings describing what the 4 levels are
+```
+
+### Building a list
+
+Lists are the R objects which contain elements of different types like − numbers, strings, vectors and another list inside it. A list can also contain a matrix or a function as its elements. List is created using list() function.
+
+```{r}
+# Combine a collection of objects into a larger composite object. 
+# Generate two vectors with Exam scores
+exam1=c(50,60,72,92,83,89,58,81)             
+exam2=c(60,71,84,94,95,90,77,87)
+# Give names to the objects
+# Build a list containing both exams
+scores=list(midterm=exam1,final=exam2) 
+# print the composite object
+scores
+# You can use "$" sign to extract the specific object in a list
+# extract named components 
+scores$final
+```
+
+### Building a Dataframe
+
+```{r}
+# Building a data frame using exam data we previously created
+d=data.frame(exam1,exam2)
+#the data are paired, the same student has a midterm and a final score
+d     
+# Use the "$" sign extract columns from a data frame 
+d$exam1    
+```
+
+### Indexing (subsetting) Dataset
+
+```{r}
+# Select the 4th element in vector exam1
+exam1[4] 
+# The 1st,3rd,6th,7th element of "exam1"; alternatively
+exam2[c(1,3,6,7)] 
+# Build an indexing vector "v"
+v=c(1,3,6,7)
+# Select the indexing elements of "v" from data exam2
+exam2[v]
+# Select the first 6 elements
+exam2[1:6]
+# Select all the elements except the positions specified in v
+exam2[-v]
+# Conditional selection
+exam2[exam1>=60]
+# Select all the exam2 scores where exam 1's scores either less than 70, or larger than 90. 
+exam2[exam1<70 |exam1>90] # "|"means "or"
+# Select all the exam2 scores where exam 1's scores between 70 to 79.
+exam2[exam1>=70 & exam1<80] # & means "and"
+```
+
+### More examples on indexing dataset
+
+```{r}
+# We will use the same data frame d.
+d=data.frame(exam1,exam2)
+# The element in the 5th row, 1st column
+d[5,1]
+# The vector in the 5th row
+d[5,]        
+d[d$exam1>90,]
+# Conditional selection with logical outcome
+lo=d$exam1>60 
+lo
+# Use a logical vector as the indexing vector
+d[lo,]    
+```
+
+### Subset and transform data
+
+```{r}
+# Use the previous exam data set we created.
+d
+# Subset the dataset where the exam1 scores are larger than 60
+d2=subset(d,exam1>60)
+d2
+# Adding a new column "exam1bonus" using transform function
+d3=transform(d,exam1bonus=exam1+5)
+d3
+```
+
+### Practice Questions
+
+#### Question 1
+
+subset Prestige dataset for subjects whose income is higher than 10,000 without using the "subset" function
+
+#### Question 2
+
+subset Prestige dataset for subjects whose income is higher than 10,000 with using the "subset" function
+
+#### Question 3
+
+subset Prestige dataset for subjects whose income is higher than 10,000 and who are professors without using the "subset" function
+
+## Part 6: Splitting data & implicit loops
+
+### Splitting the data
+
+```{r}
+# Type in the data set with two variables "time" and "status"
+# Time means study hours that students spent on studying
+# Status is an indicator showing whether a candidate pass or fail the exam
+time=c(9.2,7,7.1,8.2,10.1,11,9.3,4.5,6.6,7.9,10.8,7.8,8.3)
+status=c("pass","fail","fail","fail","fail","pass","fail","fail","pass","pass","fail","pass","fail")
+# Combine two variables into data frame "rate"
+rate=data.frame(time,status)
+# filter out how much time do participants spent when they passed the exams. 
+sta.pass=rate$time[rate$status=="pass"] 
+sta.pass
+### ? what is the meaning of this line 
+sta.fail=rate$time[rate$status=="fail"]
+sta.fail
+```
+
+### Function "apply"
+
+```{r}
+# Use ?+function name to check the help document of certain function
+?matrix
+# Use function "matrix" and "rnorm" to build a random function
+m=matrix(rnorm(12),nrow =4)
+m
+# Select the minimum value column wise 
+apply(m,2,min) 
+# the second argument: 1 is set to "row", 2 is set to "column"
+# the function min() is applied to each column 
+# Select the minimum value row wise 
+apply(m,1,min) 
+```
+
+### Another example
+
+```{r}
+# Generate a matrix x
+x <- cbind(x1 = rep(3,8), x2 = c(4:1, 2:5)) 
+# Give rownames:a to h
+dimnames(x)[[1]] <- letters[1:8]
+# Use function sum() apply to each column
+col.sums <- apply(x, 2, sum) 
+# Use function sum() apply to each row
+row.sums <- apply(x, 1, sum)
+# Generate a table for the row sums, column sums and grand total
+rbind(cbind(x, Rtot = row.sums), Ctot = c(col.sums, sum(col.sums)))
+```
+
+### Use function "lapply"
+
+The function lapply() applies over a list or a vector
+
+```{r}
+# Build a list
+x <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
+# Compute the list mean for each list element
+lapply(x,mean)
+# Quantiles for each list element 0.25 0.50 0.75
+lapply(x, quantile, probs = 1:3/4) 
+```
+
+## Part 7: conditional statement
+
+### if statement
+
+If statements tell R to run a line of code if a condition returns `TRUE`. An if statement is a good choice here because it allows us to control which statement is printed depending on which outcome occurs.
+
+```{r}
+# We use the previous data "rate" Part 6
+rate
+# use the if function to check the first participant's pass/fail condition
+if (rate[1,2]=="pass"){
+  print("You are awesome!")
+}
+```
+
+### Adding an `else`
+
+```{r}
+# use the if function to check the second participant's pass/fail condition
+if (rate[2,2]=="pass"){
+  print("You are awesome!")
+  } else {
+    print("Working harder")
+          } 
+```
+
+### Customize further: else if
+
+The `else if` statement allows you to further customize your control structure. You can add as many `else` if statements as you like.
+
+```{r}
+# This time we check the participant's studying time from "rate" data.
+# Check the first participant's studying time 
+if(rate[1,1]<=7){
+  print("Study More")
+  } else if (rate[1,1]>7 & rate[1,1]<11){
+    print("No pain No gain!")
+  } else if (rate[1,1]>=11) {
+      print("You are on fire！")
+    }
+```
+
+### Use "for" loop
+
+```{r}
+# Use the for loop to check whether they pass the exam
+for (i in 1:nrow(rate)) {
+  if (rate[i,2]=="pass"){
+  print("You are awesome!")
+  } else {
+    print("Working harder")
+          } 
+}
+# Use the for loop to check how much time they spent on studying
+for (i in 1:nrow(rate)){
+  if(rate[i,1]<=7){
+  print("Study More")
+  } else if (rate[i,1]>7 & rate[i,1]<11){
+    print("No pain No gain!")
+  } else if (rate[i,1]>=11) {
+      print("You are on fire！")
+    }
+}
+```
