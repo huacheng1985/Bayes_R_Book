@@ -50,14 +50,14 @@ h3:practice-questions-4 Practice Questions
 h4:question-1-3 Question 1
 h4:question-2-3 Question 2
 h4:question-3-3 Question 3
-h2:part-6-splitting-data-implicit-loops Part 6: Splitting data & implicit loops
-h3:splitting-the-data Splitting the data
-h3:function-apply Function 
-h3:another-example Another example
-h3:use-function-lapply Use function 
-h2:part-7-conditional-statement Part 7: conditional statement
+h2:part-6-conditional-statement Part 6: conditional statement
 h3:if-statement if statement
 h3:adding-an-else Adding an 
 h3:customize-further-else-if Customize further: else if
 h3:use-for-loop Use  loop
+h2:part-7-splitting-data-implicit-loops Part 7: Splitting data & implicit loops
+h3:splitting-the-data Splitting the data
+h3:function-apply Function 
+h3:another-example Another example
+h3:use-function-lapply Use function 
 
