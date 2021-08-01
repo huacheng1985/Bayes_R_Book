@@ -1,2 +1,55 @@
 h1:Prob Introduction/Interpretation to Probability
+h2:discrete-distribution-variables Discrete Distribution Variables
+h3:bernoulli-distribution Bernoulli Distribution
+h4:definition Definition
+h4:r-illustration R Illustration
+h4:exericise Exericise
+h3:binomial-distribution Binomial Distribution
+h4:definition-1 Definition
+h4:r-illustration-1 R Illustration
+h4:exericise-1 Exericise
+h3:negative-binomial-distribution Negative Binomial Distribution
+h4:definition-2 Definition
+h4:r-illustration-2 R Illustration
+h4:exercise Exercise
+h3:poisson-distribution Poisson Distribution
+h4:definition-3 Definition
+h4:r-illustration-3 R Illustration
+h4:exercise-1 Exercise
+h3:multinomial-distribution Multinomial Distribution
+h4:r-illustration-4 R Illustration
+h4:exercise-2 Exercise
+h2:continuous-random-variables Continuous Random variables
+h3:normal-distribution Normal Distribution
+h4:definition-4 Definition
+h4:r-illustration-5 R Illustration
+h4:exercise-3 Exercise
+h3:bivariatemultivariate-normal-distribution Bivariate/Multivariate normal distribution
+h4:definition-5 Definition
+h4:r-illustration-6 R Illustration
+h4:exercise-4 Exercise
+h3:uniform-distribution Uniform Distribution
+h4:definition-6 Definition
+h4:r-illustration-7 R Illustration
+h4:exercise-5 Exercise
+h3:gamma-distribution Gamma Distribution
+h4:definition-7 Definition
+h4:r-illustration-8 R Illustration
+h4:exercise-6 Exercise
+h3:inverse-gamma-distribution Inverse Gamma Distribution
+h4:definition-8 Definition
+h4:r-illustration-9 R Illustration
+h4:exercise-7 Exercise
+h3:chi-squared-distribution Chi-squared Distribution
+h4:definition-9 Definition
+h4:r-illustration-10 R Illustration
+h4:exercise-8 Exercise
+h3:f-distribution F-Distribution
+h4:definition-10 Definition
+h4:r-illustration-11 R Illustration
+h4:exercise-9 Exercise
+h3:cauchy-distribution Cauchy Distribution
+h4:definition-11 Definition
+h4:r-illustration-12 R Illustration
+h4:exercise-10 Exercise
 

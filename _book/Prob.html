@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Introduction/Interpretation to Probability | Beyes R Book</title>
+  <title>Chapter 3 Introduction/Interpretation to Probability | Beyes R Book</title>
   <meta name="description" content="This book is a R guide book for UA course BER 695: Introduction to Bayesian Analysis." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Introduction/Interpretation to Probability | Beyes R Book" />
+  <meta property="og:title" content="Chapter 3 Introduction/Interpretation to Probability | Beyes R Book" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Introduction/Interpretation to Probability | Beyes R Book" />
+  <meta name="twitter:title" content="Chapter 3 Introduction/Interpretation to Probability | Beyes R Book" />
   
   <meta name="twitter:description" content="This book is a R guide book for UA course BER 695: Introduction to Bayesian Analysis." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. Man Kai Wen &amp; Cheng Hua" />
 
 
-<meta name="date" content="2021-07-05" />
+<meta name="date" content="2021-08-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="intro.html"/>
-<link rel="next" href="methods.html"/>
+<link rel="next" href="Bayes-Inf.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,7 +51,74 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -70,23 +137,100 @@
 <li><a href="./">Beyes R Book</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a></li>
-<li class="chapter" data-level="2" data-path="Prob.html"><a href="Prob.html"><i class="fa fa-check"></i><b>2</b> Introduction/Interpretation to Probability</a></li>
-<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
-<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to the Course</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction to R</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
-<li class="chapter" data-level="4.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#part-1-vector"><i class="fa fa-check"></i><b>2.1</b> Part 1: Vector</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#numbers"><i class="fa fa-check"></i><b>2.1.1</b> Numbers</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#strings-nominal"><i class="fa fa-check"></i><b>2.1.2</b> Strings (nominal)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#logical"><i class="fa fa-check"></i><b>2.1.3</b> Logical</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#create-vectors"><i class="fa fa-check"></i><b>2.1.4</b> Create vectors</a></li>
+<li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#replicate-values"><i class="fa fa-check"></i><b>2.1.5</b> Replicate values</a></li>
+<li class="chapter" data-level="2.1.6" data-path="intro.html"><a href="intro.html#practice-questions"><i class="fa fa-check"></i><b>2.1.6</b> Practice Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html#references"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html#references"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html#references"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html#references"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html#references"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html#references"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html#references"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#part-2-basic-statistical-analysis"><i class="fa fa-check"></i><b>2.2</b> Part 2: Basic Statistical Analysis</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#buiding-a-simulated-data-set"><i class="fa fa-check"></i><b>2.2.1</b> Buiding a simulated data set</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#basic-statistical-function"><i class="fa fa-check"></i><b>2.2.2</b> Basic Statistical function</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#practice-questions-1"><i class="fa fa-check"></i><b>2.2.3</b> Practice Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#part-3-matrix-computation"><i class="fa fa-check"></i><b>2.3</b> Part 3: Matrix Computation</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#build-a-matrix"><i class="fa fa-check"></i><b>2.3.1</b> Build a matrix</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#define-a-matrix"><i class="fa fa-check"></i><b>2.3.2</b> Define a matrix</a></li>
+<li class="chapter" data-level="2.3.3" data-path="intro.html"><a href="intro.html#name-the-rowscolumns"><i class="fa fa-check"></i><b>2.3.3</b> Name the rows/columns</a></li>
+<li class="chapter" data-level="2.3.4" data-path="intro.html"><a href="intro.html#operation-on-matrix"><i class="fa fa-check"></i><b>2.3.4</b> Operation on matrix</a></li>
+<li class="chapter" data-level="2.3.5" data-path="intro.html"><a href="intro.html#glue-vectors-together"><i class="fa fa-check"></i><b>2.3.5</b> Glue vectors together</a></li>
+<li class="chapter" data-level="2.3.6" data-path="intro.html"><a href="intro.html#inverse-the-matrix"><i class="fa fa-check"></i><b>2.3.6</b> Inverse the matrix</a></li>
+<li class="chapter" data-level="2.3.7" data-path="intro.html"><a href="intro.html#practice-questions-2"><i class="fa fa-check"></i><b>2.3.7</b> Practice Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#part-4-data-manipulation"><i class="fa fa-check"></i><b>2.4</b> Part 4: Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#load-the-data"><i class="fa fa-check"></i><b>2.4.1</b> Load the Data</a></li>
+<li class="chapter" data-level="2.4.2" data-path="intro.html"><a href="intro.html#select-specific-data"><i class="fa fa-check"></i><b>2.4.2</b> Select Specific Data</a></li>
+<li class="chapter" data-level="2.4.3" data-path="intro.html"><a href="intro.html#correlation-and-covariate-matrix"><i class="fa fa-check"></i><b>2.4.3</b> Correlation and Covariate Matrix</a></li>
+<li class="chapter" data-level="2.4.4" data-path="intro.html"><a href="intro.html#matrix-diagonals"><i class="fa fa-check"></i><b>2.4.4</b> Matrix Diagonals</a></li>
+<li class="chapter" data-level="2.4.5" data-path="intro.html"><a href="intro.html#practice-questions-3"><i class="fa fa-check"></i><b>2.4.5</b> Practice Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#part-5-factor-list-and-dataframe"><i class="fa fa-check"></i><b>2.5</b> Part 5: Factor, List, and Dataframe</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#factors"><i class="fa fa-check"></i><b>2.5.1</b> Factors</a></li>
+<li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#building-a-list"><i class="fa fa-check"></i><b>2.5.2</b> Building a list</a></li>
+<li class="chapter" data-level="2.5.3" data-path="intro.html"><a href="intro.html#building-a-dataframe"><i class="fa fa-check"></i><b>2.5.3</b> Building a Dataframe</a></li>
+<li class="chapter" data-level="2.5.4" data-path="intro.html"><a href="intro.html#indexing-subsetting-dataset"><i class="fa fa-check"></i><b>2.5.4</b> Indexing (subsetting) Dataset</a></li>
+<li class="chapter" data-level="2.5.5" data-path="intro.html"><a href="intro.html#more-examples-on-indexing-dataset"><i class="fa fa-check"></i><b>2.5.5</b> More examples on indexing dataset</a></li>
+<li class="chapter" data-level="2.5.6" data-path="intro.html"><a href="intro.html#subset-and-transform-data"><i class="fa fa-check"></i><b>2.5.6</b> Subset and transform data</a></li>
+<li class="chapter" data-level="2.5.7" data-path="intro.html"><a href="intro.html#practice-questions-4"><i class="fa fa-check"></i><b>2.5.7</b> Practice Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#part-6-conditional-statement"><i class="fa fa-check"></i><b>2.6</b> Part 6: conditional statement</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="intro.html"><a href="intro.html#if-statement"><i class="fa fa-check"></i><b>2.6.1</b> if statement</a></li>
+<li class="chapter" data-level="2.6.2" data-path="intro.html"><a href="intro.html#adding-an-else"><i class="fa fa-check"></i><b>2.6.2</b> Adding an <code>else</code></a></li>
+<li class="chapter" data-level="2.6.3" data-path="intro.html"><a href="intro.html#customize-further-else-if"><i class="fa fa-check"></i><b>2.6.3</b> Customize further: else if</a></li>
+<li class="chapter" data-level="2.6.4" data-path="intro.html"><a href="intro.html#use-for-loop"><i class="fa fa-check"></i><b>2.6.4</b> Use “for” loop</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#part-7-splitting-data-implicit-loops"><i class="fa fa-check"></i><b>2.7</b> Part 7: Splitting data &amp; implicit loops</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#splitting-the-data"><i class="fa fa-check"></i><b>2.7.1</b> Splitting the data</a></li>
+<li class="chapter" data-level="2.7.2" data-path="intro.html"><a href="intro.html#function-apply"><i class="fa fa-check"></i><b>2.7.2</b> Function “apply”</a></li>
+<li class="chapter" data-level="2.7.3" data-path="intro.html"><a href="intro.html#another-example"><i class="fa fa-check"></i><b>2.7.3</b> Another example</a></li>
+<li class="chapter" data-level="2.7.4" data-path="intro.html"><a href="intro.html#use-function-lapply"><i class="fa fa-check"></i><b>2.7.4</b> Use function “lapply”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Prob.html"><a href="Prob.html"><i class="fa fa-check"></i><b>3</b> Introduction/Interpretation to Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Prob.html"><a href="Prob.html#discrete-distribution-variables"><i class="fa fa-check"></i><b>3.1</b> Discrete Distribution Variables</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="Prob.html"><a href="Prob.html#bernoulli-distribution"><i class="fa fa-check"></i><b>3.1.1</b> Bernoulli Distribution</a></li>
+<li class="chapter" data-level="3.1.2" data-path="Prob.html"><a href="Prob.html#binomial-distribution"><i class="fa fa-check"></i><b>3.1.2</b> Binomial Distribution</a></li>
+<li class="chapter" data-level="3.1.3" data-path="Prob.html"><a href="Prob.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>3.1.3</b> Negative Binomial Distribution</a></li>
+<li class="chapter" data-level="3.1.4" data-path="Prob.html"><a href="Prob.html#poisson-distribution"><i class="fa fa-check"></i><b>3.1.4</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="3.1.5" data-path="Prob.html"><a href="Prob.html#multinomial-distribution"><i class="fa fa-check"></i><b>3.1.5</b> Multinomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="Prob.html"><a href="Prob.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.2</b> Continuous Random variables</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="Prob.html"><a href="Prob.html#normal-distribution"><i class="fa fa-check"></i><b>3.2.1</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.2.2" data-path="Prob.html"><a href="Prob.html#bivariatemultivariate-normal-distribution"><i class="fa fa-check"></i><b>3.2.2</b> Bivariate/Multivariate normal distribution</a></li>
+<li class="chapter" data-level="3.2.3" data-path="Prob.html"><a href="Prob.html#uniform-distribution"><i class="fa fa-check"></i><b>3.2.3</b> Uniform Distribution</a></li>
+<li class="chapter" data-level="3.2.4" data-path="Prob.html"><a href="Prob.html#gamma-distribution"><i class="fa fa-check"></i><b>3.2.4</b> Gamma Distribution</a></li>
+<li class="chapter" data-level="3.2.5" data-path="Prob.html"><a href="Prob.html#inverse-gamma-distribution"><i class="fa fa-check"></i><b>3.2.5</b> Inverse Gamma Distribution</a></li>
+<li class="chapter" data-level="3.2.6" data-path="Prob.html"><a href="Prob.html#chi-squared-distribution"><i class="fa fa-check"></i><b>3.2.6</b> Chi-squared Distribution</a></li>
+<li class="chapter" data-level="3.2.7" data-path="Prob.html"><a href="Prob.html#f-distribution"><i class="fa fa-check"></i><b>3.2.7</b> F-Distribution</a></li>
+<li class="chapter" data-level="3.2.8" data-path="Prob.html"><a href="Prob.html#cauchy-density"><i class="fa fa-check"></i><b>3.2.8</b> Cauchy Density</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html"><i class="fa fa-check"></i><b>4</b> Introduction to Bayesian Inference</a></li>
+<li class="chapter" data-level="5" data-path="Posterior.html"><a href="Posterior.html"><i class="fa fa-check"></i><b>5</b> Summarizing Posterior Distributions</a></li>
+<li class="chapter" data-level="6" data-path="Gra-Model.html"><a href="Gra-Model.html"><i class="fa fa-check"></i><b>6</b> Introduction to Graphical Models</a></li>
+<li class="chapter" data-level="7" data-path="Bayes-Theorem.html"><a href="Bayes-Theorem.html"><i class="fa fa-check"></i><b>7</b> Bayes’ Theorem: Accumulation of Evidence</a></li>
+<li class="chapter" data-level="8" data-path="Normal-Dis.html"><a href="Normal-Dis.html"><i class="fa fa-check"></i><b>8</b> Normal Distribution Models</a></li>
+<li class="chapter" data-level="9" data-path="MCMC.html"><a href="MCMC.html"><i class="fa fa-check"></i><b>9</b> Markov Chain Monte Carlo: A Practical Introduction</a></li>
+<li class="chapter" data-level="10" data-path="Bayes-Reg.html"><a href="Bayes-Reg.html"><i class="fa fa-check"></i><b>10</b> Bayesian based Regression Models</a></li>
+<li class="chapter" data-level="11" data-path="Specify-Prior.html"><a href="Specify-Prior.html"><i class="fa fa-check"></i><b>11</b> Strategies for Specifying prior distributions</a></li>
+<li class="chapter" data-level="12" data-path="Post-Pred.html"><a href="Post-Pred.html"><i class="fa fa-check"></i><b>12</b> Posterior Predictive Model Checking</a></li>
+<li class="chapter" data-level="13" data-path="Model-Comp.html"><a href="Model-Comp.html"><i class="fa fa-check"></i><b>13</b> Model Comparison</a></li>
+<li class="chapter" data-level="14" data-path="Adv-Bayes.html"><a href="Adv-Bayes.html"><i class="fa fa-check"></i><b>14</b> Advance Bayesian Models</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -107,9 +251,891 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Prob" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Introduction/Interpretation to Probability</h1>
+<div id="Prob" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Introduction/Interpretation to Probability</h1>
+<p>Before we going to this Chapter, we need load a few packages that provide useful functions to achieve our learning objects.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="Prob.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure to install those packages before you load them. </span></span>
+<span id="cb1-2"><a href="Prob.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function: install.packages(&quot;package_name&quot;) to install any package.</span></span>
+<span id="cb1-3"><a href="Prob.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rlab) <span class="co"># For use Bernoulli distribution</span></span>
+<span id="cb1-4"><a href="Prob.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># For data manipulation</span></span>
+<span id="cb1-5"><a href="Prob.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># For plotting the advanced plots</span></span>
+<span id="cb1-6"><a href="Prob.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) <span class="co"># For use Bivariate/Multivariate normal distributions </span></span>
+<span id="cb1-7"><a href="Prob.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(invgamma) <span class="co"># For use inverse gamma related function</span></span>
+<span id="cb1-8"><a href="Prob.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) <span class="co"># For data manipulation</span></span></code></pre></div>
+<div id="discrete-distribution-variables" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Discrete Distribution Variables</h2>
+<p>A discrete distribution describes the probabilistic properties of a <em>random variable</em> that takes on a set of values that are discrete, i.e. separate and distinct from one another - a <em>discrete random variable</em>. Discrete values are separated only by a finite number of units - in flipping a coin five times, the result of 5 heads is separated from the result of 2 heads by two units (3 heads and 4 heads).</p>
+<div id="bernoulli-distribution" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Bernoulli Distribution</h3>
+<div id="definition" class="section level4" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> Definition</h4>
+<p>A Bernoulli distribution is a discrete probability distribution for a Bernoulli trial — a random experiment that has only two outcomes (usually called a “Success” or a “Failure”). For example, the probability of getting a heads (a “success”) while flipping a coin is 0.5. The probability of “failure” is 1 – P (1 minus the probability of success, which also equals 0.5 for a coin toss). It is a special case of the binomial distribution for n = 1. In other words, it is a binomial distribution with a single trial (e.g. a single coin toss).</p>
+<p>The Bernoulli distribution with prob <span class="math inline">\(= p\)</span> has density <span class="math display">\[p(x) = {p}^{x} {(1-p)}^{1-x}\]</span> for <span class="math inline">\(x = 0\)</span> or 1.</p>
+</div>
+<div id="r-illustration" class="section level4" number="3.1.1.2">
+<h4><span class="header-section-number">3.1.1.2</span> R Illustration</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="Prob.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  Create a sample of 10 numbers which are incremented by 1.</span></span>
+<span id="cb2-2"><a href="Prob.html#cb2-2" aria-hidden="true" tabindex="-1"></a>Berno_data <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb2-3"><a href="Prob.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="Prob.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># using dbern() function to simulate a Bernoulli distribution</span></span>
+<span id="cb2-5"><a href="Prob.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Bernoulli Probability Density Function</span></span>
+<span id="cb2-6"><a href="Prob.html#cb2-6" aria-hidden="true" tabindex="-1"></a>Bern_PDF <span class="ot">&lt;-</span> <span class="fu">dbern</span>(Berno_data,<span class="at">prob=</span><span class="fl">0.2</span>)</span>
+<span id="cb2-7"><a href="Prob.html#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="Prob.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot dbern values</span></span>
+<span id="cb2-9"><a href="Prob.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Bern_PDF,<span class="at">type=</span><span class="st">&quot;o&quot;</span>)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The Bernoulli distribution is closely related to the Binomial distribution. As long as each individual Bernoulli trial is independent, then the number of successes in a series of Bernoulli trails has a Binomial Distribution. The Bernoulli distribution can also be defined as the Binomial distribution with n = 1.</p>
+</div>
+<div id="exericise" class="section level4" number="3.1.1.3">
+<h4><span class="header-section-number">3.1.1.3</span> Exericise</h4>
+</div>
+</div>
+<div id="binomial-distribution" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Binomial Distribution</h3>
+<div id="definition-1" class="section level4" number="3.1.2.1">
+<h4><span class="header-section-number">3.1.2.1</span> Definition</h4>
+<p>A binomial distribution can be thought of as simply the probability of a SUCCESS or FAILURE outcome in an experiment or survey that is repeated multiple times. The binomial is a type of distribution that has two possible outcomes (the prefix “bi” means two, or twice). For example, a coin toss has only two possible outcomes: heads or tails and taking a test could have two possible outcomes: pass or fail.</p>
+<p>A binomial distribution commonly contains two variables.
+- The first variable in the binomial formula, n, stands for the number of times the experiment runs.
+- The second variable, p, represents the probability of one specific outcome.</p>
+<p>For example, let’s suppose you wanted to know the probability of getting a 1 on a die roll. if you were to roll a die 20 times, the probability of rolling a one on any throw is 1/6. Roll twenty times and you have a binomial distribution of (n=20, p=1/6). SUCCESS would be “roll a one” and FAILURE would be “roll anything else.” If the outcome in question was the probability of the die landing on an even number, the binomial distribution would then become (n=20, p=1/2). That’s because your probability of throwing an even number is one half.</p>
+<p>The binomial distribution with size <span class="math inline">\(= n\)</span> and prob <span class="math inline">\(= p\)</span> has density <span class="math display">\[p(x) = {n \choose x} {p}^{x} {(1-p)}^{n-x}\]</span> for <span class="math inline">\(x = 0, \ldots, n\)</span>. Note that binomial coefficients can be computed by choose in R.</p>
+</div>
+<div id="r-illustration-1" class="section level4" number="3.1.2.2">
+<h4><span class="header-section-number">3.1.2.2</span> R Illustration</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="Prob.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sample of 50 numbers which are incremented by 1.</span></span>
+<span id="cb3-2"><a href="Prob.html#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb3-3"><a href="Prob.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="Prob.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the binomial distribution.</span></span>
+<span id="cb3-5"><a href="Prob.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The dbinom() example below contains three arguments. The first one is a vector of quantiles, the second one is the number of observations, and the third one is the probability of each trial. </span></span>
+<span id="cb3-6"><a href="Prob.html#cb3-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x,<span class="dv">50</span>,<span class="fl">0.5</span>)</span>
+<span id="cb3-7"><a href="Prob.html#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="Prob.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># We can plot the binomial distribution</span></span>
+<span id="cb3-9"><a href="Prob.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="Prob.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can also use the pbinom() function to calculate the cumulative probability of an event. It is a single value representing the probability.</span></span>
+<span id="cb4-2"><a href="Prob.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability of getting 26 or less heads from a 51 tosses of a coin.</span></span>
+<span id="cb4-3"><a href="Prob.html#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(<span class="dv">26</span>,<span class="dv">51</span>,<span class="fl">0.5</span>)</span>
+<span id="cb4-4"><a href="Prob.html#cb4-4" aria-hidden="true" tabindex="-1"></a>x <span class="co"># x=0.61</span></span></code></pre></div>
+<pre><code>## [1] 0.610116</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="Prob.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># qbinom()function takes probability value and gives a number whose cumulative value matches the probability value.</span></span>
+<span id="cb6-2"><a href="Prob.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># How many heads will have a probability of 0.25 will come out when a coin is tossed 51 times?</span></span>
+<span id="cb6-3"><a href="Prob.html#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">qbinom</span>(<span class="fl">0.25</span>,<span class="dv">51</span>,<span class="fl">0.5</span>)</span>
+<span id="cb6-4"><a href="Prob.html#cb6-4" aria-hidden="true" tabindex="-1"></a>x <span class="co"># x=23</span></span></code></pre></div>
+<pre><code>## [1] 23</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="Prob.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rbinom() function generates required number of random values of given probability from a given sample.</span></span>
+<span id="cb8-2"><a href="Prob.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Find 10 random values from a sample of 150 with probability of 0.4.</span></span>
+<span id="cb8-3"><a href="Prob.html#cb8-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">10</span>,<span class="dv">150</span>,.<span class="dv">4</span>) <span class="co"># Watchout! If you don&#39;t set.seed(), then each time you will get a new vector of random values.</span></span>
+<span id="cb8-4"><a href="Prob.html#cb8-4" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##  [1] 66 71 59 65 63 66 54 51 64 63</code></pre>
+</div>
+<div id="exericise-1" class="section level4" number="3.1.2.3">
+<h4><span class="header-section-number">3.1.2.3</span> Exericise</h4>
+</div>
+</div>
+<div id="negative-binomial-distribution" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Negative Binomial Distribution</h3>
+<div id="definition-2" class="section level4" number="3.1.3.1">
+<h4><span class="header-section-number">3.1.3.1</span> Definition</h4>
+<p>The negative binomial is similar to the binomial with two differences:</p>
+<ul>
+<li><p>The number of trials, n is not fixed.</p></li>
+<li><p>A random variable Y= the number of trials needed to make r successes.</p></li>
+</ul>
+<p>Example: Take a standard deck of cards, shuffle them, and choose a card. Replace the card and repeat until you have drawn two aces. Y is the number of draws needed to draw two aces. As the number of trials isn’t fixed (i.e. you stop when you draw the second ace), this makes it a negative binomial distribution.</p>
+<p>Note: The random variable is the number of repeated trials, X, that produce a certain number of successes, r. In other words, it’s the number of failures before a success. This is the main difference from the binomial distribution: with a regular binomial distribution, you’re looking at the number of successes. With a negative binomial distribution, it’s the number of failures that counts.</p>
+<p>The negative binomial distribution with size <span class="math inline">\(= n\)</span> and prob <span class="math inline">\(= p\)</span> has density <span class="math display">\[ p(x) = \frac{\Gamma(x+n)}{\Gamma(n) x!} p^n (1-p)^x\]</span> for <span class="math inline">\(x = 0, 1, 2, \ldots\)</span>, <span class="math inline">\(n &gt; 0\)</span> and <span class="math inline">\(0 &lt; p \le 1\)</span>.</p>
+</div>
+<div id="r-illustration-2" class="section level4" number="3.1.3.2">
+<h4><span class="header-section-number">3.1.3.2</span> R Illustration</h4>
+<ul>
+<li>Negative Binomial Density in R (dnbinom Function)</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="Prob.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sample of 100 numbers which are incremented by 1.</span></span>
+<span id="cb10-2"><a href="Prob.html#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="at">by=</span><span class="dv">1</span>)</span>
+<span id="cb10-3"><a href="Prob.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use the dnbinom() function to return the corresponding negative binomial values of each element of our input vector with non-negative integers. </span></span>
+<span id="cb10-4"><a href="Prob.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that we are using a size (i.e. number of trials) and a probability of 0.5</span></span>
+<span id="cb10-5"><a href="Prob.html#cb10-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnbinom</span>(x,<span class="at">size=</span><span class="dv">100</span>,<span class="at">prob=</span><span class="fl">0.5</span>)</span>
+<span id="cb10-6"><a href="Prob.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the negative binomial distribution</span></span>
+<span id="cb10-7"><a href="Prob.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<ul>
+<li>Negative Binomial Cumulative Distribution Function (pnbinom Function)</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="Prob.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In this example, we will still use the vector x that we created before</span></span>
+<span id="cb11-2"><a href="Prob.html#cb11-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##   [1]   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+##  [19]  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35
+##  [37]  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53
+##  [55]  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71
+##  [73]  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89
+##  [91]  90  91  92  93  94  95  96  97  98  99 100</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="Prob.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pnbinom function </span></span>
+<span id="cb13-2"><a href="Prob.html#cb13-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">pnbinom</span>(x,<span class="at">size=</span><span class="dv">100</span>,<span class="at">prob=</span><span class="fl">0.5</span>)</span>
+<span id="cb13-3"><a href="Prob.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the cumulative distribution</span></span>
+<span id="cb13-4"><a href="Prob.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y) <span class="co"># Note although the shape looks almost the same with the previous one. However, the y axis&#39; number is way larger than the previous plot.</span></span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<ul>
+<li>Negative Binomial Quantile Function (qnbinom Function)</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="Prob.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Similar to the R syntax of the previous examples, we can create a plot containing the negative binomial quantile function. As input, we need to specify a vector of probabilities:</span></span>
+<span id="cb14-2"><a href="Prob.html#cb14-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb14-3"><a href="Prob.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply qnbinom function</span></span>
+<span id="cb14-4"><a href="Prob.html#cb14-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">qnbinom</span>(x, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb14-5"><a href="Prob.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the Quantile distribution</span></span>
+<span id="cb14-6"><a href="Prob.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<ul>
+<li>Simulation of Random Numbers (rnbinom Function)</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="Prob.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we need to specify a seed and a sample size first</span></span>
+<span id="cb15-2"><a href="Prob.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>) <span class="co"># Set seed for reproducibility</span></span>
+<span id="cb15-3"><a href="Prob.html#cb15-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb15-4"><a href="Prob.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw N nbinomially distributed values</span></span>
+<span id="cb15-5"><a href="Prob.html#cb15-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnbinom</span>(N,<span class="at">size=</span><span class="dv">100</span>,<span class="at">prob=</span><span class="fl">0.5</span>)</span>
+<span id="cb15-6"><a href="Prob.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># This time we use the hist() function to plot those randomize distributed values</span></span>
+<span id="cb15-7"><a href="Prob.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y,<span class="at">breaks =</span> <span class="dv">100</span>,<span class="at">main =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<ul>
+<li>Example 1: An oil company has a p = 0.20 chance of striking oil when drilling a well. What is the probability the company drills x = 7 wells to strike oil r = 3 times?</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="Prob.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set</span></span>
+<span id="cb16-2"><a href="Prob.html#cb16-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb16-3"><a href="Prob.html#cb16-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fl">0.20</span></span>
+<span id="cb16-4"><a href="Prob.html#cb16-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">7</span> <span class="sc">-</span> r</span>
+<span id="cb16-5"><a href="Prob.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># exact probability</span></span>
+<span id="cb16-6"><a href="Prob.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dnbinom</span>(<span class="at">x =</span> n, <span class="at">size =</span> r, <span class="at">prob =</span> p)</span></code></pre></div>
+<pre><code>## [1] 0.049152</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="Prob.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulated probability</span></span>
+<span id="cb18-2"><a href="Prob.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnbinom</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">size =</span> r, <span class="at">prob =</span> p) <span class="sc">==</span> n)</span></code></pre></div>
+<pre><code>## [1] 0.0483</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="Prob.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can even plot it.</span></span>
+<span id="cb20-2"><a href="Prob.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">prob =</span> <span class="fu">dnbinom</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> r, <span class="at">prob =</span> p)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="Prob.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Failures =</span> <span class="fu">ifelse</span>(x <span class="sc">==</span> n, n, <span class="st">&quot;other&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="Prob.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(x), <span class="at">y =</span> prob, <span class="at">fill =</span> Failures)) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="Prob.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb20-6"><a href="Prob.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb20-7"><a href="Prob.html#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(prob,<span class="dv">2</span>), <span class="at">y =</span> prob <span class="sc">+</span> <span class="fl">0.01</span>),</span>
+<span id="cb20-8"><a href="Prob.html#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>),</span>
+<span id="cb20-9"><a href="Prob.html#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb20-10"><a href="Prob.html#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="dv">0</span></span>
+<span id="cb20-11"><a href="Prob.html#cb20-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-12"><a href="Prob.html#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Probability of r = 3 Successes in X = 7 Trials&quot;</span>,</span>
+<span id="cb20-13"><a href="Prob.html#cb20-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;NB(3,.2)&quot;</span>,</span>
+<span id="cb20-14"><a href="Prob.html#cb20-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Failed Trials (X - r)&quot;</span>,</span>
+<span id="cb20-15"><a href="Prob.html#cb20-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Probability&quot;</span>) </span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<ul>
+<li>Example 2: What is the expected number of trials to achieve r=3 successes when the probability of success is p=0.2?</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="Prob.html#cb21-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb21-2"><a href="Prob.html#cb21-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fl">0.20</span></span>
+<span id="cb21-3"><a href="Prob.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># exact mean</span></span>
+<span id="cb21-4"><a href="Prob.html#cb21-4" aria-hidden="true" tabindex="-1"></a>r<span class="sc">/</span>p</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="Prob.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulated mean</span></span>
+<span id="cb23-2"><a href="Prob.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnbinom</span>(<span class="at">n=</span><span class="dv">10000</span>,<span class="at">size=</span><span class="dv">3</span>,<span class="at">prob=</span>p))<span class="sc">+</span>r</span></code></pre></div>
+<pre><code>## [1] 14.9595</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="Prob.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb25-2"><a href="Prob.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, </span>
+<span id="cb25-3"><a href="Prob.html#cb25-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">pmf =</span> <span class="fu">dnbinom</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">size =</span> r, <span class="at">prob =</span> p),</span>
+<span id="cb25-4"><a href="Prob.html#cb25-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">cdf =</span> <span class="fu">pnbinom</span>(<span class="at">q =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">size =</span> r, <span class="at">prob =</span> p, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="Prob.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(x), <span class="at">y =</span> cdf)) <span class="sc">+</span></span>
+<span id="cb25-6"><a href="Prob.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb25-7"><a href="Prob.html#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb25-8"><a href="Prob.html#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(cdf,<span class="dv">2</span>), <span class="at">y =</span> cdf <span class="sc">+</span> <span class="fl">0.01</span>),</span>
+<span id="cb25-9"><a href="Prob.html#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>),</span>
+<span id="cb25-10"><a href="Prob.html#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb25-11"><a href="Prob.html#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="dv">0</span></span>
+<span id="cb25-12"><a href="Prob.html#cb25-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-13"><a href="Prob.html#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Cumulative Probability of X = x failed trials to achieve 3rd success&quot;</span>,</span>
+<span id="cb25-14"><a href="Prob.html#cb25-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;NB(3,.2)&quot;</span>,</span>
+<span id="cb25-15"><a href="Prob.html#cb25-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Failed Trials (x)&quot;</span>,</span>
+<span id="cb25-16"><a href="Prob.html#cb25-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;probability&quot;</span>) </span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="exercise" class="section level4" number="3.1.3.3">
+<h4><span class="header-section-number">3.1.3.3</span> Exercise</h4>
+</div>
+</div>
+<div id="poisson-distribution" class="section level3" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Poisson Distribution</h3>
+<div id="definition-3" class="section level4" number="3.1.4.1">
+<h4><span class="header-section-number">3.1.4.1</span> Definition</h4>
+<p>The Poisson distribution is a discrete distribution which was designed to count the number of events that occur in a particular time interval. A common (approximate) example is counting the number of customers who enter a bank in a particular hour. We traditionally call the expected number of occurrences λ or lambda.</p>
+<p>Poisson vs. binomial: The key difference between the Poisson and the binomial is that for the binomial, the total number of trials in the sample is fixed, while for the Poisson, the total number of events in the interval is not fixed. That said, the binomial distribution begins to look a lot like the Poisson distribution when the number of trials grows large, and the probability of success is small.</p>
+<p>The Poisson distribution has density <span class="math display">\[p(x) = \frac{\lambda^x e^{-\lambda}}{x!}\]</span> for <span class="math inline">\(x = 0, 1, 2, \ldots\)</span> . The mean and variance are <span class="math inline">\(E(X) = Var(X) = \lambda\)</span>.</p>
+<p>Note that <span class="math inline">\(\lambda = 0\)</span> is really a limit case (setting <span class="math inline">\(0^0 = 1\)</span>) resulting in a point mass at <span class="math inline">\(0\)</span>, see also the example.</p>
+</div>
+<div id="r-illustration-3" class="section level4" number="3.1.4.2">
+<h4><span class="header-section-number">3.1.4.2</span> R Illustration</h4>
+<ul>
+<li>Random Samples: rpois</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="Prob.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As with the binomial, we can easily sample from the Poisson using the rpois() function, which now take takes two arguments.</span></span>
+<span id="cb26-2"><a href="Prob.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n: how many outcomes we want to sample</span></span>
+<span id="cb26-3"><a href="Prob.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lambda: the expected number of events per interval (avarage)</span></span>
+<span id="cb26-4"><a href="Prob.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We create 100 random values where the expected number of events per interval is equal to 14</span></span>
+<span id="cb26-5"><a href="Prob.html#cb26-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">lambda =</span> <span class="dv">14</span>)</span>
+<span id="cb26-6"><a href="Prob.html#cb26-6" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##   [1]  5 18 11 22 10 14 10 19 19  9 17 10 12 10 18 14 12  6 11 17 15  8  9 19 14
+##  [26] 11 13 14 17 10 16 11 14 21 10 17 15 11 14 12 10 14 14 22 17 15 14 11 13 15
+##  [51] 25 19 15  9 12 15 18  9 14  6 11 14  9 11 14 15 11  8 15 20 11 11  9 16 12
+##  [76]  9  7  9 16 15 18  9  8 12 20 12 10 22 13 10 16 10 19  9 19  8 21 14 13 15</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="Prob.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can plot the poisson distribution</span></span>
+<span id="cb28-2"><a href="Prob.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(x))</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<ul>
+<li>Density Functions: dpois</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="Prob.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppose we want to know the probability of getting 12 occurrences, we can get this easily with.</span></span>
+<span id="cb29-2"><a href="Prob.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">12</span>, <span class="at">lambda =</span> <span class="dv">14</span>)</span></code></pre></div>
+<pre><code>## [1] 0.09841849</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="Prob.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As before, we can easily obtain and graph the main part of the distribution.</span></span>
+<span id="cb31-2"><a href="Prob.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">dpois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">lambda =</span> <span class="dv">14</span>), </span>
+<span id="cb31-3"><a href="Prob.html#cb31-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">30</span>,</span>
+<span id="cb31-4"><a href="Prob.html#cb31-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Poisson PDF&quot;</span>, <span class="at">xlab =</span> <span class="st">&#39;X&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Probability&#39;</span>)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<ul>
+<li>Cumulative Distribution Functions: ppois</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="Prob.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppose we want to know the probability of getting at most 12 occurrences, we can get this easily with,</span></span>
+<span id="cb32-2"><a href="Prob.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="at">q =</span> <span class="dv">12</span>, <span class="at">lambda =</span> <span class="dv">14</span>)</span></code></pre></div>
+<pre><code>## [1] 0.3584584</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="Prob.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note this contains a cumulative probability from 1 to 12 occurrences.</span></span>
+<span id="cb34-2"><a href="Prob.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># As before, we can easily obtain and graph the main part of the CDF.</span></span>
+<span id="cb34-3"><a href="Prob.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">ppois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">lambda =</span> <span class="dv">14</span>), </span>
+<span id="cb34-4"><a href="Prob.html#cb34-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">30</span>,</span>
+<span id="cb34-5"><a href="Prob.html#cb34-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Poisson CDF&quot;</span>, <span class="at">xlab =</span> <span class="st">&#39;X&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Probability&#39;</span>)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<ul>
+<li>Example: If there are twelve cars crossing a bridge per minute on average, find the probability of having seventeen or more cars crossing the bridge in a particular minute.</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="Prob.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The probability of having sixteen or less cars crossing the bridge in a particular minute is given by the function ppois.</span></span>
+<span id="cb35-2"><a href="Prob.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">16</span>, <span class="at">lambda=</span><span class="dv">12</span>) <span class="co"># lower tail means less than</span></span></code></pre></div>
+<pre><code>## [1] 0.898709</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="Prob.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hence the probability of having seventeen or more cars crossing the bridge in a minute is in the upper tail of the probability density function.</span></span>
+<span id="cb37-2"><a href="Prob.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">16</span>, <span class="at">lambda=</span><span class="dv">12</span>,<span class="at">lower=</span><span class="cn">FALSE</span>) <span class="co"># Upper tail </span></span></code></pre></div>
+<pre><code>## [1] 0.101291</code></pre>
+</div>
+<div id="exercise-1" class="section level4" number="3.1.4.3">
+<h4><span class="header-section-number">3.1.4.3</span> Exercise</h4>
+</div>
+</div>
+<div id="multinomial-distribution" class="section level3" number="3.1.5">
+<h3><span class="header-section-number">3.1.5</span> Multinomial Distribution</h3>
+<p>The multinomial distribution is a generalization of the binomial distribution to k categories instead of just binary (success/fail). For n independent trials each of which leads to a success for exactly one of k categories, the multinomial distribution gives the probability of any particular combination of numbers of successes for the various categories. A multinomial experiment is almost identical with one main difference: a binomial experiment can have two outcomes, while a multinomial experiment can have multiple outcomes.</p>
+<p>If x is a <span class="math inline">\(K\)</span>-component vector, dmultinom(x, prob) is the probability <span class="math display">\[P(X_1=x_1,\ldots,X_K=x_k) = C \times \prod_{j=1}^K \pi_j^{x_j}\]</span> where <span class="math inline">\(C\)</span> is the ‘multinomial coefficient’ <span class="math inline">\(C = N! / (x_1! \cdots x_K!)\)</span> and <span class="math inline">\(N = \sum_{j=1}^K x_j\)</span>.</p>
+<p>By definition, each component <span class="math inline">\(X_j\)</span> is binomially distributed as Bin(size, prob[j]) for <span class="math inline">\(j = 1, \ldots, K\)</span>.</p>
+<p>The rmultinom() algorithm draws binomials <span class="math inline">\(X_j\)</span> from <span class="math inline">\(Bin(n_j,P_j)\)</span> sequentially, where <span class="math inline">\(n_1 = N\)</span> (N := size), <span class="math inline">\(P_1 = \pi_1\)</span> (<span class="math inline">\(\pi\)</span> is prob scaled to sum 1), and for <span class="math inline">\(j \ge 2\)</span>, recursively, <span class="math inline">\(n_j = N - \sum_{k=1}^{j-1} X_k\)</span> and <span class="math inline">\(P_j = \pi_j / (1 - \sum_{k=1}^{j-1} \pi_k)\)</span>.</p>
+<div id="r-illustration-4" class="section level4" number="3.1.5.1">
+<h4><span class="header-section-number">3.1.5.1</span> R Illustration</h4>
+<ul>
+<li>Generate Multinomial Random Variables</li>
+</ul>
+<p>Generate Multinomial Random Variables With Varying Probabilities Given a matrix of multinomial probabilities where rows correspond to observations and columns to categories (and each row sums to 1), generates a matrix with the same number of rows as has probs and with m columns. The columns represent multinomial cell numbers, and within a row the columns are all samples from the same multinomial distribution.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="Prob.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rmultinom(n, size, prob)</span></span>
+<span id="cb39-2"><a href="Prob.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the probabilities for each trails</span></span>
+<span id="cb39-3"><a href="Prob.html#cb39-3" aria-hidden="true" tabindex="-1"></a>my_prob <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.3</span>,<span class="fl">0.1</span>,<span class="fl">0.4</span>)</span>
+<span id="cb39-4"><a href="Prob.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of experiments</span></span>
+<span id="cb39-5"><a href="Prob.html#cb39-5" aria-hidden="true" tabindex="-1"></a>number_of_experiments <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb39-6"><a href="Prob.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of samples</span></span>
+<span id="cb39-7"><a href="Prob.html#cb39-7" aria-hidden="true" tabindex="-1"></a>number_of_samples <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb39-8"><a href="Prob.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simulated experiment result based on the pre-defined variables</span></span>
+<span id="cb39-9"><a href="Prob.html#cb39-9" aria-hidden="true" tabindex="-1"></a>experiments <span class="ot">&lt;-</span> <span class="fu">rmultinom</span>(<span class="at">n=</span>number_of_experiments, <span class="at">size=</span>number_of_samples, <span class="at">prob=</span>my_prob)</span>
+<span id="cb39-10"><a href="Prob.html#cb39-10" aria-hidden="true" tabindex="-1"></a>experiments <span class="co"># See the simulated results</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]    2    3    1    3    4    3    1    1    0     1
+## [2,]    0    4    2    1    3    2    4    5    2     3
+## [3,]    1    2    2    0    0    3    0    1    1     2
+## [4,]    7    1    5    6    3    2    5    3    7     4</code></pre>
+<ul>
+<li><p>Compute multinomial probabilities use dmultinom()</p>
+<ul>
+<li>Chess Game Prediction:
+Two chess players have the probability Player A would win is 0.40, Player B would win is 0.35, game would end in a draw is 0.25.If these two chess players played 12 games, what is the probability that Player A would win 7 games, Player B would win 2 games, the remaining 3 games would be drawn?</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="Prob.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use dmultinom() function to compute the probability</span></span>
+<span id="cb41-2"><a href="Prob.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dmultinom</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.4</span>,<span class="fl">0.35</span>,<span class="fl">0.25</span>))</span></code></pre></div>
+<pre><code>## [1] 0.02483712</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="Prob.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The probability equals to 0.025</span></span></code></pre></div>
+<ul>
+<li>Opinion Polls on Election
+In a little town, 40% of the eligible voters prefer candidate A, 10% prefer candidate B, 50% have no preference.You randomly sample 10 eligible voters. What is the probability that 4 will prefer candidate A, 1 will prefer candidate B, 5 will have no preference ?</li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="Prob.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use dmultinom() function to compute the probability</span></span>
+<span id="cb44-2"><a href="Prob.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dmultinom</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.4</span>,<span class="fl">0.1</span>,<span class="fl">0.5</span>))</span></code></pre></div>
+<pre><code>## [1] 0.1008</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="Prob.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The probability equals to 0.1</span></span></code></pre></div>
+</div>
+<div id="exercise-2" class="section level4" number="3.1.5.2">
+<h4><span class="header-section-number">3.1.5.2</span> Exercise</h4>
+</div>
+</div>
+</div>
+<div id="continuous-random-variables" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Continuous Random variables</h2>
+<p>A continuous random variable may take on a continuum of possible values.</p>
+<div id="normal-distribution" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Normal Distribution</h3>
+<div id="definition-4" class="section level4" number="3.2.1.1">
+<h4><span class="header-section-number">3.2.1.1</span> Definition</h4>
+<p>In probability theory, a normal (or Gaussian or Gauss or Laplace–Gauss) distribution is a type of continuous probability distribution for a real-valued random variable.</p>
+<p>The normal distribution has density <span class="math display">\[ f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-(x-\mu)^2/2\sigma^2}\]</span> where <span class="math inline">\(\mu\)</span> is the mean of the distribution and <span class="math inline">\(\sigma\)</span> the standard deviation.</p>
+</div>
+<div id="r-illustration-5" class="section level4" number="3.2.1.2">
+<h4><span class="header-section-number">3.2.1.2</span> R Illustration</h4>
+<ul>
+<li>Obtain densities of normal distributions using the function dnorm()</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="Prob.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># draw a plot of the N(0,1) PDF</span></span>
+<span id="cb47-2"><a href="Prob.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x), <span class="co"># The default setting, mean=0, sd=1.</span></span>
+<span id="cb47-3"><a href="Prob.html#cb47-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>),</span>
+<span id="cb47-4"><a href="Prob.html#cb47-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;Density&quot;</span>, </span>
+<span id="cb47-5"><a href="Prob.html#cb47-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;Standard Normal Density Function&quot;</span>) </span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="Prob.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can also obtain the density at different positions by passing a vector to dnorm()</span></span>
+<span id="cb48-2"><a href="Prob.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># compute density at x=-1.96, x=0 and x=1.96</span></span>
+<span id="cb48-3"><a href="Prob.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="dv">0</span>, <span class="fl">1.96</span>))</span></code></pre></div>
+<pre><code>## [1] 0.05844094 0.39894228 0.05844094</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="Prob.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a sequence of values</span></span>
+<span id="cb50-2"><a href="Prob.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># between -15 to 15 with a difference of 0.1</span></span>
+<span id="cb50-3"><a href="Prob.html#cb50-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">15</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb50-4"><a href="Prob.html#cb50-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">dnorm</span>(x, <span class="fu">mean</span>(x), <span class="fu">sd</span>(x))</span>
+<span id="cb50-5"><a href="Prob.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the graph.</span></span>
+<span id="cb50-6"><a href="Prob.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-17-2.png" width="672" /></p>
+<ul>
+<li>Cumulative distribution function use pnorm() function</li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="Prob.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a sequence of values</span></span>
+<span id="cb51-2"><a href="Prob.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># between -10 to 10 with a difference of 0.1</span></span>
+<span id="cb51-3"><a href="Prob.html#cb51-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb51-4"><a href="Prob.html#cb51-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(x, <span class="at">mean =</span> <span class="fl">2.5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb51-5"><a href="Prob.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the graph.</span></span>
+<span id="cb51-6"><a href="Prob.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<ul>
+<li>Calculate the probability use pnorm() function</li>
+</ul>
+<p>qnorm() function is the inverse of pnorm() function. It takes the probability value and gives output which corresponds to the probability value. It is useful in finding the percentiles of a normal distribution.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="Prob.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of probability values increment by 0.02.</span></span>
+<span id="cb52-2"><a href="Prob.html#cb52-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.02</span>)</span>
+<span id="cb52-3"><a href="Prob.html#cb52-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(x, <span class="fu">mean</span>(x), <span class="fu">sd</span>(x))</span>
+<span id="cb52-4"><a href="Prob.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the graph.</span></span>
+<span id="cb52-5"><a href="Prob.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="Prob.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What is the probability of getting a value less than 0.75 in normal distribution x.</span></span>
+<span id="cb53-2"><a href="Prob.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.75</span>, <span class="fu">mean</span>(x), <span class="fu">sd</span>(x))</span></code></pre></div>
+<pre><code>## [1] 0.7005402</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="Prob.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What is the probability of getting a value more than 0.75 in normal distribution x.</span></span>
+<span id="cb55-2"><a href="Prob.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.75</span>, <span class="fu">mean</span>(x), <span class="fu">sd</span>(x),<span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.2994598</code></pre>
+<ul>
+<li>Example: A real world problem.
+Assume that the test scores of a college entrance exam fits a normal distribution. Furthermore, the mean test score is 72, and the standard deviation is 15.2. What is the percentage of students scoring 84 or more in the exam?</li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="Prob.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We apply the function pnorm() of the normal distribution with mean 72 and standard deviation 15.2. Since we are looking for the percentage of students scoring higher than 84, we are interested in the upper tail of the normal distribution.</span></span>
+<span id="cb57-2"><a href="Prob.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">84</span>, <span class="at">mean=</span><span class="dv">72</span>, <span class="at">sd=</span><span class="fl">15.2</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>) </span></code></pre></div>
+<pre><code>## [1] 0.2149176</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="Prob.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="do">## The percentage of students scoring 84 or more in the college entrance exam is 21.5%.</span></span></code></pre></div>
+</div>
+<div id="exercise-3" class="section level4" number="3.2.1.3">
+<h4><span class="header-section-number">3.2.1.3</span> Exercise</h4>
+</div>
+</div>
+<div id="bivariatemultivariate-normal-distribution" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Bivariate/Multivariate normal distribution</h3>
+<div id="definition-5" class="section level4" number="3.2.2.1">
+<h4><span class="header-section-number">3.2.2.1</span> Definition</h4>
+<p>The “regular” normal distribution has one random variable; A bivariate normal distribution is made up of two independent random variables. The two variables in a bivariate normal are both are normally distributed, and they have a normal distribution when both are added together. Visually, the bivariate normal distribution is a three-dimensional bell curve.</p>
+<p>If x is a <span class="math inline">\(K\)</span>-component vector, dmultinom(x, prob) is the probability <span class="math display">\[P(X_1=x_1,\ldots,X_K=x_k) = C \times \prod_{j=1}^K \pi_j^{x_j}\]</span> where <span class="math inline">\(C\)</span> is the ‘multinomial coefficient’ <span class="math inline">\(C = N! / (x_1! \cdots x_K!)\)</span> and <span class="math inline">\(N = \sum_{j=1}^K x_j\)</span>.</p>
+<p>By definition, each component <span class="math inline">\(X_j\)</span> is binomially distributed as Bin(size, prob[j]) for <span class="math inline">\(j = 1, \ldots, K\)</span>.</p>
+<p>The rmultinom() algorithm draws binomials <span class="math inline">\(X_j\)</span> from <span class="math inline">\(Bin(n_j,P_j)\)</span> sequentially, where <span class="math inline">\(n_1 = N\)</span> (N := size), <span class="math inline">\(P_1 = \pi_1\)</span> (<span class="math inline">\(\pi\)</span> is prob scaled to sum 1), and for <span class="math inline">\(j \ge 2\)</span>, recursively, <span class="math inline">\(n_j = N - \sum_{k=1}^{j-1} X_k\)</span> and <span class="math inline">\(P_j = \pi_j / (1 - \sum_{k=1}^{j-1} \pi_k)\)</span>.</p>
+</div>
+<div id="r-illustration-6" class="section level4" number="3.2.2.2">
+<h4><span class="header-section-number">3.2.2.2</span> R Illustration</h4>
+<ul>
+<li>Generate Bivariate Normal Distribution</li>
+</ul>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="Prob.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb60-2"><a href="Prob.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12905</span>)</span>
+<span id="cb60-3"><a href="Prob.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify sample size</span></span>
+<span id="cb60-4"><a href="Prob.html#cb60-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb60-5"><a href="Prob.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify means of variables. Since we have two dependent variables, so we have two means in here. </span></span>
+<span id="cb60-6"><a href="Prob.html#cb60-6" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">2</span>)</span>
+<span id="cb60-7"><a href="Prob.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the covariance matrix of the variables</span></span>
+<span id="cb60-8"><a href="Prob.html#cb60-8" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>),<span class="at">ncol=</span><span class="dv">2</span>)</span>
+<span id="cb60-9"><a href="Prob.html#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create random sample from bivariate normal distribution [only check the first 10 rows in here]</span></span>
+<span id="cb60-10"><a href="Prob.html#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">mvrnorm</span>(<span class="at">n=</span>n,<span class="at">mu=</span>mu,<span class="at">Sigma=</span>sigma),<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##            [,1]       [,2]
+##  [1,]  5.306105  4.8550305
+##  [2,]  5.931984  4.4007425
+##  [3,]  8.853795  5.6017163
+##  [4,]  1.561265  1.9134855
+##  [5,]  1.030162  3.6027674
+##  [6,]  5.106347  1.3148867
+##  [7,]  2.763231  2.2664692
+##  [8,]  6.395151 -0.3969557
+##  [9,] 11.098483  4.8093444
+## [10,] 13.360460  4.1503419</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="Prob.html#cb62-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n=</span>n,<span class="at">mu=</span>mu,<span class="at">Sigma=</span>sigma)</span>
+<span id="cb62-2"><a href="Prob.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the plot of these two variables</span></span>
+<span id="cb62-3"><a href="Prob.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<ul>
+<li>Generate random Multivariate Normal Distribution</li>
+</ul>
+<p>This time we are specifying three means and a variance-covariance matrix with three columns:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="Prob.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify sample size</span></span>
+<span id="cb63-2"><a href="Prob.html#cb63-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb63-3"><a href="Prob.html#cb63-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">8</span>)</span>
+<span id="cb63-4"><a href="Prob.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specfy the covariance matrix of the variables. </span></span>
+<span id="cb63-5"><a href="Prob.html#cb63-5" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">3</span>),<span class="at">ncol=</span><span class="dv">3</span>)</span>
+<span id="cb63-6"><a href="Prob.html#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Actually, you can use the </span></span>
+<span id="cb63-7"><a href="Prob.html#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-8"><a href="Prob.html#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Random sample from multivariate normal distribution</span></span>
+<span id="cb63-9"><a href="Prob.html#cb63-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> n, <span class="at">mu =</span> mu, <span class="at">Sigma =</span> sigma)</span>
+<span id="cb63-10"><a href="Prob.html#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the first 10 rows</span></span>
+<span id="cb63-11"><a href="Prob.html#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x,<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##           [,1]       [,2]      [,3]
+##  [1,] 4.840284  3.3369008  8.205132
+##  [2,] 2.962799 -0.4208684  9.742188
+##  [3,] 6.150574  3.0363470  9.890894
+##  [4,] 1.359660 -2.1778558  8.421757
+##  [5,] 3.919643  6.8013523  7.378332
+##  [6,] 7.663654  5.6361319  7.266243
+##  [7,] 8.251586  5.3170855 10.471976
+##  [8,] 4.241072  0.8184044  9.027621
+##  [9,] 3.036311  0.3299350  7.458339
+## [10,] 5.892626  1.9481643  6.002565</code></pre>
+<ul>
+<li>Use dmultinom() to compute the density function</li>
+</ul>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="Prob.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the probability of vector x </span></span>
+<span id="cb65-2"><a href="Prob.html#cb65-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb65-3"><a href="Prob.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dmultinom</span>(x, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">8</span>, <span class="dv">2</span><span class="sc">/</span><span class="dv">8</span>, <span class="dv">5</span><span class="sc">/</span><span class="dv">8</span>))</span></code></pre></div>
+<pre><code>## [1] 0.1144409</code></pre>
+</div>
+<div id="exercise-4" class="section level4" number="3.2.2.3">
+<h4><span class="header-section-number">3.2.2.3</span> Exercise</h4>
+</div>
+</div>
+<div id="uniform-distribution" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Uniform Distribution</h3>
+<div id="definition-6" class="section level4" number="3.2.3.1">
+<h4><span class="header-section-number">3.2.3.1</span> Definition</h4>
+<p>In probability theory and statistics, the continuous uniform distribution or rectangular distribution is a family of symmetric probability distributions. The distribution describes an experiment where there is an arbitrary outcome that lies between certain bounds.</p>
+<p>If min or max are not specified they assume the default values of 0 and 1 respectively.</p>
+<p>The uniform distribution has density <span class="math display">\[f(x) = \frac{1}{max-min}\]</span> for <span class="math inline">\(min \le x \le max\)</span>.</p>
+</div>
+<div id="r-illustration-7" class="section level4" number="3.2.3.2">
+<h4><span class="header-section-number">3.2.3.2</span> R Illustration</h4>
+<ul>
+<li>Uniform Probability Density Function (dunif Function)</li>
+</ul>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="Prob.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify x-values for dunif function</span></span>
+<span id="cb67-2"><a href="Prob.html#cb67-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb67-3"><a href="Prob.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co"># specifying the minimum value of the uniform distribution to be 10 and the maximum value to be 50</span></span>
+<span id="cb67-4"><a href="Prob.html#cb67-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dunif</span>(x, <span class="at">min =</span> <span class="dv">10</span>, <span class="at">max =</span> <span class="dv">50</span>) </span>
+<span id="cb67-5"><a href="Prob.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot PDF</span></span>
+<span id="cb67-6"><a href="Prob.html#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&quot;o&quot;</span>) </span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="Prob.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure above shows the output of the previous R syntax. As you can see, our uniform density remains at 0 up to the point 10, (i.e. the minimum value of our uniform distribution). Then it instantly goes up to a probability of 1 and remains at this level until we reach the value 50 (i.e. the maximum of our uniform distribution).</span></span></code></pre></div>
+<ul>
+<li>Uniform Cumulative Distribution Function (punif Function)</li>
+</ul>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="Prob.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We will use the same x vector in the previous example</span></span>
+<span id="cb69-2"><a href="Prob.html#cb69-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##   [1]   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+##  [19]  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35
+##  [37]  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53
+##  [55]  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71
+##  [73]  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89
+##  [91]  90  91  92  93  94  95  96  97  98  99 100</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="Prob.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use punif() function to get cumulative distribution function of a uniform distribution (CDF).</span></span>
+<span id="cb71-2"><a href="Prob.html#cb71-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">punif</span>(x, <span class="at">min =</span> <span class="dv">10</span>, <span class="at">max =</span> <span class="dv">50</span>)</span>
+<span id="cb71-3"><a href="Prob.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the CDF</span></span>
+<span id="cb71-4"><a href="Prob.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y,<span class="at">type=</span><span class="st">&quot;o&quot;</span>)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<ul>
+<li>Uniform Quantile Function (qunif Function)</li>
+</ul>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="Prob.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First we create a sequence of probabilities (i.e. values between 0 and 1).</span></span>
+<span id="cb72-2"><a href="Prob.html#cb72-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb72-3"><a href="Prob.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># get the corresponding values of the quantile function</span></span>
+<span id="cb72-4"><a href="Prob.html#cb72-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">qunif</span>(x,<span class="at">min=</span><span class="dv">10</span>,<span class="at">max=</span><span class="dv">50</span>)</span>
+<span id="cb72-5"><a href="Prob.html#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the function</span></span>
+<span id="cb72-6"><a href="Prob.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<ul>
+<li>Generating Random Numbers (runif Function)</li>
+</ul>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="Prob.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To create a reproducible example, we need to specify a seed:</span></span>
+<span id="cb73-2"><a href="Prob.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12905</span>)</span>
+<span id="cb73-3"><a href="Prob.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate a set of uniformly distributed random numbers</span></span>
+<span id="cb73-4"><a href="Prob.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify sample size</span></span>
+<span id="cb73-5"><a href="Prob.html#cb73-5" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb73-6"><a href="Prob.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw N uniformly distributed values</span></span>
+<span id="cb73-7"><a href="Prob.html#cb73-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(N, <span class="at">min =</span> <span class="dv">10</span>, <span class="at">max =</span> <span class="dv">50</span>)         </span>
+<span id="cb73-8"><a href="Prob.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># We can illustrate the distribution of our random numbers in a histogram by applying the hist() function</span></span>
+<span id="cb73-9"><a href="Prob.html#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y,</span>
+<span id="cb73-10"><a href="Prob.html#cb73-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">50</span>,</span>
+<span id="cb73-11"><a href="Prob.html#cb73-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb73-12"><a href="Prob.html#cb73-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="Prob.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This plot looks like is not very Uniformed, could you increase the total number to see what will happen?</span></span></code></pre></div>
+<ul>
+<li>Example</li>
+</ul>
+<p>On average, someone sends a money order once per 15 minutes (θ=.25). What is the probability someone sends α=10* money orders in less than x=3 hours?*</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="Prob.html#cb75-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb75-2"><a href="Prob.html#cb75-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="dv">15</span> <span class="sc">/</span> <span class="dv">60</span></span>
+<span id="cb75-3"><a href="Prob.html#cb75-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb75-4"><a href="Prob.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co"># exact probability</span></span>
+<span id="cb75-5"><a href="Prob.html#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pgamma</span>(<span class="at">q =</span> x, <span class="at">shape =</span> alpha, <span class="at">scale =</span> theta)</span></code></pre></div>
+<pre><code>## [1] 0.7576078</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="Prob.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulated probability distribution</span></span>
+<span id="cb77-2"><a href="Prob.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rgamma</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">shape =</span> alpha, <span class="at">scale =</span> theta) <span class="sc">&lt;=</span> x)</span></code></pre></div>
+<pre><code>## [1] 0.7679</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="Prob.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the probability distribution</span></span>
+<span id="cb79-2"><a href="Prob.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1000</span> <span class="sc">/</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fu">pgamma</span>(<span class="at">q =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1000</span> <span class="sc">/</span> <span class="dv">100</span>, <span class="at">shape =</span> alpha, <span class="at">scale =</span> theta, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb79-3"><a href="Prob.html#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Interval =</span> <span class="fu">ifelse</span>(x <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> x <span class="sc">&lt;=</span> <span class="dv">3</span>, <span class="st">&quot;0 to 3&quot;</span>, <span class="st">&quot;other&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb79-4"><a href="Prob.html#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> prob, <span class="at">fill =</span> Interval)) <span class="sc">+</span></span>
+<span id="cb79-5"><a href="Prob.html#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb79-6"><a href="Prob.html#cb79-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;X ~ Gam(alpha = 10, theta = .25)&quot;</span>,</span>
+<span id="cb79-7"><a href="Prob.html#cb79-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Probability of 10 events in X hours when the mean time to an event is .25 hours.&quot;</span>,</span>
+<span id="cb79-8"><a href="Prob.html#cb79-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Interval (x)&quot;</span>,</span>
+<span id="cb79-9"><a href="Prob.html#cb79-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Cum Probability&quot;</span>) </span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+</div>
+<div id="exercise-5" class="section level4" number="3.2.3.3">
+<h4><span class="header-section-number">3.2.3.3</span> Exercise</h4>
+</div>
+</div>
+<div id="gamma-distribution" class="section level3" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Gamma Distribution</h3>
+<div id="definition-7" class="section level4" number="3.2.4.1">
+<h4><span class="header-section-number">3.2.4.1</span> Definition</h4>
+<p>The gamma distribution is another widely used distribution. Its importance is largely due to its relation to exponential and normal distributions. Here, we will provide an introduction to the gamma distribution.</p>
+<p>If beta (or scale or rate) is omitted, it assumes the default value of 1.
+The Gamma distribution with parameters alpha (or shape) <span class="math inline">\(= a\)</span> and beta (or scale) <span class="math inline">\(= s\)</span> has density <span class="math display">\[ f(x)= \frac{1}{{\sigma}^{\alpha}\Gamma(\alpha)} {x}^{\alpha-1} e^{-x/\sigma}% \]</span> for <span class="math inline">\(x &gt; 0\)</span>, <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(s &gt; 0\)</span>. The mean and variance are <span class="math inline">\(E(X) = a*s\)</span> and <span class="math inline">\(Var(X) = a*s^2\)</span>.</p>
+<p>In R, <code>dgamma</code> gives the density, <code>pgamma</code> gives the distribution function, <code>qgamma</code> gives the quantile function, and <code>rgamma</code> generates random deviates.</p>
+</div>
+<div id="r-illustration-8" class="section level4" number="3.2.4.2">
+<h4><span class="header-section-number">3.2.4.2</span> R Illustration</h4>
+<ul>
+<li>dgamma() Function for Probability Density Function</li>
+</ul>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="Prob.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R program to plot gamma distribution</span></span>
+<span id="cb80-2"><a href="Prob.html#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="Prob.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify x-values for gamma function</span></span>
+<span id="cb80-4"><a href="Prob.html#cb80-4" aria-hidden="true" tabindex="-1"></a>x_dgamma <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="at">by =</span> <span class="fl">0.04</span>)</span>
+<span id="cb80-5"><a href="Prob.html#cb80-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-6"><a href="Prob.html#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply dgamma function</span></span>
+<span id="cb80-7"><a href="Prob.html#cb80-7" aria-hidden="true" tabindex="-1"></a>y_dgamma <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x_dgamma, <span class="at">shape =</span> <span class="dv">6</span>)</span>
+<span id="cb80-8"><a href="Prob.html#cb80-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-9"><a href="Prob.html#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot dgamma values</span></span>
+<span id="cb80-10"><a href="Prob.html#cb80-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y_dgamma)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<ul>
+<li>pgamma() function for cumulative distribution function (CDF)</li>
+</ul>
+<p>pgamma() function is used in cumulative distribution function (CDF) of the gamma distribution.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="Prob.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R program to plot gamma distribution</span></span>
+<span id="cb81-2"><a href="Prob.html#cb81-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-3"><a href="Prob.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify x-values for gamma function</span></span>
+<span id="cb81-4"><a href="Prob.html#cb81-4" aria-hidden="true" tabindex="-1"></a>x_pgamma <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="at">by =</span> <span class="fl">0.04</span>)</span>
+<span id="cb81-5"><a href="Prob.html#cb81-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-6"><a href="Prob.html#cb81-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pgamma function</span></span>
+<span id="cb81-7"><a href="Prob.html#cb81-7" aria-hidden="true" tabindex="-1"></a>y_pgamma <span class="ot">&lt;-</span> <span class="fu">pgamma</span>(x_pgamma, <span class="at">shape =</span> <span class="dv">6</span>)</span>
+<span id="cb81-8"><a href="Prob.html#cb81-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-9"><a href="Prob.html#cb81-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot pgamma values</span></span>
+<span id="cb81-10"><a href="Prob.html#cb81-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y_pgamma)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<ul>
+<li>qgamma() Function for quantile function</li>
+</ul>
+<p>It is known as gamma quantile function of the gamma distribution and used to plot qgamma distribution.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="Prob.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R program to plot gamma distribution</span></span>
+<span id="cb82-2"><a href="Prob.html#cb82-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-3"><a href="Prob.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify x-values for gamma function</span></span>
+<span id="cb82-4"><a href="Prob.html#cb82-4" aria-hidden="true" tabindex="-1"></a>x_qgamma <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.03</span>)</span>
+<span id="cb82-5"><a href="Prob.html#cb82-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-6"><a href="Prob.html#cb82-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply qgamma function</span></span>
+<span id="cb82-7"><a href="Prob.html#cb82-7" aria-hidden="true" tabindex="-1"></a>y_qgamma <span class="ot">&lt;-</span> <span class="fu">qgamma</span>(x_qgamma, <span class="at">shape =</span> <span class="dv">6</span>)</span>
+<span id="cb82-8"><a href="Prob.html#cb82-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-9"><a href="Prob.html#cb82-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot qgamma values</span></span>
+<span id="cb82-10"><a href="Prob.html#cb82-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y_qgamma)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<ul>
+<li>rgamma() Function for generating random number</li>
+</ul>
+<p>This function is basically used for generating random number in gamma distribution.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="Prob.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R program to plot gamma distribution</span></span>
+<span id="cb83-2"><a href="Prob.html#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-3"><a href="Prob.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb83-4"><a href="Prob.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12905</span>)</span>
+<span id="cb83-5"><a href="Prob.html#cb83-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-6"><a href="Prob.html#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify sample size</span></span>
+<span id="cb83-7"><a href="Prob.html#cb83-7" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">800</span></span>
+<span id="cb83-8"><a href="Prob.html#cb83-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-9"><a href="Prob.html#cb83-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw N gamma distributed values</span></span>
+<span id="cb83-10"><a href="Prob.html#cb83-10" aria-hidden="true" tabindex="-1"></a>y_rgamma <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(N, <span class="at">shape =</span> <span class="dv">5</span>)</span>
+<span id="cb83-11"><a href="Prob.html#cb83-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-12"><a href="Prob.html#cb83-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print values to RStudio console (first 10)</span></span>
+<span id="cb83-13"><a href="Prob.html#cb83-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(y_rgamma,<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] 3.452603 5.068824 3.287633 5.866577 4.687259 5.485377 4.680162 7.997487
+##  [9] 1.129616 4.746143</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="Prob.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot of randomly drawn gamma density</span></span>
+<span id="cb85-2"><a href="Prob.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y_rgamma, <span class="at">breaks =</span> <span class="dv">500</span>, <span class="at">main =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+</div>
+<div id="exercise-6" class="section level4" number="3.2.4.3">
+<h4><span class="header-section-number">3.2.4.3</span> Exercise</h4>
+</div>
+</div>
+<div id="inverse-gamma-distribution" class="section level3" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Inverse Gamma Distribution</h3>
+<div id="definition-8" class="section level4" number="3.2.5.1">
+<h4><span class="header-section-number">3.2.5.1</span> Definition</h4>
+<p>The inverse gamma distribution (also called the inverted gamma distribution) is the reciprocal of the gamma distribution. It has two positive parameters (α and β):</p>
+<p>1, The shape parameter α controls the height. The higher the alpha, the taller the probability density function (PDF); higher values for the shape parameter will also result in thinner tails.</p>
+<p>2, The scale parameter β controls the spread.</p>
+<p>The shorthand for the distribution, X~inverted gamma(α,β), or IG(α, β), means that a random variable X has this distribution with positive parameters α and β.</p>
+<p>The main function of the inverse gamma distribution is in Bayesian probability, where it is used as a marginal posterior (a way to summarize uncertain quantities) or as a conjugate prior (a prior is a probability distribution that represents your beliefs about a quantity, without taking any evidence into account). In other words, it’s used to model uncertain quantities.</p>
+<p>The inverse gamma distribution with parameters shape <span class="math inline">\(=\alpha\)</span> and scale <span class="math inline">\(=\sigma\)</span> has density <span class="math display">\[ f(x)= \frac{s^a}{\Gamma(\alpha)} {x}^{-(\alpha+1)} e^{-\sigma/x}% \]</span> for <span class="math inline">\(x \ge 0\)</span>, <span class="math inline">\(\alpha &gt; 0\)</span> and <span class="math inline">\(\sigma &gt; 0\)</span>. (Here <span class="math inline">\(\Gamma(\alpha)\)</span> is the function implemented by R’s gamma() and defined in its help.</p>
+<p>The mean and variance are <span class="math inline">\(E(X) = \frac{\sigma}{\alpha}-1\)</span> and <span class="math inline">\(Var(X) = \frac{\sigma^2}{(\alpha-1)^2 (\alpha-2)}\)</span>, with the mean defined only for <span class="math inline">\(\alpha &gt; 1\)</span> and the variance only for <span class="math inline">\(\alpha &gt; 2\)</span>.</p>
+</div>
+<div id="r-illustration-9" class="section level4" number="3.2.5.2">
+<h4><span class="header-section-number">3.2.5.2</span> R Illustration</h4>
+<ul>
+<li>Probability Density Function use dinvgamma() function</li>
+</ul>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="Prob.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Greate a simulated data set</span></span>
+<span id="cb86-2"><a href="Prob.html#cb86-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,.<span class="dv">01</span>)</span>
+<span id="cb86-3"><a href="Prob.html#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the PDF function</span></span>
+<span id="cb86-4"><a href="Prob.html#cb86-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dinvgamma</span>(x, <span class="at">shape=</span><span class="dv">7</span>, <span class="at">rate=</span><span class="dv">10</span>)</span>
+<span id="cb86-5"><a href="Prob.html#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the PDF</span></span>
+<span id="cb86-6"><a href="Prob.html#cb86-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(x,y,<span class="at">geom=</span><span class="st">&quot;line&quot;</span>)<span class="sc">+</span><span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 1 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<ul>
+<li>Culmulative Density Function with pinvgamma() function</li>
+</ul>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="Prob.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Greate a simulated data set</span></span>
+<span id="cb88-2"><a href="Prob.html#cb88-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,.<span class="dv">01</span>)</span>
+<span id="cb88-3"><a href="Prob.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the PDF function</span></span>
+<span id="cb88-4"><a href="Prob.html#cb88-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">pinvgamma</span>(x, <span class="at">shape=</span><span class="dv">7</span>, <span class="at">rate=</span><span class="dv">10</span>)</span>
+<span id="cb88-5"><a href="Prob.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the PDF</span></span>
+<span id="cb88-6"><a href="Prob.html#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(x,y,<span class="at">geom=</span><span class="st">&quot;line&quot;</span>)<span class="sc">+</span><span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<ul>
+<li>Quantile function with qinvgamma()</li>
+</ul>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="Prob.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We will use the CDF from the previous example</span></span>
+<span id="cb89-2"><a href="Prob.html#cb89-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">pinvgamma</span>(x, <span class="at">shape=</span><span class="dv">7</span>, <span class="at">rate=</span><span class="dv">10</span>)</span>
+<span id="cb89-3"><a href="Prob.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a Quantile function with qinvgamma()</span></span>
+<span id="cb89-4"><a href="Prob.html#cb89-4" aria-hidden="true" tabindex="-1"></a>qf <span class="ot">&lt;-</span> <span class="fu">qinvgamma</span>(y,<span class="at">shape=</span><span class="dv">7</span>, <span class="at">rate=</span><span class="dv">1</span>)</span>
+<span id="cb89-5"><a href="Prob.html#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the Quantile function</span></span>
+<span id="cb89-6"><a href="Prob.html#cb89-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(qf,<span class="at">type=</span><span class="st">&quot;o&quot;</span>)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<ul>
+<li>Greate Random sample using rgamma() function</li>
+</ul>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="Prob.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw samples from inverse gamma distribution with shape parameter 1 and scale parameter 1</span></span>
+<span id="cb90-2"><a href="Prob.html#cb90-2" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">rinvgamma</span>(<span class="at">n=</span><span class="dv">1000</span>,<span class="at">shape=</span><span class="dv">1</span>,<span class="at">scale=</span><span class="dv">1</span>)</span>
+<span id="cb90-3"><a href="Prob.html#cb90-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-4"><a href="Prob.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate density of samples</span></span>
+<span id="cb90-5"><a href="Prob.html#cb90-5" aria-hidden="true" tabindex="-1"></a>densities<span class="ot">&lt;-</span><span class="fu">dinvgamma</span>(samples, <span class="at">shape=</span><span class="dv">1</span>, <span class="at">scale=</span><span class="dv">1</span>)</span></code></pre></div>
+</div>
+<div id="exercise-7" class="section level4" number="3.2.5.3">
+<h4><span class="header-section-number">3.2.5.3</span> Exercise</h4>
+</div>
+</div>
+<div id="chi-squared-distribution" class="section level3" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Chi-squared Distribution</h3>
+<div id="definition-9" class="section level4" number="3.2.6.1">
+<h4><span class="header-section-number">3.2.6.1</span> Definition</h4>
+<p>The chi-square distribution (also called the chi-squared distribution) is a special case of the gamma distribution; A chi square distribution with n degrees of freedom is equal to a gamma distribution with a = n / 2 and b = 0.5 (or β = 2).</p>
+<p>Let’s say you have a random sample taken from a normal distribution. The chi square distribution is the distribution of the sum of these random samples squared . The degrees of freedom (k) are equal to the number of samples being summed. For example, if you have taken 10 samples from the normal distribution, then df = 10. The degrees of freedom in a chi square distribution is also its mean. In this example, the mean of this particular distribution will be 10. Chi square distributions are always right skewed. However, the greater the degrees of freedom, the more the chi square distribution looks like a normal distribution.</p>
+<p>The chi-squared distribution with df<span class="math inline">\(= n \ge 0\)</span> degrees of freedom has density <span class="math display">\[f_n(x) = \frac{1}{{2}^{n/2} \Gamma (n/2)} {x}^{n/2-1} {e}^{-x/2}\]</span> for <span class="math inline">\(x &gt; 0\)</span>. The mean and variance are <span class="math inline">\(n\)</span> and <span class="math inline">\(2n\)</span>.</p>
+<p>The non-central chi-squared distribution with df<span class="math inline">\(= n\)</span> degrees of freedom and non-centrality parameter ncp <span class="math inline">\(= \lambda\)</span> has density <span class="math display">\[ f(x) = e^{-\lambda / 2} \sum_{r=0}^\infty \frac{(\lambda/2)^r}{r!}\, f_{n + 2r}(x)\]</span> for <span class="math inline">\(x \ge 0\)</span>. For integer <span class="math inline">\(n\)</span>, this is the distribution of the sum of squares of <span class="math inline">\(n\)</span> normals each with variance one, <span class="math inline">\(\lambda\)</span> being the sum of squares of the normal means; further,</p>
+<p><span class="math inline">\(E(X) = n + \lambda\)</span>, <span class="math inline">\(Var(X) = 2(n + 2*\lambda)\)</span>, and <span class="math inline">\(E((X - E(X))^3) = 8(n + 3*\lambda)\)</span>.</p>
+<p>Note that the degrees of freedom df<span class="math inline">\(= n\)</span>, can be non-integer, and also <span class="math inline">\(n = 0\)</span> which is relevant for non-centrality <span class="math inline">\(\lambda &gt; 0\)</span>, see Johnson et al (1995, chapter 29). In that (noncentral, zero df) case, the distribution is a mixture of a point mass at <span class="math inline">\(x = 0\)</span> (of size pchisq(0, df=0, ncp=ncp)) and a continuous part, and dchisq() is not a density with respect to that mixture measure but rather the limit of the density for <span class="math inline">\(df \to 0\)</span>.</p>
+<p>Note that ncp values larger than about 1e5 may give inaccurate results with many warnings for pchisq and qchisq.</p>
+</div>
+<div id="r-illustration-10" class="section level4" number="3.2.6.2">
+<h4><span class="header-section-number">3.2.6.2</span> R Illustration</h4>
+<ul>
+<li>Chi Square Density using dchisq() Function</li>
+</ul>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="Prob.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of input values</span></span>
+<span id="cb91-2"><a href="Prob.html#cb91-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb91-3"><a href="Prob.html#cb91-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-4"><a href="Prob.html#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce a chi square density with different degrees of freedom</span></span>
+<span id="cb91-5"><a href="Prob.html#cb91-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dchisq</span>(x, <span class="at">df =</span> <span class="dv">5</span>)</span>
+<span id="cb91-6"><a href="Prob.html#cb91-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-7"><a href="Prob.html#cb91-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the PDF</span></span>
+<span id="cb91-8"><a href="Prob.html#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<ul>
+<li>Chi Square Cumulative Distribution using pchisq() Function</li>
+</ul>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="Prob.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify x-values for pchisq function</span></span>
+<span id="cb92-2"><a href="Prob.html#cb92-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">by =</span> <span class="fl">0.1</span>)   </span>
+<span id="cb92-3"><a href="Prob.html#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-4"><a href="Prob.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use the pchisq function to this vector to produce our desired values</span></span>
+<span id="cb92-5"><a href="Prob.html#cb92-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">pchisq</span>(x, <span class="at">df =</span> <span class="dv">5</span>) </span>
+<span id="cb92-6"><a href="Prob.html#cb92-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-7"><a href="Prob.html#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the CDF</span></span>
+<span id="cb92-8"><a href="Prob.html#cb92-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y) </span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<ul>
+<li>Chi Square Quantile using qchisq() Function</li>
+</ul>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="Prob.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify x-values for qchisq function</span></span>
+<span id="cb93-2"><a href="Prob.html#cb93-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb93-3"><a href="Prob.html#cb93-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-4"><a href="Prob.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the quantile function</span></span>
+<span id="cb93-5"><a href="Prob.html#cb93-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(x, <span class="at">df =</span> <span class="dv">5</span>) </span>
+<span id="cb93-6"><a href="Prob.html#cb93-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-7"><a href="Prob.html#cb93-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot qchisq values</span></span>
+<span id="cb93-8"><a href="Prob.html#cb93-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<ul>
+<li>Simulation of Random Numbers using rchisq() Function</li>
+</ul>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="Prob.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the seed and sample size</span></span>
+<span id="cb94-2"><a href="Prob.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12905</span>)  <span class="co"># Set seed for reproducibility</span></span>
+<span id="cb94-3"><a href="Prob.html#cb94-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># Specify sample size</span></span>
+<span id="cb94-4"><a href="Prob.html#cb94-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-5"><a href="Prob.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the rchisq function</span></span>
+<span id="cb94-6"><a href="Prob.html#cb94-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rchisq</span>(N, <span class="at">df =</span> <span class="dv">5</span>) <span class="co"># Draw N chi squared distributed values</span></span>
+<span id="cb94-7"><a href="Prob.html#cb94-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(y,<span class="dv">10</span>)  </span></code></pre></div>
+<pre><code>##  [1] 2.649654 4.769713 2.446810 5.882415 4.250951 5.346329 4.241394 2.786218
+##  [9] 8.428605 3.518530</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="Prob.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram which illustrates the distribution of our random numbers</span></span>
+<span id="cb96-2"><a href="Prob.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y,<span class="at">breaks=</span><span class="dv">100</span>,<span class="at">main=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="Prob.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As you can see based on the Figure, our random numbers are distributed according to the chi square distribution.</span></span></code></pre></div>
+<ul>
+<li>Example:</li>
+</ul>
+<p>Find the 95th percentile of the Chi-Squared distribution with 7 degrees of freedom.</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="Prob.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We apply the quantile function qchisq of the Chi-Squared distribution against the decimal values 0.95.</span></span>
+<span id="cb98-2"><a href="Prob.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qchisq</span>(.<span class="dv">95</span>,<span class="at">df=</span><span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## [1] 14.06714</code></pre>
+<p>Answer: The 95th percentile of the Chi-Squared distribution with 7 degrees of freedom is 14.067.</p>
+</div>
+<div id="exercise-8" class="section level4" number="3.2.6.3">
+<h4><span class="header-section-number">3.2.6.3</span> Exercise</h4>
+</div>
+</div>
+<div id="f-distribution" class="section level3" number="3.2.7">
+<h3><span class="header-section-number">3.2.7</span> F-Distribution</h3>
+<div id="definition-10" class="section level4" number="3.2.7.1">
+<h4><span class="header-section-number">3.2.7.1</span> Definition</h4>
+<p>The F distribution is the ratio of two scaled chi-square distributions <span class="math inline">\(W_1\)</span> and <span class="math inline">\(W_2\)</span> with degrees of freedom <span class="math inline">\(df1\)</span> and <span class="math inline">\(df2\)</span>.</p>
+<p><span class="math display">\[F=\frac{W_{X}/df_{X}}{W_{Y}/df_{Y}}\]</span>
+The F statistic may also be written</p>
+<p><span class="math display">\[F=\frac{s_{X}^{2} / \sigma_{X}^{2}}{s_{Y}^{2} / \sigma_{Y}^{2}}=\frac{s_{X}^{2} / s_{Y}^{2}}{\sigma_{X}^{2} / \sigma_{Y}^{2}}\]</span></p>
+<p>Like the chi-square distribution, the F distribution contains only positive values and in nonsymmetrical. There is an F distribution for each degree of freedom associated with <span class="math inline">\(s^2_A\)</span> and <span class="math inline">\(s^2_B\)</span>.</p>
+<p>For the F distribution (help (“FDist”)), the same rules apply as for the<br />
+χ^2-distribution and for the t distribution. We have to specify both numerator degrees of freedom (<em>df1</em>) and denominator degrees of freedom (<em>df2</em>). The functions are pf() (cumulative distribution function),qf() (quantile function), df() (probability density function), and rf() (random generation of F distributed scores).</p>
+</div>
+<div id="r-illustration-11" class="section level4" number="3.2.7.2">
+<h4><span class="header-section-number">3.2.7.2</span> R Illustration</h4>
+<ul>
+<li>Probability density function (PDF) using df()</li>
+</ul>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="Prob.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate some input</span></span>
+<span id="cb100-2"><a href="Prob.html#cb100-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">by =</span> <span class="fl">0.1</span>)       </span>
+<span id="cb100-3"><a href="Prob.html#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-4"><a href="Prob.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply PDF</span></span>
+<span id="cb100-5"><a href="Prob.html#cb100-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">3</span>, <span class="at">df2 =</span> <span class="dv">5</span>) </span>
+<span id="cb100-6"><a href="Prob.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-7"><a href="Prob.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot df values</span></span>
+<span id="cb100-8"><a href="Prob.html#cb100-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<ul>
+<li>F Cumulative Distribution Function using pf function</li>
+</ul>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="Prob.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the same data input with the previous one</span></span>
+<span id="cb101-2"><a href="Prob.html#cb101-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb101-3"><a href="Prob.html#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-4"><a href="Prob.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the pf function to this input vector</span></span>
+<span id="cb101-5"><a href="Prob.html#cb101-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">pf</span>(x, <span class="at">df1 =</span> <span class="dv">3</span>, <span class="at">df2 =</span> <span class="dv">5</span>) </span>
+<span id="cb101-6"><a href="Prob.html#cb101-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-7"><a href="Prob.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the output</span></span>
+<span id="cb101-8"><a href="Prob.html#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y)</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<ul>
+<li>F Quantile Function using fq()</li>
+</ul>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="Prob.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate a data set</span></span>
+<span id="cb102-2"><a href="Prob.html#cb102-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb102-3"><a href="Prob.html#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-4"><a href="Prob.html#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply qf function</span></span>
+<span id="cb102-5"><a href="Prob.html#cb102-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">qf</span>(x, <span class="at">df1 =</span> <span class="dv">3</span>, <span class="at">df2 =</span> <span class="dv">5</span>) </span>
+<span id="cb102-6"><a href="Prob.html#cb102-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-7"><a href="Prob.html#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb102-8"><a href="Prob.html#cb102-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y) </span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<ul>
+<li>Simulation of Random Numbers using rf() Function</li>
+</ul>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="Prob.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify a seed and a sample size</span></span>
+<span id="cb103-2"><a href="Prob.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12905</span>) <span class="co"># Set seed for reproducibility</span></span>
+<span id="cb103-3"><a href="Prob.html#cb103-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb103-4"><a href="Prob.html#cb103-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-5"><a href="Prob.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use the rf function to draw random numbers according to the F distribution</span></span>
+<span id="cb103-6"><a href="Prob.html#cb103-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rf</span>(N, <span class="at">df1 =</span> <span class="dv">3</span>, <span class="at">df2 =</span> <span class="dv">5</span>) <span class="co"># Draw N F-distributed values</span></span>
+<span id="cb103-7"><a href="Prob.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(y,<span class="dv">10</span>) <span class="co"># Print first 10 values to RStudio console</span></span></code></pre></div>
+<pre><code>##  [1] 0.3793875 0.2712459 0.6791474 1.2990890 2.5438808 1.5434430 1.1469831
+##  [8] 1.6831143 2.6335722 0.3043476</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="Prob.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot these random numbers in a histogram:</span></span>
+<span id="cb105-2"><a href="Prob.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y, <span class="co"># Plot of randomly drawn f density</span></span>
+<span id="cb105-3"><a href="Prob.html#cb105-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">500</span>,</span>
+<span id="cb105-4"><a href="Prob.html#cb105-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb105-5"><a href="Prob.html#cb105-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>))</span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<ul>
+<li>Example: Compare different F distributions</li>
+</ul>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="Prob.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s compare the dfferent F distributions with differen degrees of freedom</span></span>
+<span id="cb106-2"><a href="Prob.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">f =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1000</span> <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb106-3"><a href="Prob.html#cb106-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">mutate</span>(<span class="at">df_10_20 =</span> <span class="fu">df</span>(<span class="at">x =</span> f, <span class="at">df1 =</span> <span class="dv">10</span>, <span class="at">df2 =</span> <span class="dv">20</span>),</span>
+<span id="cb106-4"><a href="Prob.html#cb106-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">df_05_10 =</span> <span class="fu">df</span>(<span class="at">x =</span> f, <span class="at">df1 =</span> <span class="dv">5</span>, <span class="at">df2 =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb106-5"><a href="Prob.html#cb106-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;df&quot;</span>, <span class="at">value =</span> <span class="st">&quot;density&quot;</span>, <span class="sc">-</span>f) <span class="sc">%&gt;%</span></span>
+<span id="cb106-6"><a href="Prob.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb106-7"><a href="Prob.html#cb106-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> f, <span class="at">y =</span> density, <span class="at">color =</span> df)) <span class="sc">+</span></span>
+<span id="cb106-8"><a href="Prob.html#cb106-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;F at Various Degrees of Freedom&quot;</span>,</span>
+<span id="cb106-9"><a href="Prob.html#cb106-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;F&quot;</span>,</span>
+<span id="cb106-10"><a href="Prob.html#cb106-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>) </span></code></pre></div>
+<p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+</div>
+<div id="exercise-9" class="section level4" number="3.2.7.3">
+<h4><span class="header-section-number">3.2.7.3</span> Exercise</h4>
+</div>
+</div>
+<div id="cauchy-density" class="section level3" number="3.2.8">
+<h3><span class="header-section-number">3.2.8</span> Cauchy Density</h3>
+<div id="definition-11" class="section level4" number="3.2.8.1">
+<h4><span class="header-section-number">3.2.8.1</span> Definition</h4>
+<p>The Cauchy distribution with location <span class="math inline">\(l\)</span> and scale <span class="math inline">\(s\)</span> has density <span class="math display">\[f(x) = \frac{1}{\pi s} \left( 1 + \left(\frac{x - l}{s}\right)^2 \right)^{-1}% \]</span> for all <span class="math inline">\(x\)</span>.</p>
+<p>If location or scale are not specified, they assume the default values of 0 and 1 respectively.</p>
+</div>
+<div id="r-illustration-12" class="section level4" number="3.2.8.2">
+<h4><span class="header-section-number">3.2.8.2</span> R Illustration</h4>
+</div>
+<div id="exercise-10" class="section level4" number="3.2.8.3">
+<h4><span class="header-section-number">3.2.8.3</span> Exercise</h4>
 
+</div>
+</div>
+</div>
 </div>
             </section>
 
@@ -117,7 +1143,7 @@
         </div>
       </div>
 <a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Bayes-Inf.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -140,6 +1166,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -167,6 +1194,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

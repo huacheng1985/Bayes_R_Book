@@ -1,5 +1,0 @@
-"0","Ori_data <- read_sav(""~/Downloads/REEP_Survey_Final Apr 29 2016_Renamed.sav"")
-"
-"2","Error in read_sav(""~/Downloads/REEP_Survey_Final Apr 29 2016_Renamed.sav"") : 
-  could not find function ""read_sav""
-"
