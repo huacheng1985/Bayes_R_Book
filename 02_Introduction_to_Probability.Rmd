@@ -11,6 +11,7 @@ library(ggplot2) # For plotting the advanced plots
 library(MASS) # For use Bivariate/Multivariate normal distributions 
 library(invgamma) # For use inverse gamma related function
 library(tidyr) # For data manipulation
+library(LaplacesDemon) # For inverse Wishart distribution
 ```
 
 
@@ -33,7 +34,7 @@ The Bernoulli distribution with prob $= p$ has density $$p(x) = {p}^{x} {(1-p)}^
 Berno_data <- seq(0,10, by = 1)
 
 # using dbern() function to simulate a Bernoulli distribution
-# Bernoulli Probability Density Function
+# Bernoulli Probability Mass Function
 Bern_PDF <- dbern(Berno_data,prob=0.2)
 
 # Plot dbern values
@@ -267,7 +268,7 @@ barplot(height = ppois(0:30, lambda = 14),
 ```{r}
 # The probability of having sixteen or less cars crossing the bridge in a particular minute is given by the function ppois.
 ppois(16, lambda=12) # lower tail means less than
-# Hence the probability of having seventeen or more cars crossing the bridge in a minute is in the upper tail of the probability density function.
+# Hence the probability of having seventeen or more cars crossing the bridge in a minute is in the upper tail of the probability mass function.
 ppois(16, lambda=12,lower=FALSE) # Upper tail 
 ```
 
@@ -453,6 +454,89 @@ head(x,10)
 x <- seq(1:3)
 dmultinom(x, prob = c(1/8, 2/8, 5/8))
 ```
+
+#### Exercise
+
+### Wishart/Inverse Wishart normal distribution
+
+#### Definition
+
+In statistics, the Wishart distribution is a generalization to multiple dimensions of the gamma distribution. 
+
+It is a family of probability distributions defined over symmetric, nonnegative-definite random matrices (i.e. matrix-valued random variables). In random matrix theory, the space of Wishart matrices is called the Wishart ensemble.
+
+These distributions are of great importance in the estimation of covariance matrices in multivariate statistics. In Bayesian statistics, the Wishart distribution is the conjugate prior of the inverse covariance-matrix of a multivariate-normal random-vector.
+
+If \(X_1,\dots, X_m, \ X_i\in\mathbf{R}^p\) is a sample of \(m\) independent multivariate Gaussians with mean (vector) 0, and covariance matrix \(\Sigma\), the distribution of \(M = X'X\) is \(W_p(\Sigma, m)\).
+
+Consequently, the expectation of \(M\) is $$E[M] = m\times\Sigma.$$ Further, if Sigma is scalar (\(p = 1\)), the Wishart distribution is a scaled chi-squared (\(\chi^2\)) distribution with df degrees of freedom, \(W_1(\sigma^2, m) = \sigma^2 \chi^2_m\).
+
+The component wise variance is $$\mathrm{Var}(M_{ij}) = m(\Sigma_{ij}^2 + \Sigma_{ii} \Sigma_{jj}).$$
+
+The inverse Wishart distribution is a probability distribution defined on real-valued, symmetric, positive-definite matrices, and is used as the conjugate prior for the covariance matrix, Sigma, of a multivariate normal distribution. The inverse-Wishart density is always finite, and the integral is always finite. A degenerate form occurs when nu < k.
+
+The inverse Wishart prior lacks flexibility, having only one parameter, nu, to control the variability for all k(k + 1)/2 elements. Popular choices for the scale matrix S include an identity matrix or sample covariance matrix. When the model sample size is small, the specification of the scale matrix can be influential.
+
+The inverse Wishart distribution has a dependency between variance and correlation, although its relative for a precision matrix (inverse covariance matrix), the Wishart distribution, does not have this dependency. This relationship becomes weaker with more degrees of freedom.
+
+#### R illustration
+
+- A simple random sample
+
+A simple random sample from the univariate Wishart distribution W1(Σ=1,n=10) (equivalently a χ2 distribution with n=10 degrees of freedom) can be obtained, for instance, as
+
+```{r}
+S <- as.matrix(1)
+sample <- rWishart(10, df = 10, S)
+```
+
+For a general p∈ℕ the same command can be used, however, with the corresponding variance-covariance matrix S to be properly specified as a symetric, positive nefinite matrix Σ, for instance:
+
+```{r}
+Sigma <- cbind(c(1,0,0,0), c(0,1,0,0), c(0,0,1,0), c(0,0,0,1))
+rWishart(2, df = 100, Sigma) ### sample of size two
+```
+
+- Compare the χ2 distribution and Wishart distribution
+
+We can also use the standard approach for generating a sample from the χ2 distribution – the R function rchisq() – and, using some histograms, we can empirically compare the univariate Wishart distribution and the χ2 distribution. For large sample size n∈ℕ we they should be quite similar/identical.
+
+```{r}
+set.seed(1234)
+sampleWishart <- rWishart(5000, df = 10, S)
+sampleChiSq <- rchisq(5000, df = 10)
+
+par(mfrow = c(1,2))
+hist(sampleWishart, col = "lightblue", main = expression(paste("Wishart Distribution", sep ="")), xlim = c(0, 40), breaks = 30, freq = F)
+lines(density(sampleWishart), col = "red", lwd = 2)
+hist(sampleChiSq, col = "lightblue", main = expression(paste(chi^2, "Distribution", sep = "")), xlim = c(0,40), breaks = 30, freq = F)
+lines(density(sampleChiSq), col = "red", lwd = 2)
+```
+
+- PDF for inversed wishart distribution
+
+```{r}
+# Simulate a matrix sigma and a scale matrix S, with the scalar degrees of freedom equals to nu. 
+sigma <- matrix(c(2,-.3,-.3,4),2,2)
+nu <- 3
+scale <- matrix(c(1,.1,.1,1),2,2)
+# Density depends on the above parameters
+x <- dinvwishart(sigma,nu,scale) 
+x # print x
+```
+
+- Generating random inversed wishart distribution
+
+```{r}
+# Simulate a scale matrix S, with the scalar degrees of freedom equals to nu. 
+nu <- 3
+scale <- matrix(c(1,.1,.1,1),2,2)
+# Density depends on the above parameters
+x <- rinvwishart(nu, scale)
+print(x)
+```
+
+
 
 #### Exercise
 
@@ -660,7 +744,7 @@ The mean and variance are \(E(X) = \frac{\sigma}{\alpha}-1\) and \(Var(X) = \fra
 # Greate a simulated data set
 x <- seq(0,5,.01)
 # Run the PDF function
-y <- dinvgamma(x, shape=7, rate=10)
+y <- dinvgamma(x, shape=3)
 # Plot the PDF
 qplot(x,y,geom="line")+theme_bw()
 ```
@@ -784,6 +868,117 @@ qchisq(.95,df=7)
 ```
 
 Answer: The 95th percentile of the Chi-Squared distribution with 7 degrees of freedom is 14.067.
+
+#### Exercise
+
+### T-Distribution
+
+#### Definition 
+
+The T distribution, also known as the Student's t-distribution, is a type of probability distribution that is similar to the normal distribution with its bell shape but has heavier tails. T distributions have a greater chance for extreme values than normal distributions, hence the fatter tails.
+
+The \(t\) distribution with df \(= \nu\) degrees of freedom has density $$ f(x) = \frac{\Gamma ((\nu+1)/2)}{\sqrt{\pi \nu} \Gamma (\nu/2)} (1 + x^2/\nu)^{-(\nu+1)/2}% $$ for all real \(x\). It has mean \(0\) (for \(\nu > 1\)) and variance \(\frac{\nu}{\nu-2}\) (for \(\nu > 2\)).
+
+The general non-central \(t\) with parameters \((\nu, \delta)\) = (df, ncp) is defined as the distribution of \(T_{\nu}(\delta) := (U + \delta)/\sqrt{V/\nu}\) where \(U\) and \(V\) are independent random variables, \(U \sim {\cal N}(0,1)\) and \(V \sim \chi^2_\nu\) (see Chisquare).
+
+The most used applications are power calculations for \(t\)-tests: Let \(T = \frac{\bar{X} - \mu_0}{S/\sqrt{n}}\) where \(\bar{X}\) is the mean and \(S\) the sample standard deviation (sd) of \(X_1, X_2, \dots, X_n\) which are i.i.d. \({\cal N}(\mu, \sigma^2)\) Then \(T\) is distributed as non-central \(t\) with df\({} = n-1\) degrees of freedom and non-centrality parameter ncp\({} = (\mu - \mu_0) \sqrt{n}/\sigma\).
+
+#### R Illustration
+
+- Student t probability density with the dt() function
+
+```{r}
+# Creating the vector with the x-values for dt function
+x_dt <- seq(- 5, 5, by = 0.01)
+
+# Applying the dt() function
+y_dt <- dt(x_dt, df = 3)
+
+# Plotting 
+plot(y_dt, type = "l", main = "t-distribution density function example", las=1)
+```
+
+- Student’s t cumulative distribution with the pt() function
+
+  - P-value in one-tailed test with pt() function
+  we calculate a t-statistics of 1.9 using the t-stat formula:
+  $$t=\frac{\bar{x}-\mu}{s/\sqrt{n}}$$
+  
+```{r}
+# t-stat=1.9, df=15
+# one-sided p-value
+# P(t => 1.9)
+pt(q=1.9, df=15, lower.tail = F)
+# The p-value is 0.038 leading to rejection of H0 at a significance level greater than 0.038.
+```
+
+  - P-value in two-tailed test with pt() function
+    Let’s run a two-tailed test with the exampel above: t-stat=1.9, df=15
+    
+```{r}
+# two-sided p-value
+# By adding the two tails
+pt(q=1.9, df=15, lower.tail = F) + pt(q=-1.9, df=15, lower.tail = T)
+# By doubling one tail
+pt(q=1.9, df=15, lower.tail = F)*2
+```
+
+- Graphing the CDF
+
+Let’s see how we can graph the t cumulative distribution function (CDF). We will start by creating a vector. Then we apply the pt() function and plot it:
+
+```{r}
+# Creating the vector with the x-values for dt function
+x_pt <- seq(- 5, 5, by = 0.01)
+
+# Applying the dt() function
+y_pt <- pt(x_pt, df = 3)
+
+# Plotting 
+plot(y_pt, type = "l", main = "t-distribution cumulative function example", las=1)
+```
+
+- Student’s t quantile function with qt()
+Let’s find t for a 95% confidence interval with 2.5% in each tail and df=15
+
+```{r}
+# find t for 95% confidence interval
+# value of t with 2.5% in each tail
+qt(p=0.025, df = 15, lower.tail = T)
+```
+
+- Graphing the quantile function using qt() function
+
+We will specify the x-values with the seq() function for the qt() function, apply the qt() function and plot it:
+
+```{r}
+# Specifyin the x-values
+x_qt <- seq(0.1, by = 0.01)
+
+# Applying the qt() function
+y_qt <- qt(x_qt, df = 3)
+
+# Plotting
+plot(y_qt, main = "t quantile function example", las = 1)
+```
+
+- Generating random numbers with the rt() function
+
+Let’s use the rt() function to generate random variables. First, we will set a seed for reproducibility specifying also the sample size n that we with to simulate:
+
+```{r}
+# Setting seed for reproducibility 
+set.seed(91929)
+
+# Setting sample size
+n <- 10000
+
+# Using rt() to drawing N log normally distributed values
+y_rt <- rt(n, df = 3)
+
+# Plotting a histogram of y_rt
+hist(y_rt, breaks = 100, main = "Randomly drawn t density")
+```
 
 #### Exercise
 

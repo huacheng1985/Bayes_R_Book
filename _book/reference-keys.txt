@@ -129,3 +129,12 @@ definition-11
 r-illustration-12
 exercise-10
 bivariatemultivariate-normal-distribution
+cauchy-distribution
+wishartinverse-wishart-normal-distribution
+definition-12
+r-illustration-13
+exercise-11
+t-distribution
+definition-13
+r-illustration-14
+exercise-12

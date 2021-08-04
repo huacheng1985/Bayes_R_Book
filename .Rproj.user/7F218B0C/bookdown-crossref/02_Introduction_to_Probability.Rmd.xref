@@ -28,28 +28,36 @@ h3:bivariatemultivariate-normal-distribution Bivariate/Multivariate normal distr
 h4:definition-5 Definition
 h4:r-illustration-6 R Illustration
 h4:exercise-4 Exercise
-h3:uniform-distribution Uniform Distribution
+h3:wishartinverse-wishart-normal-distribution Wishart/Inverse Wishart normal distribution
 h4:definition-6 Definition
-h4:r-illustration-7 R Illustration
+h4:r-illustration-7 R illustration
 h4:exercise-5 Exercise
-h3:gamma-distribution Gamma Distribution
+h3:uniform-distribution Uniform Distribution
 h4:definition-7 Definition
 h4:r-illustration-8 R Illustration
 h4:exercise-6 Exercise
-h3:inverse-gamma-distribution Inverse Gamma Distribution
+h3:gamma-distribution Gamma Distribution
 h4:definition-8 Definition
 h4:r-illustration-9 R Illustration
 h4:exercise-7 Exercise
-h3:chi-squared-distribution Chi-squared Distribution
+h3:inverse-gamma-distribution Inverse Gamma Distribution
 h4:definition-9 Definition
 h4:r-illustration-10 R Illustration
 h4:exercise-8 Exercise
-h3:f-distribution F-Distribution
+h3:chi-squared-distribution Chi-squared Distribution
 h4:definition-10 Definition
 h4:r-illustration-11 R Illustration
 h4:exercise-9 Exercise
-h3:cauchy-distribution Cauchy Distribution
+h3:t-distribution T-Distribution
 h4:definition-11 Definition
 h4:r-illustration-12 R Illustration
 h4:exercise-10 Exercise
+h3:f-distribution F-Distribution
+h4:definition-12 Definition
+h4:r-illustration-13 R Illustration
+h4:exercise-11 Exercise
+h3:cauchy-distribution Cauchy Distribution
+h4:definition-13 Definition
+h4:r-illustration-14 R Illustration
+h4:exercise-12 Exercise
 

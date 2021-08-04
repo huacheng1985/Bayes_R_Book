@@ -5,8 +5,9 @@ account: chua
 server: bookdown.org
 hostUrl: https://bookdown.org/__api__
 appId: 7879
-bundleId: 47645
+bundleId: 50542
 url: https://bookdown.org/chua/bayes_r_book2/
-when: 1625888465.90452
+when: 1628042153.22483
+lastSyncTime: 1628042153.22484
 asMultiple: FALSE
 asStatic: FALSE
