@@ -138,3 +138,6 @@ t-distribution
 definition-13
 r-illustration-14
 exercise-12
+install-the-jags-for-r
+install-jags
+install-package-rjags

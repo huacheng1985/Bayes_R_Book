@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Introduction to Bayesian Inference | Beyes R Book</title>
+  <meta name="description" content="This book is a R guide book for UA course BER 695: Introduction to Bayesian Analysis." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Introduction to Bayesian Inference | Beyes R Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book is a R guide book for UA course BER 695: Introduction to Bayesian Analysis." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Introduction to Bayesian Inference | Beyes R Book" />
+  
+  <meta name="twitter:description" content="This book is a R guide book for UA course BER 695: Introduction to Bayesian Analysis." />
+  
+
+<meta name="author" content="Dr. Man Kai Wen &amp; Cheng Hua" />
+
+
+<meta name="date" content="2021-08-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Prob.html"/>
+<link rel="next" href="Posterior.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Beyes R Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to the Course</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#part-1-vector"><i class="fa fa-check"></i><b>2.1</b> Part 1: Vector</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#numbers"><i class="fa fa-check"></i><b>2.1.1</b> Numbers</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#strings-nominal"><i class="fa fa-check"></i><b>2.1.2</b> Strings (nominal)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#logical"><i class="fa fa-check"></i><b>2.1.3</b> Logical</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#create-vectors"><i class="fa fa-check"></i><b>2.1.4</b> Create vectors</a></li>
+<li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#replicate-values"><i class="fa fa-check"></i><b>2.1.5</b> Replicate values</a></li>
+<li class="chapter" data-level="2.1.6" data-path="intro.html"><a href="intro.html#practice-questions"><i class="fa fa-check"></i><b>2.1.6</b> Practice Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#part-2-basic-statistical-analysis"><i class="fa fa-check"></i><b>2.2</b> Part 2: Basic Statistical Analysis</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#buiding-a-simulated-data-set"><i class="fa fa-check"></i><b>2.2.1</b> Buiding a simulated data set</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#basic-statistical-function"><i class="fa fa-check"></i><b>2.2.2</b> Basic Statistical function</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#practice-questions-1"><i class="fa fa-check"></i><b>2.2.3</b> Practice Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#part-3-matrix-computation"><i class="fa fa-check"></i><b>2.3</b> Part 3: Matrix Computation</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#build-a-matrix"><i class="fa fa-check"></i><b>2.3.1</b> Build a matrix</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#define-a-matrix"><i class="fa fa-check"></i><b>2.3.2</b> Define a matrix</a></li>
+<li class="chapter" data-level="2.3.3" data-path="intro.html"><a href="intro.html#name-the-rowscolumns"><i class="fa fa-check"></i><b>2.3.3</b> Name the rows/columns</a></li>
+<li class="chapter" data-level="2.3.4" data-path="intro.html"><a href="intro.html#operation-on-matrix"><i class="fa fa-check"></i><b>2.3.4</b> Operation on matrix</a></li>
+<li class="chapter" data-level="2.3.5" data-path="intro.html"><a href="intro.html#glue-vectors-together"><i class="fa fa-check"></i><b>2.3.5</b> Glue vectors together</a></li>
+<li class="chapter" data-level="2.3.6" data-path="intro.html"><a href="intro.html#inverse-the-matrix"><i class="fa fa-check"></i><b>2.3.6</b> Inverse the matrix</a></li>
+<li class="chapter" data-level="2.3.7" data-path="intro.html"><a href="intro.html#practice-questions-2"><i class="fa fa-check"></i><b>2.3.7</b> Practice Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#part-4-data-manipulation"><i class="fa fa-check"></i><b>2.4</b> Part 4: Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#load-the-data"><i class="fa fa-check"></i><b>2.4.1</b> Load the Data</a></li>
+<li class="chapter" data-level="2.4.2" data-path="intro.html"><a href="intro.html#select-specific-data"><i class="fa fa-check"></i><b>2.4.2</b> Select Specific Data</a></li>
+<li class="chapter" data-level="2.4.3" data-path="intro.html"><a href="intro.html#correlation-and-covariate-matrix"><i class="fa fa-check"></i><b>2.4.3</b> Correlation and Covariate Matrix</a></li>
+<li class="chapter" data-level="2.4.4" data-path="intro.html"><a href="intro.html#matrix-diagonals"><i class="fa fa-check"></i><b>2.4.4</b> Matrix Diagonals</a></li>
+<li class="chapter" data-level="2.4.5" data-path="intro.html"><a href="intro.html#practice-questions-3"><i class="fa fa-check"></i><b>2.4.5</b> Practice Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#part-5-factor-list-and-dataframe"><i class="fa fa-check"></i><b>2.5</b> Part 5: Factor, List, and Dataframe</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#factors"><i class="fa fa-check"></i><b>2.5.1</b> Factors</a></li>
+<li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#building-a-list"><i class="fa fa-check"></i><b>2.5.2</b> Building a list</a></li>
+<li class="chapter" data-level="2.5.3" data-path="intro.html"><a href="intro.html#building-a-dataframe"><i class="fa fa-check"></i><b>2.5.3</b> Building a Dataframe</a></li>
+<li class="chapter" data-level="2.5.4" data-path="intro.html"><a href="intro.html#indexing-subsetting-dataset"><i class="fa fa-check"></i><b>2.5.4</b> Indexing (subsetting) Dataset</a></li>
+<li class="chapter" data-level="2.5.5" data-path="intro.html"><a href="intro.html#more-examples-on-indexing-dataset"><i class="fa fa-check"></i><b>2.5.5</b> More examples on indexing dataset</a></li>
+<li class="chapter" data-level="2.5.6" data-path="intro.html"><a href="intro.html#subset-and-transform-data"><i class="fa fa-check"></i><b>2.5.6</b> Subset and transform data</a></li>
+<li class="chapter" data-level="2.5.7" data-path="intro.html"><a href="intro.html#practice-questions-4"><i class="fa fa-check"></i><b>2.5.7</b> Practice Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#part-6-conditional-statement"><i class="fa fa-check"></i><b>2.6</b> Part 6: conditional statement</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="intro.html"><a href="intro.html#if-statement"><i class="fa fa-check"></i><b>2.6.1</b> if statement</a></li>
+<li class="chapter" data-level="2.6.2" data-path="intro.html"><a href="intro.html#adding-an-else"><i class="fa fa-check"></i><b>2.6.2</b> Adding an <code>else</code></a></li>
+<li class="chapter" data-level="2.6.3" data-path="intro.html"><a href="intro.html#customize-further-else-if"><i class="fa fa-check"></i><b>2.6.3</b> Customize further: else if</a></li>
+<li class="chapter" data-level="2.6.4" data-path="intro.html"><a href="intro.html#use-for-loop"><i class="fa fa-check"></i><b>2.6.4</b> Use “for” loop</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#part-7-splitting-data-implicit-loops"><i class="fa fa-check"></i><b>2.7</b> Part 7: Splitting data &amp; implicit loops</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#splitting-the-data"><i class="fa fa-check"></i><b>2.7.1</b> Splitting the data</a></li>
+<li class="chapter" data-level="2.7.2" data-path="intro.html"><a href="intro.html#function-apply"><i class="fa fa-check"></i><b>2.7.2</b> Function “apply”</a></li>
+<li class="chapter" data-level="2.7.3" data-path="intro.html"><a href="intro.html#another-example"><i class="fa fa-check"></i><b>2.7.3</b> Another example</a></li>
+<li class="chapter" data-level="2.7.4" data-path="intro.html"><a href="intro.html#use-function-lapply"><i class="fa fa-check"></i><b>2.7.4</b> Use function “lapply”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Prob.html"><a href="Prob.html"><i class="fa fa-check"></i><b>3</b> Introduction/Interpretation to Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Prob.html"><a href="Prob.html#discrete-distribution-variables"><i class="fa fa-check"></i><b>3.1</b> Discrete Distribution Variables</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="Prob.html"><a href="Prob.html#bernoulli-distribution"><i class="fa fa-check"></i><b>3.1.1</b> Bernoulli Distribution</a></li>
+<li class="chapter" data-level="3.1.2" data-path="Prob.html"><a href="Prob.html#binomial-distribution"><i class="fa fa-check"></i><b>3.1.2</b> Binomial Distribution</a></li>
+<li class="chapter" data-level="3.1.3" data-path="Prob.html"><a href="Prob.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>3.1.3</b> Negative Binomial Distribution</a></li>
+<li class="chapter" data-level="3.1.4" data-path="Prob.html"><a href="Prob.html#poisson-distribution"><i class="fa fa-check"></i><b>3.1.4</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="3.1.5" data-path="Prob.html"><a href="Prob.html#multinomial-distribution"><i class="fa fa-check"></i><b>3.1.5</b> Multinomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="Prob.html"><a href="Prob.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.2</b> Continuous Random variables</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="Prob.html"><a href="Prob.html#normal-distribution"><i class="fa fa-check"></i><b>3.2.1</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.2.2" data-path="Prob.html"><a href="Prob.html#bivariatemultivariate-normal-distribution"><i class="fa fa-check"></i><b>3.2.2</b> Bivariate/Multivariate normal distribution</a></li>
+<li class="chapter" data-level="3.2.3" data-path="Prob.html"><a href="Prob.html#wishartinverse-wishart-normal-distribution"><i class="fa fa-check"></i><b>3.2.3</b> Wishart/Inverse Wishart normal distribution</a></li>
+<li class="chapter" data-level="3.2.4" data-path="Prob.html"><a href="Prob.html#uniform-distribution"><i class="fa fa-check"></i><b>3.2.4</b> Uniform Distribution</a></li>
+<li class="chapter" data-level="3.2.5" data-path="Prob.html"><a href="Prob.html#gamma-distribution"><i class="fa fa-check"></i><b>3.2.5</b> Gamma Distribution</a></li>
+<li class="chapter" data-level="3.2.6" data-path="Prob.html"><a href="Prob.html#inverse-gamma-distribution"><i class="fa fa-check"></i><b>3.2.6</b> Inverse Gamma Distribution</a></li>
+<li class="chapter" data-level="3.2.7" data-path="Prob.html"><a href="Prob.html#chi-squared-distribution"><i class="fa fa-check"></i><b>3.2.7</b> Chi-squared Distribution</a></li>
+<li class="chapter" data-level="3.2.8" data-path="Prob.html"><a href="Prob.html#t-distribution"><i class="fa fa-check"></i><b>3.2.8</b> T-Distribution</a></li>
+<li class="chapter" data-level="3.2.9" data-path="Prob.html"><a href="Prob.html#f-distribution"><i class="fa fa-check"></i><b>3.2.9</b> F-Distribution</a></li>
+<li class="chapter" data-level="3.2.10" data-path="Prob.html"><a href="Prob.html#cauchy-distribution"><i class="fa fa-check"></i><b>3.2.10</b> Cauchy Distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html"><i class="fa fa-check"></i><b>4</b> Introduction to Bayesian Inference</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#install-the-jags-for-r"><i class="fa fa-check"></i><b>4.1</b> Install the JAGS for R</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#install-jags"><i class="fa fa-check"></i><b>4.1.1</b> Install JAGS</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#install-package-rjags"><i class="fa fa-check"></i><b>4.1.2</b> Install Package rjags</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Posterior.html"><a href="Posterior.html"><i class="fa fa-check"></i><b>5</b> Summarizing Posterior Distributions</a></li>
+<li class="chapter" data-level="6" data-path="Gra-Model.html"><a href="Gra-Model.html"><i class="fa fa-check"></i><b>6</b> Introduction to Graphical Models</a></li>
+<li class="chapter" data-level="7" data-path="Bayes-Theorem.html"><a href="Bayes-Theorem.html"><i class="fa fa-check"></i><b>7</b> Bayes’ Theorem: Accumulation of Evidence</a></li>
+<li class="chapter" data-level="8" data-path="Normal-Dis.html"><a href="Normal-Dis.html"><i class="fa fa-check"></i><b>8</b> Normal Distribution Models</a></li>
+<li class="chapter" data-level="9" data-path="MCMC.html"><a href="MCMC.html"><i class="fa fa-check"></i><b>9</b> Markov Chain Monte Carlo: A Practical Introduction</a></li>
+<li class="chapter" data-level="10" data-path="Bayes-Reg.html"><a href="Bayes-Reg.html"><i class="fa fa-check"></i><b>10</b> Bayesian based Regression Models</a></li>
+<li class="chapter" data-level="11" data-path="Specify-Prior.html"><a href="Specify-Prior.html"><i class="fa fa-check"></i><b>11</b> Strategies for Specifying prior distributions</a></li>
+<li class="chapter" data-level="12" data-path="Post-Pred.html"><a href="Post-Pred.html"><i class="fa fa-check"></i><b>12</b> Posterior Predictive Model Checking</a></li>
+<li class="chapter" data-level="13" data-path="Model-Comp.html"><a href="Model-Comp.html"><i class="fa fa-check"></i><b>13</b> Model Comparison</a></li>
+<li class="chapter" data-level="14" data-path="Adv-Bayes.html"><a href="Adv-Bayes.html"><i class="fa fa-check"></i><b>14</b> Advance Bayesian Models</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Beyes R Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Bayes_Inf" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Introduction to Bayesian Inference</h1>
+<div id="install-the-jags-for-r" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Install the JAGS for R</h2>
+<div id="install-jags" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Install JAGS</h3>
+<p>The following are the steps to install the Bayesian sampling program JAGS.</p>
+<ul>
+<li>Go to website <a href="http://mcmc-jags.sourceforge.net" class="uri">http://mcmc-jags.sourceforge.net</a> for instructions. To download the JAGS installation program (JAGS –x.x.x.exe), visit the webpage <a href="https://sourceforge.net/projects/mcmc-jags/files" class="uri">https://sourceforge.net/projects/mcmc-jags/files</a>.</li>
+</ul>
+<div class="figure">
+<img src="download%20Jags.png" alt="" />
+<p class="caption">Figure 1. Install the JAGS</p>
+</div>
+<ul>
+<li>Run the JAGS installation program to install JAGS. When asked to Choose Install
+Location, select the folder created earlier, e.g. C:\Bayesian\JAGS-4.2.0, and follow the installation instructions. If you are a mac user, then don’t worry about the file location.</li>
+</ul>
+</div>
+<div id="install-package-rjags" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Install Package rjags</h3>
+<p>The following are the steps to install R package rjags (to let R talk to JAGS). There are two ways to do this:</p>
+<p>In the RStudio menu bar at the top of the screen, select Tools→Install Packages, then type rjags under Packages.</p>
+<div class="figure">
+<img src="install%20rjags%20package.png" alt="" />
+<p class="caption">Figure 2. Install the “rjags” R package</p>
+</div>
+<ul>
+<li>Or you can in the R Studio console window, type <code>install.packages("rjags")</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Prob.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Posterior.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Bayes_R_Book.pdf", "Bayes_R_Book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
