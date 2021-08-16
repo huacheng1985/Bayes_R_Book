@@ -141,3 +141,10 @@ exercise-12
 install-the-jags-for-r
 install-jags
 install-package-rjags
+bernoulli-and-binomial-distributions-in-jags
+set-the-working-directory
+define-the-model-and-write-out-the-code
+model-specification
+model-results
+beta-distribution-in-jags
+set-the-working-directory-1

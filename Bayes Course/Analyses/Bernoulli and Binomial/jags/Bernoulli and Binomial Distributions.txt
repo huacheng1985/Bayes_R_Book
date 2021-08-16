@@ -1,0 +1,7 @@
+
+model{
+theta <- .7
+x ~ dbern(theta)
+y ~ dbin(theta, J)
+} # closes the model
+

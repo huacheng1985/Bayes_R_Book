@@ -1,3 +1,174 @@
+--- 
+title: "Beyes R Book"
+author: "Dr. Man Kai Wen & Cheng Hua"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This book is a R guide book for UA course BER 695: Introduction to Bayesian Analysis."
+---
+--- 
+title: "Beyes R Book"
+author: "Dr. Man Kai Wen & Cheng Hua"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This book is a R guide book for UA course BER 695: Introduction to Bayesian Analysis."
+---
+
+# Introduction to the Course {#Intro_Class}
+
+Testing
+
+
+
+<!--chapter:end:index.Rmd-->
+
+
+# Introduction to R {#intro}
+
+Placeholder
+
+
+## Part 1: Vector
+### Numbers
+### Strings (nominal)
+### Logical
+### Create vectors
+### Replicate values
+### Practice Questions
+#### Question 1
+#### Question 2
+#### Question 3
+## Part 2: Basic Statistical Analysis
+### Buiding a simulated data set
+### Basic Statistical function
+### Practice Questions
+#### Question 1
+#### Question 2
+#### Question 3
+#### Question 4
+#### Question 5
+#### Question 6
+## Part 3: Matrix Computation
+### Build a matrix
+### Define a matrix
+### Name the rows/columns
+### Operation on matrix
+### Glue vectors together
+### Inverse the matrix
+### Practice Questions
+#### Questions 1
+#### Questions 2
+## Part 4: Data Manipulation
+### Load the Data
+### Select Specific Data
+### Correlation and Covariate Matrix
+### Matrix Diagonals
+### Practice Questions
+#### Question 1
+#### Question 2
+#### Question 3
+#### Question 4
+## Part 5: Factor, List, and Dataframe
+### Factors
+### Building a list
+### Building a Dataframe
+### Indexing (subsetting) Dataset
+### More examples on indexing dataset
+### Subset and transform data
+### Practice Questions
+#### Question 1
+#### Question 2
+#### Question 3
+## Part 6: conditional statement
+### if statement
+### Adding an `else`
+### Customize further: else if
+### Use "for" loop
+## Part 7: Splitting data & implicit loops
+### Splitting the data
+### Function "apply"
+### Another example
+### Use function "lapply"
+
+<!--chapter:end:01_Introduction.Rmd-->
+
+
+# Introduction/Interpretation to Probability {#Prob}
+
+Placeholder
+
+
+## Discrete Distribution Variables
+### Bernoulli Distribution
+#### Definition
+#### R Illustration
+#### Exericise
+### Binomial Distribution
+#### Definition
+#### R Illustration
+#### Exericise
+### Negative Binomial Distribution
+#### Definition
+#### R Illustration
+#### Exercise
+### Poisson Distribution
+#### Definition
+#### R Illustration
+#### Exercise
+### Multinomial Distribution
+#### R Illustration
+#### Exercise
+## Continuous Random variables
+### Normal Distribution
+#### Definition
+#### R Illustration
+#### Exercise
+### Bivariate/Multivariate normal distribution
+#### Definition
+#### R Illustration
+#### Exercise
+### Wishart/Inverse Wishart normal distribution
+#### Definition
+#### R illustration
+#### Exercise
+### Uniform Distribution
+#### Definition
+#### R Illustration
+#### Exercise
+### Gamma Distribution
+#### Definition
+#### R Illustration
+#### Exercise
+### Inverse Gamma Distribution
+#### Definition
+#### R Illustration
+#### Exercise
+### Chi-squared Distribution
+#### Definition
+#### R Illustration
+#### Exercise
+### T-Distribution
+#### Definition 
+#### R Illustration
+#### Exercise
+### F-Distribution
+#### Definition
+#### R Illustration
+#### Exercise
+### Cauchy Distribution
+#### Definition
+#### R Illustration
+#### Exercise
+
+<!--chapter:end:02_Introduction_to_Probability.Rmd-->
+
 # Introduction to Bayesian Inference {#Bayes_Inf}
 
 ## Install the JAGS for R
@@ -152,22 +323,6 @@ setwd(jags.folder)
 jags.model.fitted <- jags.model(file=model.file.name)
 ```
 
-### Model Results
-
-```{r}
-# Now obtain the distribution
-jags.model.fitted <- coda.samples(
-  jags.model.fitted,
-  variable.names=entities.to.monitor,
-  n.iter=n.iters,
-  progress.bar="gui"
-)
-# Plot the results
-plot(jags.model.fitted, density=FALSE, trace=TRUE, smooth = FALSE)
-plot(jags.model.fitted, density=TRUE, trace=FALSE)
-# Numerically summarize the results
-summary(jags.model.fitted)
-```
 
 
 
@@ -185,4 +340,47 @@ summary(jags.model.fitted)
 
 
 
+
+
+<!--chapter:end:03_Intro_to_Bayesian.Rmd-->
+
+# Summarizing Posterior Distributions {#Posterior}
+
+<!--chapter:end:04_Posterior_Disctributions.Rmd-->
+
+# Introduction to Graphical Models {#Gra_Model}
+
+<!--chapter:end:05_Graphical_Models.Rmd-->
+
+# Bayes’ Theorem: Accumulation of Evidence {#Bayes_Theorem}
+
+<!--chapter:end:06_Bayes_Theorem.Rmd-->
+
+# Normal Distribution Models {#Normal_Dis}
+
+<!--chapter:end:07_Normal_Distribution_Models.Rmd-->
+
+# Markov Chain Monte Carlo: A Practical Introduction {#MCMC}
+
+<!--chapter:end:08_MCMC_Intro.Rmd-->
+
+# Bayesian based Regression Models {#Bayes_Reg}
+
+<!--chapter:end:09_Bayesian_Regression_Models.Rmd-->
+
+# Strategies for Specifying prior distributions {#Specify_Prior}
+
+<!--chapter:end:10_Specifying_prior_distributions.Rmd-->
+
+# Posterior Predictive Model Checking {#Post_Pred}
+
+<!--chapter:end:11_Posterior_Predictive_Modeling.Rmd-->
+
+# Model Comparison {#Model_Comp}
+
+<!--chapter:end:12_Model_Comparison.Rmd-->
+
+# Advance Bayesian Models {#Adv_Bayes}
+
+<!--chapter:end:13_Advanced_Regression_Models.Rmd-->
 

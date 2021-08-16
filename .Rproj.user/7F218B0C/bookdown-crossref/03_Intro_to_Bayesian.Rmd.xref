@@ -2,4 +2,14 @@ h1:Bayes_Inf Introduction to Bayesian Inference
 h2:install-the-jags-for-r Install the JAGS for R
 h3:install-jags Install JAGS
 h3:install-package-rjags Install Package rjags
+h2:bernoulli-and-binomial-distributions-in-jags Bernoulli and Binomial Distributions in JAGS
+h3:set-the-working-directory Set the working directory
+h3:define-the-model-and-write-out-the-code Define the Model and Write out the code
+h3:model-specification Model Specification
+h3:model-results Model Results
+h2:beta-distribution-in-jags Beta Distribution in JAGS
+h3:set-the-working-directory-1 Set the working directory
+h3:define-the-model-and-write-out-the-code-1 Define the Model and Write out the code
+h3:model-specification-1 Model Specification
+h3:model-results-1 Model Results
 
