@@ -106,6 +106,7 @@ sort(ACT_score)
 table(ACT_score)  
 
 #-- Using the function "describe" from the "psych" package. Please attach the psych package
+library(psych)
 describe(ACT_score)
 ```
 
@@ -180,7 +181,8 @@ x
 # The transpose of a matrix is simply a flipped version of the original matrix. We can transpose a matrix by switching its rows with its columns.  
 t(x)
 #multiply two matrix, if they are conformable
-x%*%t(x) 
+x%*%t(x) #check the dimensions  
+
 t(x)%*%x
 ```
 
@@ -203,30 +205,35 @@ The inverse of a square matrix A, sometimes called a reciprocal matrix, is a mat
 # Load the package "MASS" to use the fractions function
 library(MASS)
 # Build a square matrix A. 
-# A <- matrix(1:16, nrow=4,byrow=T)
+A <- matrix(c(2,3,2,2), nrow=2,byrow=T)
 # Print out
-# A 
+A 
 #inverse the matrix       
-# solve(A,tol=1e-19)
+inv_A <- solve(A,tol=1e-19)
+
 #round              
-# round(solve(A,tol=1e-19),3) #to the third digits
+round(solve(A,tol=1e-19),3) #to the third digits
 #show as rationals  
-# fractions(solve(A,tol=1e-19))
-# Q? solve equation 
+fractions(solve(A,tol=1e-19))
+
 # Ax=b: solve(A,b)
+# create an Identity matrix
+ident_matrix <- diag(2)
+solve(A,diag(2))
+
 ```
+
 
 ### Practice Questions
 
 #### Question 1
-
 Create a 2 by 2 matrix named "MM" with c(1,5,9,10) arranged by row
 
 #### Question 2
 Please inverse the matrix "MM", name it as MM-T
 
 #### Question 3
-Multiply the two matrices "MM" %*% MM-T, and show the result
+Multiply the two matrices "MM" %*% "MM-T", and show the result
 
 
 ## Part 4: Data Manipulation
