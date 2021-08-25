@@ -105,7 +105,7 @@ sort(ACT_score)
 #--make a table of counts
 table(ACT_score)  
 
-#-- Using the function "describe" from the "psych" package
+#-- Using the function "describe" from the "psych" package. Please attach the psych package
 describe(ACT_score)
 ```
 
@@ -115,6 +115,7 @@ Use the Data set bellow:
 
 ```{r}
 GRE_score <- round(runif(250,130,170),0)
+?runif
 ```
 
 #### Question 1
