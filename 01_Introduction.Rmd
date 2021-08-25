@@ -60,11 +60,11 @@ rep(3:4,c(100,200)) #the first element repeat 100 time, the second 200 times
 
 #### Question 1
 
-Create a sequence variable (name it with your first name) ranging from 1 to 100, increment is 2
+Create a sequence (name it with your first name) ranging from 1 to 100, increment is 1
 
 #### Question 2
 
-Create a variable (name it with your last name). repeat 5 by 50 times
+Repeat the sequence just created 3 times
 
 #### Question 3
 
