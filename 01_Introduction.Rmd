@@ -208,13 +208,17 @@ library(MASS)
 
 ### Practice Questions
 
-#### Questions 1
+#### Question 1
 
 Create a 2 by 2 matrix named "MM" with c(1,5,9,10) arranged by row
 
-#### Questions 2
+#### Question 2
 
-Please inverse the matrix "MM"
+Please inverse the matrix "MM", name it as MM-T
+
+#### Question 3
+Multiply the two matrices "MM" %*% MM-T, and show the result
+
 
 ## Part 4: Data Manipulation
 
