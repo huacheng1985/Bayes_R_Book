@@ -104,6 +104,9 @@ range(ACT_score)
 sort(ACT_score)  
 #--make a table of counts
 table(ACT_score)  
+
+#-- Using the function "describe" from the "psych" package
+describe(ACT_score)
 ```
 
 ### Practice Questions
