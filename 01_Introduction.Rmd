@@ -47,6 +47,9 @@ seq(-8,9,.5) #sequence from -8 to 9, increment is .5
 ### Replicate values
 
 ```{r}
+exp1 <- c(1,2,3,4,5) #create a vector named as exp1
+rep(exp1,3) #repeat 3 times 
+
 ha=c(1,2,3,"sun")
 rep(ha,4) #repeat "ha" four times
 rep(ha,1:4) #each element is repeated different times, according to the second argument
