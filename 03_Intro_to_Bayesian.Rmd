@@ -147,26 +147,9 @@ entities.to.monitor <- c("x")
 n.iters = 40000
 # Run MCMC
 #	Move to the JAGS folder
-setwd(jags.folder)
+# setwd(jags.folder)
 # Initialize the model
-jags.model.fitted <- jags.model(file=model.file.name)
-```
-
-### Model Results
-
-```{r}
-# Now obtain the distribution
-jags.model.fitted <- coda.samples(
-  jags.model.fitted,
-  variable.names=entities.to.monitor,
-  n.iter=n.iters,
-  progress.bar="gui"
-)
-# Plot the results
-plot(jags.model.fitted, density=FALSE, trace=TRUE, smooth = FALSE)
-plot(jags.model.fitted, density=TRUE, trace=FALSE)
-# Numerically summarize the results
-summary(jags.model.fitted)
+# jags.model.fitted <- jags.model(file=model.file.name)
 ```
 
 

@@ -213,7 +213,6 @@ library(MASS)
 Create a 2 by 2 matrix named "MM" with c(1,5,9,10) arranged by row
 
 #### Question 2
-
 Please inverse the matrix "MM", name it as MM-T
 
 #### Question 3
@@ -425,7 +424,10 @@ subset Prestige dataset for subjects whose income is higher than 10,000 and who 
 If statements tell R to run a line of code if a condition returns `TRUE`. An if statement is a good choice here because it allows us to control which statement is printed depending on which outcome occurs.
 
 ```{r}
-# We use the previous data "rate" Part 6
+time=c(9.2,7,7.1,8.2,10.1,11,9.3,4.5,6.6,7.9,10.8,7.8,8.3)
+status=c("pass","fail","fail","fail","fail","pass","fail","fail","pass","pass","fail","pass","fail")
+# Combine two variables into data frame "rate"
+rate=data.frame(time,status)
 rate
 # use the if function to check the first participant's pass/fail condition
 if (rate[1,2]=="pass"){

@@ -5,9 +5,9 @@ account: chuabest
 server: beta.rstudioconnect.com
 hostUrl: https://beta.rstudioconnect.com/__api__
 appId: 16818
-bundleId: 61140
+bundleId: 62393
 url: https://beta.rstudioconnect.com/content/b57704e0-23bb-463b-86e0-fe0ce9c15fb6/
-when: 1628909744.35881
-lastSyncTime: 1628909744.35882
+when: 1629861843.5404
+lastSyncTime: 1629861843.54041
 asMultiple: FALSE
 asStatic: TRUE
