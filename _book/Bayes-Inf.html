@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. Man Kai Wen &amp; Cheng Hua" />
 
 
-<meta name="date" content="2021-08-16" />
+<meta name="date" content="2021-08-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 <link rel="prev" href="Prob.html"/>
 <link rel="next" href="Posterior.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -56,27 +55,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -85,9 +82,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -138,10 +135,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to the Course</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction to R</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#part-1-vector"><i class="fa fa-check"></i><b>2.1</b> Part 1: Vector</a>
-<ul>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#part-1-vector"><i class="fa fa-check"></i><b>2.1</b> Part 1: Vector</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#numbers"><i class="fa fa-check"></i><b>2.1.1</b> Numbers</a></li>
 <li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#strings-nominal"><i class="fa fa-check"></i><b>2.1.2</b> Strings (nominal)</a></li>
 <li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#logical"><i class="fa fa-check"></i><b>2.1.3</b> Logical</a></li>
@@ -149,14 +144,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#replicate-values"><i class="fa fa-check"></i><b>2.1.5</b> Replicate values</a></li>
 <li class="chapter" data-level="2.1.6" data-path="intro.html"><a href="intro.html#practice-questions"><i class="fa fa-check"></i><b>2.1.6</b> Practice Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#part-2-basic-statistical-analysis"><i class="fa fa-check"></i><b>2.2</b> Part 2: Basic Statistical Analysis</a>
-<ul>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#part-2-basic-statistical-analysis"><i class="fa fa-check"></i><b>2.2</b> Part 2: Basic Statistical Analysis</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#buiding-a-simulated-data-set"><i class="fa fa-check"></i><b>2.2.1</b> Buiding a simulated data set</a></li>
 <li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#basic-statistical-function"><i class="fa fa-check"></i><b>2.2.2</b> Basic Statistical function</a></li>
 <li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#practice-questions-1"><i class="fa fa-check"></i><b>2.2.3</b> Practice Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#part-3-matrix-computation"><i class="fa fa-check"></i><b>2.3</b> Part 3: Matrix Computation</a>
-<ul>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#part-3-matrix-computation"><i class="fa fa-check"></i><b>2.3</b> Part 3: Matrix Computation</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#build-a-matrix"><i class="fa fa-check"></i><b>2.3.1</b> Build a matrix</a></li>
 <li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#define-a-matrix"><i class="fa fa-check"></i><b>2.3.2</b> Define a matrix</a></li>
 <li class="chapter" data-level="2.3.3" data-path="intro.html"><a href="intro.html#name-the-rowscolumns"><i class="fa fa-check"></i><b>2.3.3</b> Name the rows/columns</a></li>
@@ -165,16 +158,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.6" data-path="intro.html"><a href="intro.html#inverse-the-matrix"><i class="fa fa-check"></i><b>2.3.6</b> Inverse the matrix</a></li>
 <li class="chapter" data-level="2.3.7" data-path="intro.html"><a href="intro.html#practice-questions-2"><i class="fa fa-check"></i><b>2.3.7</b> Practice Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#part-4-data-manipulation"><i class="fa fa-check"></i><b>2.4</b> Part 4: Data Manipulation</a>
-<ul>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#part-4-data-manipulation"><i class="fa fa-check"></i><b>2.4</b> Part 4: Data Manipulation</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#load-the-data"><i class="fa fa-check"></i><b>2.4.1</b> Load the Data</a></li>
 <li class="chapter" data-level="2.4.2" data-path="intro.html"><a href="intro.html#select-specific-data"><i class="fa fa-check"></i><b>2.4.2</b> Select Specific Data</a></li>
 <li class="chapter" data-level="2.4.3" data-path="intro.html"><a href="intro.html#correlation-and-covariate-matrix"><i class="fa fa-check"></i><b>2.4.3</b> Correlation and Covariate Matrix</a></li>
 <li class="chapter" data-level="2.4.4" data-path="intro.html"><a href="intro.html#matrix-diagonals"><i class="fa fa-check"></i><b>2.4.4</b> Matrix Diagonals</a></li>
 <li class="chapter" data-level="2.4.5" data-path="intro.html"><a href="intro.html#practice-questions-3"><i class="fa fa-check"></i><b>2.4.5</b> Practice Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#part-5-factor-list-and-dataframe"><i class="fa fa-check"></i><b>2.5</b> Part 5: Factor, List, and Dataframe</a>
-<ul>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#part-5-factor-list-and-dataframe"><i class="fa fa-check"></i><b>2.5</b> Part 5: Factor, List, and Dataframe</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#factors"><i class="fa fa-check"></i><b>2.5.1</b> Factors</a></li>
 <li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#building-a-list"><i class="fa fa-check"></i><b>2.5.2</b> Building a list</a></li>
 <li class="chapter" data-level="2.5.3" data-path="intro.html"><a href="intro.html#building-a-dataframe"><i class="fa fa-check"></i><b>2.5.3</b> Building a Dataframe</a></li>
@@ -183,33 +174,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.6" data-path="intro.html"><a href="intro.html#subset-and-transform-data"><i class="fa fa-check"></i><b>2.5.6</b> Subset and transform data</a></li>
 <li class="chapter" data-level="2.5.7" data-path="intro.html"><a href="intro.html#practice-questions-4"><i class="fa fa-check"></i><b>2.5.7</b> Practice Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#part-6-conditional-statement"><i class="fa fa-check"></i><b>2.6</b> Part 6: conditional statement</a>
-<ul>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#part-6-conditional-statement"><i class="fa fa-check"></i><b>2.6</b> Part 6: conditional statement</a><ul>
 <li class="chapter" data-level="2.6.1" data-path="intro.html"><a href="intro.html#if-statement"><i class="fa fa-check"></i><b>2.6.1</b> if statement</a></li>
 <li class="chapter" data-level="2.6.2" data-path="intro.html"><a href="intro.html#adding-an-else"><i class="fa fa-check"></i><b>2.6.2</b> Adding an <code>else</code></a></li>
 <li class="chapter" data-level="2.6.3" data-path="intro.html"><a href="intro.html#customize-further-else-if"><i class="fa fa-check"></i><b>2.6.3</b> Customize further: else if</a></li>
 <li class="chapter" data-level="2.6.4" data-path="intro.html"><a href="intro.html#use-for-loop"><i class="fa fa-check"></i><b>2.6.4</b> Use “for” loop</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#part-7-splitting-data-implicit-loops"><i class="fa fa-check"></i><b>2.7</b> Part 7: Splitting data &amp; implicit loops</a>
-<ul>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#part-7-splitting-data-implicit-loops"><i class="fa fa-check"></i><b>2.7</b> Part 7: Splitting data &amp; implicit loops</a><ul>
 <li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#splitting-the-data"><i class="fa fa-check"></i><b>2.7.1</b> Splitting the data</a></li>
 <li class="chapter" data-level="2.7.2" data-path="intro.html"><a href="intro.html#function-apply"><i class="fa fa-check"></i><b>2.7.2</b> Function “apply”</a></li>
 <li class="chapter" data-level="2.7.3" data-path="intro.html"><a href="intro.html#another-example"><i class="fa fa-check"></i><b>2.7.3</b> Another example</a></li>
 <li class="chapter" data-level="2.7.4" data-path="intro.html"><a href="intro.html#use-function-lapply"><i class="fa fa-check"></i><b>2.7.4</b> Use function “lapply”</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Prob.html"><a href="Prob.html"><i class="fa fa-check"></i><b>3</b> Introduction/Interpretation to Probability</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="Prob.html"><a href="Prob.html#discrete-distribution-variables"><i class="fa fa-check"></i><b>3.1</b> Discrete Distribution Variables</a>
-<ul>
+<li class="chapter" data-level="3" data-path="Prob.html"><a href="Prob.html"><i class="fa fa-check"></i><b>3</b> Introduction/Interpretation to Probability</a><ul>
+<li class="chapter" data-level="3.1" data-path="Prob.html"><a href="Prob.html#discrete-distribution-variables"><i class="fa fa-check"></i><b>3.1</b> Discrete Distribution Variables</a><ul>
 <li class="chapter" data-level="3.1.1" data-path="Prob.html"><a href="Prob.html#bernoulli-distribution"><i class="fa fa-check"></i><b>3.1.1</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="3.1.2" data-path="Prob.html"><a href="Prob.html#binomial-distribution"><i class="fa fa-check"></i><b>3.1.2</b> Binomial Distribution</a></li>
 <li class="chapter" data-level="3.1.3" data-path="Prob.html"><a href="Prob.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>3.1.3</b> Negative Binomial Distribution</a></li>
 <li class="chapter" data-level="3.1.4" data-path="Prob.html"><a href="Prob.html#poisson-distribution"><i class="fa fa-check"></i><b>3.1.4</b> Poisson Distribution</a></li>
 <li class="chapter" data-level="3.1.5" data-path="Prob.html"><a href="Prob.html#multinomial-distribution"><i class="fa fa-check"></i><b>3.1.5</b> Multinomial Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="Prob.html"><a href="Prob.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.2</b> Continuous Random variables</a>
-<ul>
+<li class="chapter" data-level="3.2" data-path="Prob.html"><a href="Prob.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.2</b> Continuous Random variables</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="Prob.html"><a href="Prob.html#normal-distribution"><i class="fa fa-check"></i><b>3.2.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="3.2.2" data-path="Prob.html"><a href="Prob.html#bivariatemultivariate-normal-distribution"><i class="fa fa-check"></i><b>3.2.2</b> Bivariate/Multivariate normal distribution</a></li>
 <li class="chapter" data-level="3.2.3" data-path="Prob.html"><a href="Prob.html#wishartinverse-wishart-normal-distribution"><i class="fa fa-check"></i><b>3.2.3</b> Wishart/Inverse Wishart normal distribution</a></li>
@@ -222,23 +208,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.10" data-path="Prob.html"><a href="Prob.html#cauchy-distribution"><i class="fa fa-check"></i><b>3.2.10</b> Cauchy Distribution</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html"><i class="fa fa-check"></i><b>4</b> Introduction to Bayesian Inference</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#install-the-jags-for-r"><i class="fa fa-check"></i><b>4.1</b> Install the JAGS for R</a>
-<ul>
+<li class="chapter" data-level="4" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html"><i class="fa fa-check"></i><b>4</b> Introduction to Bayesian Inference</a><ul>
+<li class="chapter" data-level="4.1" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#install-the-jags-for-r"><i class="fa fa-check"></i><b>4.1</b> Install the JAGS for R</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#install-jags"><i class="fa fa-check"></i><b>4.1.1</b> Install JAGS</a></li>
 <li class="chapter" data-level="4.1.2" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#install-package-rjags"><i class="fa fa-check"></i><b>4.1.2</b> Install Package rjags</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#bernoulli-and-binomial-distributions-in-jags"><i class="fa fa-check"></i><b>4.2</b> Bernoulli and Binomial Distributions in JAGS</a>
-<ul>
+<li class="chapter" data-level="4.2" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#bernoulli-and-binomial-distributions-in-jags"><i class="fa fa-check"></i><b>4.2</b> Bernoulli and Binomial Distributions in JAGS</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#set-the-working-directory"><i class="fa fa-check"></i><b>4.2.1</b> Set the working directory</a></li>
 <li class="chapter" data-level="4.2.2" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#define-the-model-and-write-out-the-code"><i class="fa fa-check"></i><b>4.2.2</b> Define the Model and Write out the code</a></li>
 <li class="chapter" data-level="4.2.3" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#model-specification"><i class="fa fa-check"></i><b>4.2.3</b> Model Specification</a></li>
 <li class="chapter" data-level="4.2.4" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#model-results"><i class="fa fa-check"></i><b>4.2.4</b> Model Results</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#beta-distribution-in-jags"><i class="fa fa-check"></i><b>4.3</b> Beta Distribution in JAGS</a>
-<ul>
+<li class="chapter" data-level="4.3" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#beta-distribution-in-jags"><i class="fa fa-check"></i><b>4.3</b> Beta Distribution in JAGS</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#set-the-working-directory-1"><i class="fa fa-check"></i><b>4.3.1</b> Set the working directory</a></li>
+<li class="chapter" data-level="4.3.2" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#define-the-model-and-write-out-the-code-1"><i class="fa fa-check"></i><b>4.3.2</b> Define the Model and Write out the code</a></li>
+<li class="chapter" data-level="4.3.3" data-path="Bayes-Inf.html"><a href="Bayes-Inf.html#model-specification-1"><i class="fa fa-check"></i><b>4.3.3</b> Model Specification</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="Posterior.html"><a href="Posterior.html"><i class="fa fa-check"></i><b>5</b> Summarizing Posterior Distributions</a></li>
@@ -271,18 +255,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Bayes_Inf" class="section level1" number="4">
+<div id="Bayes_Inf" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Introduction to Bayesian Inference</h1>
-<div id="install-the-jags-for-r" class="section level2" number="4.1">
+<div id="install-the-jags-for-r" class="section level2">
 <h2><span class="header-section-number">4.1</span> Install the JAGS for R</h2>
-<div id="install-jags" class="section level3" number="4.1.1">
+<div id="install-jags" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Install JAGS</h3>
 <p>The following are the steps to install the Bayesian sampling program JAGS.</p>
 <ul>
 <li>Go to website <a href="http://mcmc-jags.sourceforge.net" class="uri">http://mcmc-jags.sourceforge.net</a> for instructions. To download the JAGS installation program (JAGS –x.x.x.exe), visit the webpage <a href="https://sourceforge.net/projects/mcmc-jags/files" class="uri">https://sourceforge.net/projects/mcmc-jags/files</a>.</li>
 </ul>
 <div class="figure">
-<img src="download%20Jags.png" alt="" />
+<img src="download%20Jags.png" alt="Figure 1. Install the JAGS" />
 <p class="caption">Figure 1. Install the JAGS</p>
 </div>
 <ul>
@@ -290,73 +274,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Location, select the folder created earlier, e.g. C:\Bayesian\JAGS-4.2.0, and follow the installation instructions. If you are a mac user, then don’t worry about the file location.</li>
 </ul>
 </div>
-<div id="install-package-rjags" class="section level3" number="4.1.2">
+<div id="install-package-rjags" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Install Package rjags</h3>
 <p>The following are the steps to install R package rjags (to let R talk to JAGS). There are two ways to do this:</p>
 <p>In the RStudio menu bar at the top of the screen, select Tools→Install Packages, then type rjags under Packages.</p>
 <div class="figure">
-<img src="install%20rjags%20package.png" alt="" />
+<img src="install%20rjags%20package.png" alt="Figure 2. Install the “rjags” R package" />
 <p class="caption">Figure 2. Install the “rjags” R package</p>
 </div>
 <ul>
-<li>Or you can in the R Studio console window, type <code>install.packages("rjags")</code></li>
+<li>Or you can in the R Studio console window, type <code>install.packages(&quot;rjags&quot;)</code></li>
 </ul>
 </div>
 </div>
-<div id="bernoulli-and-binomial-distributions-in-jags" class="section level2" number="4.2">
+<div id="bernoulli-and-binomial-distributions-in-jags" class="section level2">
 <h2><span class="header-section-number">4.2</span> Bernoulli and Binomial Distributions in JAGS</h2>
-<div id="set-the-working-directory" class="section level3" number="4.2.1">
+<div id="set-the-working-directory" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Set the working directory</h3>
-<p>To run this file, we create a folder called ‘Bernoulli and Binomial.’ Currently, the code assumes this is in the C drive as C:\Bayes Course\Analyses\Bernoulli and Binomial\</p>
-<p>Inside the ‘Bernoulli and Binomial’ folder, create a subfolder called ‘R.’ Currently, the code assumes this is in the C drive as C:\Bayes Course\Analyses\Bernoulli and Binomial\R\ . We store this file in the ‘R’ folder.</p>
+<p>To run this file, we create a folder called ‘Bernoulli and Binomial’. Currently, the code assumes this is in the C drive as C:\Bayes Course\Analyses\Bernoulli and Binomial\</p>
+<p>Inside the ‘Bernoulli and Binomial’ folder, create a subfolder called ‘R’. Currently, the code assumes this is in the C drive as C:\Bayes Course\Analyses\Bernoulli and Binomial\R\ . We store this file in the ‘R’ folder.</p>
 <p>The following is the R code demonstrating a Bayesian analysis using R and JAGS.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="Bayes-Inf.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove objects from memory</span></span>
-<span id="cb1-2"><a href="Bayes-Inf.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
-<span id="cb1-3"><a href="Bayes-Inf.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define folders with locations</span></span>
-<span id="cb1-4"><a href="Bayes-Inf.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is where you can change the location of the &quot;main folder&quot; </span></span>
-<span id="cb1-5"><a href="Bayes-Inf.html#cb1-5" aria-hidden="true" tabindex="-1"></a>main.folder <span class="ot">&lt;-</span> <span class="st">&quot;Bayes Course/Analyses/Bernoulli and Binomial/&quot;</span></span>
-<span id="cb1-6"><a href="Bayes-Inf.html#cb1-6" aria-hidden="true" tabindex="-1"></a>R.folder <span class="ot">&lt;-</span> <span class="fu">paste0</span>(main.folder, <span class="st">&quot;R/&quot;</span>)</span>
-<span id="cb1-7"><a href="Bayes-Inf.html#cb1-7" aria-hidden="true" tabindex="-1"></a>jags.folder <span class="ot">&lt;-</span> <span class="fu">paste0</span>(main.folder, <span class="st">&quot;jags/&quot;</span>)</span>
-<span id="cb1-8"><a href="Bayes-Inf.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(jags.folder)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Remove objects from memory</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"># Define folders with locations</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Here is where you can change the location of the &quot;main folder&quot; </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">main.folder &lt;-<span class="st"> &quot;Bayes Course/Analyses/Bernoulli and Binomial/&quot;</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">R.folder &lt;-<span class="st"> </span><span class="kw">paste0</span>(main.folder, <span class="st">&quot;R/&quot;</span>)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">jags.folder &lt;-<span class="st"> </span><span class="kw">paste0</span>(main.folder, <span class="st">&quot;jags/&quot;</span>)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw">dir.create</span>(jags.folder)</a></code></pre></div>
 <pre><code>## Warning in dir.create(jags.folder): &#39;Bayes Course/Analyses/Bernoulli and
 ## Binomial/jags&#39; already exists</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="Bayes-Inf.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the packages</span></span>
-<span id="cb3-2"><a href="Bayes-Inf.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rjags)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Call the packages</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(rjags)</a></code></pre></div>
+<pre><code>## Warning: package &#39;rjags&#39; was built under R version 4.0.2</code></pre>
 <pre><code>## Loading required package: coda</code></pre>
+<pre><code>## Warning: package &#39;coda&#39; was built under R version 4.0.2</code></pre>
 <pre><code>## Linked to JAGS 4.3.0</code></pre>
 <pre><code>## Loaded modules: basemod,bugs</code></pre>
 </div>
-<div id="define-the-model-and-write-out-the-code" class="section level3" number="4.2.2">
+<div id="define-the-model-and-write-out-the-code" class="section level3">
 <h3><span class="header-section-number">4.2.2</span> Define the Model and Write out the code</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="Bayes-Inf.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the model in JAGS code</span></span>
-<span id="cb7-2"><a href="Bayes-Inf.html#cb7-2" aria-hidden="true" tabindex="-1"></a>modelstring <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="st">&quot;</span></span>
-<span id="cb7-3"><a href="Bayes-Inf.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">model{</span></span>
-<span id="cb7-4"><a href="Bayes-Inf.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">theta &lt;- .7</span></span>
-<span id="cb7-5"><a href="Bayes-Inf.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">x ~ dbern(theta)</span></span>
-<span id="cb7-6"><a href="Bayes-Inf.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">y ~ dbin(theta, J)</span></span>
-<span id="cb7-7"><a href="Bayes-Inf.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">} # closes the model</span></span>
-<span id="cb7-8"><a href="Bayes-Inf.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>) <span class="co"># closes the model as string</span></span>
-<span id="cb7-9"><a href="Bayes-Inf.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Write out the code to a file</span></span>
-<span id="cb7-10"><a href="Bayes-Inf.html#cb7-10" aria-hidden="true" tabindex="-1"></a>model.file.name <span class="ot">&lt;-</span> <span class="st">&quot;Bernoulli and Binomial Distributions.txt&quot;</span></span>
-<span id="cb7-11"><a href="Bayes-Inf.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span>(<span class="at">x=</span>modelstring, <span class="at">file=</span><span class="fu">paste0</span>(jags.folder, model.file.name), <span class="at">append=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># Define the model in JAGS code</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">modelstring &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">model{</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">theta &lt;- .7</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">x ~ dbern(theta)</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="st">y ~ dbin(theta, J)</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="st">} # closes the model</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="st">&quot;</span>) <span class="co"># closes the model as string</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co"># Write out the code to a file</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">model.file.name &lt;-<span class="st"> &quot;Bernoulli and Binomial Distributions.txt&quot;</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="kw">write</span>(<span class="dt">x=</span>modelstring, <span class="dt">file=</span><span class="kw">paste0</span>(jags.folder, model.file.name), <span class="dt">append=</span><span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
-<div id="model-specification" class="section level3" number="4.2.3">
+<div id="model-specification" class="section level3">
 <h3><span class="header-section-number">4.2.3</span> Model Specification</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="Bayes-Inf.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define data used in the model</span></span>
-<span id="cb8-2"><a href="Bayes-Inf.html#cb8-2" aria-hidden="true" tabindex="-1"></a>J<span class="ot">=</span><span class="dv">10</span>  <span class="co"># number of trials in the binomial model</span></span>
-<span id="cb8-3"><a href="Bayes-Inf.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange the data to supply to JAGS</span></span>
-<span id="cb8-4"><a href="Bayes-Inf.html#cb8-4" aria-hidden="true" tabindex="-1"></a>jags.data <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;J&quot;</span><span class="ot">=</span>J)</span>
-<span id="cb8-5"><a href="Bayes-Inf.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define entities to monitor</span></span>
-<span id="cb8-6"><a href="Bayes-Inf.html#cb8-6" aria-hidden="true" tabindex="-1"></a>entities.to.monitor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)</span>
-<span id="cb8-7"><a href="Bayes-Inf.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose features of MCMC</span></span>
-<span id="cb8-8"><a href="Bayes-Inf.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   The number of iterations </span></span>
-<span id="cb8-9"><a href="Bayes-Inf.html#cb8-9" aria-hidden="true" tabindex="-1"></a>n.iters <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb8-10"><a href="Bayes-Inf.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Run MCMC</span></span>
-<span id="cb8-11"><a href="Bayes-Inf.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   Move to the JAGS folder</span></span>
-<span id="cb8-12"><a href="Bayes-Inf.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(jags.folder)</span>
-<span id="cb8-13"><a href="Bayes-Inf.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the model</span></span>
-<span id="cb8-14"><a href="Bayes-Inf.html#cb8-14" aria-hidden="true" tabindex="-1"></a>jags.model.initialized <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(<span class="at">file=</span>model.file.name,</span>
-<span id="cb8-15"><a href="Bayes-Inf.html#cb8-15" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">data=</span>jags.data)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Define data used in the model</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">J=<span class="dv">10</span>  <span class="co"># number of trials in the binomial model</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co"># Arrange the data to supply to JAGS</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">jags.data &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;J&quot;</span>=J)</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co"># Define entities to monitor</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">entities.to.monitor &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co"># Choose features of MCMC</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#   The number of iterations </span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">n.iters =<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co"># Run MCMC</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#   Move to the JAGS folder</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="kw">setwd</span>(jags.folder)</a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co"># Initialize the model</span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">jags.model.initialized &lt;-<span class="st"> </span><span class="kw">jags.model</span>(<span class="dt">file=</span>model.file.name,</a>
+<a class="sourceLine" id="cb10-15" data-line-number="15">                                     <span class="dt">data=</span>jags.data)</a></code></pre></div>
 <pre><code>## Compiling model graph
 ##    Resolving undeclared variables
 ##    Allocating nodes
@@ -367,19 +353,19 @@ Location, select the folder created earlier, e.g. C:\Bayesian\JAGS-4.2.0, and f
 ## 
 ## Initializing model</code></pre>
 </div>
-<div id="model-results" class="section level3" number="4.2.4">
+<div id="model-results" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Model Results</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="Bayes-Inf.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now obtain the distribution</span></span>
-<span id="cb10-2"><a href="Bayes-Inf.html#cb10-2" aria-hidden="true" tabindex="-1"></a>jags.model.fitted <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(</span>
-<span id="cb10-3"><a href="Bayes-Inf.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">model=</span>jags.model.initialized,</span>
-<span id="cb10-4"><a href="Bayes-Inf.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable.names=</span>entities.to.monitor,</span>
-<span id="cb10-5"><a href="Bayes-Inf.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.iter=</span>n.iters,</span>
-<span id="cb10-6"><a href="Bayes-Inf.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">progress.bar=</span><span class="st">&quot;gui&quot;</span>)</span>
-<span id="cb10-7"><a href="Bayes-Inf.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the results</span></span>
-<span id="cb10-8"><a href="Bayes-Inf.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(jags.model.fitted, <span class="at">smooth =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># Now obtain the distribution</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">jags.model.fitted &lt;-<span class="st"> </span><span class="kw">coda.samples</span>(</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">  <span class="dt">model=</span>jags.model.initialized,</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">  <span class="dt">variable.names=</span>entities.to.monitor,</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">  <span class="dt">n.iter=</span>n.iters,</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">  <span class="dt">progress.bar=</span><span class="st">&quot;gui&quot;</span>)</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co"># Plot the results</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="kw">plot</span>(jags.model.fitted, <span class="dt">smooth =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="Bayes_R_Book_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="Bayes-Inf.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numerically summarize the results</span></span>
-<span id="cb11-2"><a href="Bayes-Inf.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(jags.model.fitted)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># Numerically summarize the results</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">summary</span>(jags.model.fitted)</a></code></pre></div>
 <pre><code>## 
 ## Iterations = 1:10
 ## Thinning interval = 1 
@@ -389,34 +375,62 @@ Location, select the folder created earlier, e.g. C:\Bayesian\JAGS-4.2.0, and f
 ## 1. Empirical mean and standard deviation for each variable,
 ##    plus standard error of the mean:
 ## 
-##   Mean     SD Naive SE Time-series SE
-## x  0.5 0.5270   0.1667         0.1667
-## y  7.4 0.6992   0.2211         0.1453
+##   Mean    SD Naive SE Time-series SE
+## x  0.7 0.483   0.1528         0.1528
+## y  7.0 1.414   0.4472         0.2942
 ## 
 ## 2. Quantiles for each variable:
 ## 
-##    2.5% 25% 50% 75% 97.5%
-## x 0.000   0 0.5   1     1
-## y 6.225   7 7.5   8     8</code></pre>
+##   2.5%  25% 50% 75% 97.5%
+## x    0 0.25 1.0   1 1.000
+## y    5 6.00 7.5   8 8.775</code></pre>
 </div>
 </div>
-<div id="beta-distribution-in-jags" class="section level2" number="4.3">
+<div id="beta-distribution-in-jags" class="section level2">
 <h2><span class="header-section-number">4.3</span> Beta Distribution in JAGS</h2>
-<div id="set-the-working-directory-1" class="section level3" number="4.3.1">
+<div id="set-the-working-directory-1" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Set the working directory</h3>
-<p>To run this file, we create a folder called ‘Bernoulli and Binomial.’ Currently, the code assumes this is in the C drive as C:\Bayes Course\Analyses\Bernoulli and Binomial\</p>
-<p>Inside the ‘Bernoulli and Binomial’ folder, create a subfolder called ‘R.’ Currently, the code assumes this is in the C drive as C:\Bayes Course\Analyses\Bernoulli and Binomial\R\ . We store this file in the ‘R’ folder.</p>
+<p>To run this file, we create a folder called ‘Bernoulli and Binomial’. Currently, the code assumes this is in the C drive as C:\Bayes Course\Analyses\Bernoulli and Binomial\</p>
+<p>Inside the ‘Bernoulli and Binomial’ folder, create a subfolder called ‘R’. Currently, the code assumes this is in the C drive as C:\Bayes Course\Analyses\Bernoulli and Binomial\R\ . We store this file in the ‘R’ folder.</p>
 <p>The following is the R code demonstrating a Bayesian analysis using R and JAGS.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="Bayes-Inf.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define folders with locations</span></span>
-<span id="cb13-2"><a href="Bayes-Inf.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is where you can change the location of the &quot;main folder&quot; </span></span>
-<span id="cb13-3"><a href="Bayes-Inf.html#cb13-3" aria-hidden="true" tabindex="-1"></a>main.folder <span class="ot">&lt;-</span> <span class="st">&quot;Bayes Course/Analyses/Bernoulli and Binomial/&quot;</span></span>
-<span id="cb13-4"><a href="Bayes-Inf.html#cb13-4" aria-hidden="true" tabindex="-1"></a>R.folder <span class="ot">&lt;-</span> <span class="fu">paste0</span>(main.folder, <span class="st">&quot;R/&quot;</span>)</span>
-<span id="cb13-5"><a href="Bayes-Inf.html#cb13-5" aria-hidden="true" tabindex="-1"></a>jags.folder <span class="ot">&lt;-</span> <span class="fu">paste0</span>(main.folder, <span class="st">&quot;jags2/&quot;</span>)</span>
-<span id="cb13-6"><a href="Bayes-Inf.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(jags.folder)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># Define folders with locations</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co"># Here is where you can change the location of the &quot;main folder&quot; </span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">main.folder &lt;-<span class="st"> &quot;Bayes Course/Analyses/Bernoulli and Binomial/&quot;</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">R.folder &lt;-<span class="st"> </span><span class="kw">paste0</span>(main.folder, <span class="st">&quot;R/&quot;</span>)</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">jags.folder &lt;-<span class="st"> </span><span class="kw">paste0</span>(main.folder, <span class="st">&quot;jags&quot;</span>)</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="kw">dir.create</span>(jags.folder)</a></code></pre></div>
 <pre><code>## Warning in dir.create(jags.folder): &#39;Bayes Course/Analyses/Bernoulli and
-## Binomial/jags2&#39; already exists</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="Bayes-Inf.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the packages</span></span>
-<span id="cb15-2"><a href="Bayes-Inf.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rjags)</span></code></pre></div>
+## Binomial/jags&#39; already exists</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co"># Call the packages</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw">library</span>(rjags)</a></code></pre></div>
+</div>
+<div id="define-the-model-and-write-out-the-code-1" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Define the Model and Write out the code</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># Define the model in JAGS code</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">modelstring &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="st">model{</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="st">x[1] ~ dbeta(1,1)</span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="st">x[2] ~ dbeta(5,5)</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="st">x[3] ~ dbeta(5,17)</span></a>
+<a class="sourceLine" id="cb18-7" data-line-number="7"><span class="st">x[4] ~ dbeta(.5, .5)</span></a>
+<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="st">} # closes the model</span></a>
+<a class="sourceLine" id="cb18-9" data-line-number="9"><span class="st">&quot;</span>) <span class="co"># closes the model as string</span></a>
+<a class="sourceLine" id="cb18-10" data-line-number="10"><span class="co"># Write out the code to a file</span></a>
+<a class="sourceLine" id="cb18-11" data-line-number="11">model.file.name &lt;-<span class="st"> &quot;Beta Distributions.txt&quot;</span></a>
+<a class="sourceLine" id="cb18-12" data-line-number="12"><span class="kw">write</span>(<span class="dt">x=</span>modelstring, <span class="dt">file=</span><span class="kw">paste0</span>(jags.folder, model.file.name), <span class="dt">append=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+</div>
+<div id="model-specification-1" class="section level3">
+<h3><span class="header-section-number">4.3.3</span> Model Specification</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co"># Define entities to monitor</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">entities.to.monitor &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;x&quot;</span>)</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="co"># Choose features of MCMC</span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="co">#     the total number of iterations </span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5">n.iters =<span class="st"> </span><span class="dv">40000</span></a>
+<a class="sourceLine" id="cb19-6" data-line-number="6"><span class="co"># Run MCMC</span></a>
+<a class="sourceLine" id="cb19-7" data-line-number="7"><span class="co">#   Move to the JAGS folder</span></a>
+<a class="sourceLine" id="cb19-8" data-line-number="8"><span class="co"># setwd(jags.folder)</span></a>
+<a class="sourceLine" id="cb19-9" data-line-number="9"><span class="co"># Initialize the model</span></a>
+<a class="sourceLine" id="cb19-10" data-line-number="10"><span class="co"># jags.model.fitted &lt;- jags.model(file=model.file.name)</span></a></code></pre></div>
 
 </div>
 </div>

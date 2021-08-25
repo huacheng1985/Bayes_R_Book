@@ -1,0 +1,8 @@
+
+model{
+x[1] ~ dbeta(1,1)
+x[2] ~ dbeta(5,5)
+x[3] ~ dbeta(5,17)
+x[4] ~ dbeta(.5, .5)
+} # closes the model
+

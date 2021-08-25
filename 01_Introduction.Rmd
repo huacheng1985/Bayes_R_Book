@@ -35,7 +35,7 @@ B
 bmi > 25  # relational expressions
 ```
 
-### Create vectors
+### Generate a sequence of numbers 
 
 ```{r}
 seq(4,9) #sequence from 4 to 9, increment defaults to 1, alternatively, 4:9

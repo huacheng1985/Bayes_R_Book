@@ -148,3 +148,8 @@ model-specification
 model-results
 beta-distribution-in-jags
 set-the-working-directory-1
+question-1-4
+question-2-4
+question-3-4
+define-the-model-and-write-out-the-code-1
+model-specification-1
