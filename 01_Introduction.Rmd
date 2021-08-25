@@ -247,9 +247,13 @@ library(car)
 data(Prestige)
 # Check the dimension of the data
 dim(Prestige) # 102 observations, each observation has 6 variables.
+# Checking the variable names
+names(Prestige)
 # subset the data
-Prestige[1:10,1:3]
-Prestige[,1:3]
+Prestige[1:10,1:3] #selecting the first 10 subjects with first three variables 
+Prestige[,1:3] #selecting all subjects with first three variables 
+Prestige$education #selecting the variable "education"
+Prestige[1:10,c("education","income")] #selecting the first 10 subjects with the variables "education" and "income"
 ```
 
 ### Select Specific Data
