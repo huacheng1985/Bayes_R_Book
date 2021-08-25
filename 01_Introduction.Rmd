@@ -262,6 +262,10 @@ Prestige[1:10,c("education","income")] #selecting the first 10 subjects with the
 # put 1's in the first col., others in 2-4th
 X=cbind(1,as.matrix(Prestige[,1:3])) 
 X
+# adding ID
+X1=cbind(seq(1:102),as.matrix(Prestige[,1:3])) 
+colnames(X1)= c("ID","education", "income", "women")
+X1
 # select only the 4th column of the dataset: Prestige
 y=Prestige[,4] 
 y
@@ -297,22 +301,34 @@ diag(3)
 ```
 
 ### Practice Questions
+please upload the Grit study.csv
 
 #### Question 1
-
-Subsetting: select the 10 subjects with IDs from 11 to 20, under two variables:women and education.
+check the dimentions and names of the dataset 
 
 #### Question 2
 
-Calculate the correlation and covariance between the two variables:women and education
+Using the "describe" function from "psych" package to summarize the dataset
 
 #### Question 3
+creat a new variable called "ID" for the given dataset
+
+#### Question 4
+rename the last three columns as "internal", "external", and "support"
+
+#### Question 5
+Subsetting: select the 10 subjects with IDs from 11 to 20, under two variables: internal and grit 
+
+#### Question 6
+Calculate the correlation and covariance between the two variables:internal and grit 
+
+#### Question 7
 
 Extract the diagonal elements of the covariance matrix
 
-#### Question 4
-
+#### Question 8
 Calculate the inverse matrix of the covariance matrix
+
 
 ## Part 5: Factor, List, and Dataframe
 
