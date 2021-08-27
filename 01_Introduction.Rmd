@@ -459,7 +459,11 @@ subset Prestige dataset for subjects whose income is higher than 10,000 and who 
 
 ### if statement
 
-If statements tell R to run a line of code if a condition returns `TRUE`. An if statement is a good choice here because it allows us to control which statement is printed depending on which outcome occurs.
+`if` statements tell R to run a line of code if a condition returns `TRUE`. An `if` statement is a good choice here because it allows us to control which statement is printed depending on which outcome occurs.
+
+`if` Statement: use it to execute a block of code, if a specified condition is true
+
+![Figure 1: The if Statement](if_statement.png)
 
 ```{r}
 time=c(9.2,7,7.1,8.2,10.1,11,9.3,4.5,6.6,7.9,10.8,7.8,8.3)
@@ -473,7 +477,78 @@ if (rate[1,2]=="pass"){
 }
 ```
 
-### Adding an `else`
+Another simple example:
+
+```{r}
+# Making a simple comparison
+x <- 7
+y <- 5
+if(x > y) {
+  print("x is greater")
+}
+
+```
+
+Likewise, you can use following comparison operators to compare two values:
+
+![Figure 2: Comparison Operators](comparison operators.png)
+
+### More Example
+
+In R, any non-zero value is considered `TRUE`, whereas a zero is considered `FALSE.` That’s why all the below if statements are valid.
+
+```{r}
+# mathematical expression
+x <- 7
+y <- 5
+if(x + y) {
+  print("True")
+}
+
+# any non-zero value
+if(-3) {
+  print("True")
+}
+```
+
+`if` Statement Without Curly Braces: If you have only one statement to execute, you can skip curly braces.
+
+```{r}
+x <- 7
+y <- 5
+if(x > y) print("x is greater")
+```
+
+Nested if Statement: You can write one `if` statement inside another `if` statement to test more than one condition and return different results.
+
+```{r}
+x <- 7
+y <- 5
+z <- 2
+if(x > y) {
+  print("x is greater than y")
+  if(x > z) print("x is greater than y and z")
+}
+```
+
+
+### The `else` statement
+
+Use `else` statement to execute a block of code, if the condition is false.
+
+![Figure 3: if else statement syntax](if else statement.png)
+
+A Simple if-else comparison:
+
+```{r}
+x <- 7
+y <- 5
+if(x > y) {
+  print("x is greater")
+} else {
+  print("y is greater")
+}
+```
 
 ```{r}
 # use the if function to check the second participant's pass/fail condition
@@ -484,9 +559,29 @@ if (rate[2,2]=="pass"){
           } 
 ```
 
-### Customize further: else if
+### The `else if` statement
+
+Use `else if` statement to specify a new condition to test, if the first condition is false.
 
 The `else if` statement allows you to further customize your control structure. You can add as many `else` if statements as you like.
+
+![Figure 4: else if statement syntax](else if syntax.png)
+
+Using `else-if` statement
+
+```{r}
+x <- 5
+y <- 5
+if(x > y) {
+  print("x is greater")
+} else if(x < y) {
+  print("y is greater")
+} else {
+  print("x and y are equal")
+}
+```
+
+In R, you can use as many `else if` statements as you want in your program. There’s no limit. However, it’s not a best practice when you want to make series of decisions. You can use switch() function as an efficient way.
 
 ```{r}
 # This time we check the participant's studying time from "rate" data.
@@ -500,7 +595,247 @@ if(rate[1,1]<=7){
     }
 ```
 
+Multiple Conditions:
+
+To join two or more conditions into a single `if` statement, use logical operators viz. `&&` (and), `||` (or) and `!` (not). `&&` (and) expression is True, if all the conditions are true.
+
+```{r}
+x <- 7
+y <- 5
+z <- 2
+if(x > y && x > z) {
+  print("x is greater")
+}
+```
+
+`||` (or) expression is True, if at least one of the conditions is True.
+
+```{r}
+x <- 7
+y <- 5
+z <- 9
+if(x > y || x > z) {
+  print("x is greater than y or z")
+}
+```
+
+`!` (not) expression is True, if the condition is false.
+
+```{r}
+x <- 7
+y <- 5
+if(!(x < y)) {
+  print("x is greater")
+}
+```
+
+### One Line If…Else
+
+If you have only one statement to execute, one for if , and one for else , you can put it all on the same line:
+
+![Figure 5: One line if else syntax](one line if else.png)
+Examples
+
+```{r}
+x <- 7
+y <- 5
+if (x > y) print("x is greater") else print("y is greater")
+```
+
+You can also use it to select variable assignment.
+
+```{r}
+x <- 7
+y <- 5
+max <- if (x > y) x else y
+max
+```
+
+### The ifelse() Function
+
+In R, conditional statements are not vector operations. They deal only with a single value.
+
+If you pass in, for example, a vector, the `if` statement will only check the very first element and issue a warning.
+
+```{r}
+v <- 1:6
+if(v %% 2) {
+  print("odd")
+} else {
+  print("even")
+}
+```
+
+The solution to this is the `ifelse()` function. The `ifelse()` function checks the condition for every element of a vector and selects elements from the specified vector depending upon the result.
+
+Here’s the syntax for the `ifelse()` function.
+
+![Figure 6: if else function](if else function.png)
+
+Example:
+
+```{r}
+v <- c(1,2,3,4,5,6)
+ifelse(v %% 2 == 0, "even", "odd")
+```
+
+You can even use this function to choose values from two vectors.
+
+```{r}
+v1 <- c(1,2,3,4,5,6)
+v2 <- c("a","b","c","d","e","f")
+ifelse(c(TRUE,FALSE,TRUE,FALSE,TRUE,FALSE), v1, v2)
+```
+
+### R switch() function
+
+The nested if…else statement is especially useful when you want to execute a certain block of code when a condition is met.
+
+However, if you want to select values based only on a condition, you have a better option: Use the `switch()` function.
+
+Here’s the syntax of the `switch()` function:
+
+![Figure 7: Switch function Syntax](switch function.png)
+
+`switch()` with String Expression
+
+If the expression is a character string, `switch()` will return the value based on the name of the element.
+
+```{r}
+# Select element by name and return its value
+x <- "a"
+v <- switch(x, "a"="apple", "b"="banana", "c"="cherry")
+v
+
+x <- "c"
+v <- switch(x, "a"="apple", "b"="banana", "c"="cherry")
+v
+```
+
+In case of multiple matches, the value of first matching element is returned.
+
+```{r}
+# Select first match and return its value
+x <- "a"
+v <- switch(x, "a"="apple", "a"="apricot", "a"="avocado")
+v
+```
+
+Default case
+
+In the case of no match, the unnamed element (if any) is returned. If there are more than one unnamed elements present, an error is raised.
+
+```{r}
+# Select unnamed element in the case of no match
+x <- "z"
+v <- switch(x, "a"="apple", "b"="banana", "c"="cherry", "grapes")
+v
+```
+
+`switch()` with Numeric Expression
+
+The numeric version of `switch()` works in a slightly different way. Instead of using names, the return value is determined purely with positional matching (Index).
+
+```{r}
+# Select element by position and return its value
+x <- 1
+v <- switch(x, "apple", "banana", "cherry")
+v
+
+x <- 3
+v <- switch(x, "apple", "banana", "cherry")
+v
+```
+
+If the numeric value is out of range (greater than the number of choices), `NULL` is returned.
+
+```{r}
+x <- 5
+v <- switch(x, "apple", "banana", "cherry")
+v
+```
+
 ### Use "for" loop
+
+The `for` statement in R is a bit different from what you usually use in other programming languages.
+
+Rather than iterating over a numeric progression, R’s `for` statement iterates over the items of a vector or a list. The items are iterated in the order that they appear in the vector.
+
+![Figure 8: For Loop Syntax](for loop syntax.png)
+
+Basic Examples
+
+```{r}
+# Iterate through a vector
+colors <- c("red","green","blue","yellow")
+for (x in colors) {
+  print(x)
+}
+```
+
+```{r}
+# Iterate through a list
+l <- list(3.14, "Hi", c(1,2,3))
+for (x in l) {
+  print(x)
+}
+```
+
+If you need to execute a group of statements for a specified number of times, use sequence operator : or built-in function `seq()`
+
+```{r}
+# Print 'Hello!' 3 times
+for (x in 1:3) {
+  print("Hello!")
+}
+# Iterate a sequence and square each element
+for (x in seq(from=2,to=8,by=2)) {
+  print(x^2)
+}
+```
+
+`for` Loop Without Curly Braces: If you have only one statement to execute, you can skip curly braces.
+
+```{r}
+# Print the numbers 0 to 4
+for (x in 0:4) print(x)
+```
+
+Nested for loop:
+
+A nested for loop is a loop within a loop. They are useful for when you want to repeat something several times for several things.
+
+```{r}
+for(x in 1:3) {
+  for(y in 1:2) {
+    print(paste(x, y))
+  }
+}
+```
+
+`Break` in for Loop: In R, `break` statement is used to exit the loop immediately. It simply jumps out of the loop altogether, and the program continues after the loop.
+
+```{r}
+# Break the loop at 'blue'
+colors <- c("red","green","blue","yellow")
+for (x in colors) {
+  if (x == "blue")
+    break
+  print(x)
+}
+```
+
+Next (continue) in for Loop: The next statement skips the current iteration of a loop and continues with the next iteration.
+
+```{r}
+# Skip 'blue' using continue statement
+colors <- c("red","green","blue","yellow")
+for (x in colors) {
+  if (x == "blue")
+    next
+  print(x)
+}
+```
 
 ```{r}
 # Use the for loop to check whether they pass the exam
@@ -523,7 +858,206 @@ for (i in 1:nrow(rate)){
 }
 ```
 
-## Part 7: Splitting data & implicit loops
+### R Repeat Loop
+
+A `repeat` loop just repeats a block of code indefinitely. In this loop, no condition checking is performed in order to end the loop.
+
+To stop repeating the loop, you must put a condition explicitly inside it with break statement. Failing to do so will create an infinite/endless loop.
+
+![Figure 9: Repeat function Syntax](repeat syntax.png)
+
+Examples:
+
+A repeat loop without a break statement results into an *infinite/endless* loop.
+
+```{r}
+# infinite loop
+# repeat {
+#  print("Press Esc to stop me!")
+# }
+```
+
+However, you can put a condition explicitly inside the body of the loop and use the break statement to exit the loop.
+
+```{r}
+# Iterate until x becomes 5
+x <- 1
+repeat {
+  print(x)
+  if (x > 4)
+    break
+  x <- x + 1
+}
+```
+
+## Part 7: R functions
+
+### Make a function in R
+
+In simple terms, a function is a block of statements that can be used repeatedly in a program. R provides many built-in functions and allows programmers to define their own functions.
+
+Here’s the syntax of a function in R:
+
+![Figure 10: Syntax of R function](R function syntax.png)
+
+Create a Function: To define a function in R, use the `function` command and assign the results to a function name.
+
+```{r}
+# Create a function 'myfunc'
+myfunc <- function() {
+  print('Hello, World!')
+}
+```
+
+If you have only one statement to execute, you can skip curly braces.
+
+```{r}
+# Write a function in one line
+myfunc <- function() print('Hello, World!')
+```
+
+Call a Function: You can call (run) the function by adding parentheses after the function’s name.
+
+```{r}
+myfunc <- function() {
+  print('Hello, World!')
+}
+myfunc()
+```
+
+Pass Arguments: You can send information to a function through arguments. Arguments are declared after the function keyword in parentheses.
+
+You can send as many arguments as you like, just separate them by a comma`,`.
+
+```{r}
+sum <- function(x, y) {
+  x + y
+}
+sum(2, 3)
+```
+
+Named Arguments: If you pass arguments to a function by name, you can put those arguments in any order.
+
+```{r}
+pow <- function(x, y) {
+  x ^ y
+}
+
+# using argument names
+pow(x=2, y=3)
+
+# changing the order
+pow(y=3, x=2)
+```
+
+Default Argument Value: You can assign a default value to an argument. So, when you call the function without argument, it uses the default value.
+
+```{r}
+# Set default value ‘3’ to second argument
+pow <- function(x, y=3) {
+  x ^ y
+}
+
+# function will use default y value
+pow(2)
+
+# specifying a different y value
+pow(2, 4)
+```
+
+Return a Value: To return a value from a function, simply use a `return()` function.
+
+```{r}
+sum <- function(x, y) {
+  return(x + y)
+}
+
+sum(2, 3)
+```
+
+If you do not include any `return()` function, it automatically returns the last expression.
+
+```{r}
+sum <- function(x, y) {
+  x + y
+}
+
+sum(2, 3)
+```
+
+Return Multiple Values: You can return multiple values by saving the results in a vector (or a list) and returning it.
+
+```{r}
+math <- function(x, y) {
+  add <- x + y
+  sub <- x - y
+  mul <- x * y
+  div <- x / y
+  c(addition = add, subtraction = sub,
+    multiplication = mul, division = div)
+}
+
+math(6, 3)
+```
+
+Lazy Evaluation: R functions perform lazy evaluation that dramatically extends the expressive power of functions. It is the technique of not evaluating arguments unless and until they are needed in the function.
+
+```{r}
+myfunc <- function(x, y) {
+  if(!x){
+    return(y)
+  }
+  else{
+    return(x)
+  }
+}
+
+# y is not evaluated so not including it causes no harm
+myfunc(6)
+
+# y is evaluated so not including it raises error
+# myfunc(0)
+```
+
+Variable Length Argument
+
+In R, it is often convenient to accept a variable number of arguments passed to the function. To do this, you specify an ellipsis `(...)` in the arguments when defining a function.
+
+For example, below function prints the first argument and then passes all the other arguments to the `summary()` function.
+
+```{r}
+myfunc <- function(x,...) {print(x); summary(...)}
+v <- 1:10
+
+myfunc("Summary of v:", v)
+```
+
+You can also directly refer to the arguments within the argument list (...) through the variables ..1, ..2, to ..9.
+
+For example, ..1 refers to the first argument, ..2 refers to the second, and so on.
+
+```{r}
+myfunc <- function(...) {cat(..1, ..2)}
+
+myfunc("Hello", "World!")
+```
+
+It is also possible to read the arguments from the argument list by converting the object (...) to a list within the function body.
+
+For example, below function simply sums all its arguments:
+
+```{r}
+addAll <- function(x,...) {
+  args <- list(...)
+  for (a in args) x <- x + a
+  x
+}
+
+addAll(1,2)
+addAll(1,2,3,4,5)
+```
+
+## Part 8: Splitting data & implicit loops
 
 ### Splitting the data
 
@@ -567,11 +1101,12 @@ x <- cbind(x1 = rep(3,8), x2 = c(4:1, 2:5))
 # Give rownames:a to h
 dimnames(x)[[1]] <- letters[1:8]
 # Use function sum() apply to each column
-col.sums <- apply(x, 2, sum) 
+# Clean the environment, then run the following function
+# col.sums <- apply(x, 2, sum) 
 # Use function sum() apply to each row
-row.sums <- apply(x, 1, sum)
+# row.sums <- apply(x, 1, sum)
 # Generate a table for the row sums, column sums and grand total
-rbind(cbind(x, Rtot = row.sums), Ctot = c(col.sums, sum(col.sums)))
+# rbind(cbind(x, Rtot = row.sums), Ctot = c(col.sums, sum(col.sums)))
 ```
 
 ### Use function "lapply"

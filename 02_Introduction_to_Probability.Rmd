@@ -89,7 +89,6 @@ x
 ```
 
 
-
 #### Exericise
 
 ### Negative Binomial Distribution
