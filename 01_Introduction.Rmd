@@ -458,8 +458,7 @@ subset Prestige dataset for subjects whose income is higher than 10,000 and who 
 ## Part 6: conditional statement
 
 ### if statement
-
-`if` statements tell R to run a line of code if a condition returns `TRUE`. An `if` statement is a good choice here because it allows us to control which statement is printed depending on which outcome occurs.
+`if` statement is used in evaluating a logical or mathematical expression and getting the desired output based on the specified criteria.
 
 `if` Statement: use it to execute a block of code, if a specified condition is true
 
@@ -492,6 +491,11 @@ if(x > y) {
 Likewise, you can use following comparison operators to compare two values:
 
 ![Figure 2: Comparison Operators](comparison operators.png)
+### Practice Questions
+
+#### Question 1
+Please write a if condition to evaluate whether the score of rate[3,2] is a "fail" or not, if the logical comparison is true, print out "work harder"
+
 
 ### More Example
 
@@ -527,7 +531,7 @@ y <- 5
 z <- 2
 if(x > y) {
   print("x is greater than y")
-  if(x > z) print("x is greater than y and z")
+  if(x > z && x > y) print("x is greater than y and z")
 }
 ```
 
@@ -544,9 +548,9 @@ A Simple if-else comparison:
 x <- 7
 y <- 5
 if(x > y) {
-  print("x is greater")
+  print("x is greater than y")
 } else {
-  print("y is greater")
+  print("x is not greater than y")
 }
 ```
 
@@ -595,9 +599,27 @@ if(rate[1,1]<=7){
     }
 ```
 
+### Practice Questions
+
+#### Question 1
+A school has following rules for grading system:
+a. Below 25 - F
+b. 25 to 45 - E
+c. 45 to 50 - D
+d. 50 to 60 - C
+e. 60 to 80 - B
+f. Above 80 - A
+
+A student gets a score of 62, please print out the corresponding grade.
+
+
 Multiple Conditions:
 
-To join two or more conditions into a single `if` statement, use logical operators viz. `&&` (and), `||` (or) and `!` (not). `&&` (and) expression is True, if all the conditions are true.
+![True table ](Truetable.png)
+
+To join two or more conditions into a single `if` statement, use logical operators viz. `&&` (and), `||` (or) and `!` (not). 
+
+`&&` (and) expression is True, if all the conditions are true.
 
 ```{r}
 x <- 7
@@ -629,6 +651,11 @@ if(!(x < y)) {
 }
 ```
 
+#### Practice question
+#### Question 1
+Please write a if condition to evaluate whether both scores of rate[1,2] and rate[2,2] are "fails" at the same time or not, if the joint logical comparison is false, print out "please help each other"
+
+
 ### One Line If…Else
 
 If you have only one statement to execute, one for if , and one for else , you can put it all on the same line:
@@ -658,11 +685,11 @@ In R, conditional statements are not vector operations. They deal only with a si
 If you pass in, for example, a vector, the `if` statement will only check the very first element and issue a warning.
 
 ```{r}
-v <- 1:6
-if(v %% 2) {
-  print("odd")
+v <- c("apple","orrange","banana")
+if(v =="orrange") {
+  print("yes")
 } else {
-  print("even")
+  print("no")
 }
 ```
 
@@ -675,17 +702,16 @@ Here’s the syntax for the `ifelse()` function.
 Example:
 
 ```{r}
-v <- c(1,2,3,4,5,6)
-ifelse(v %% 2 == 0, "even", "odd")
+v <- c("apple","orrange","banana")
+ifelse(v =="orrange", "yes", "no")
 ```
 
-You can even use this function to choose values from two vectors.
+#### Practice question
+#### Question 1
+Use ifelse to evaluate whether each score of rate[,2] is "fail" or not.
 
-```{r}
-v1 <- c(1,2,3,4,5,6)
-v2 <- c("a","b","c","d","e","f")
-ifelse(c(TRUE,FALSE,TRUE,FALSE,TRUE,FALSE), v1, v2)
-```
+
+
 
 ### R switch() function
 
@@ -755,42 +781,56 @@ v <- switch(x, "apple", "banana", "cherry")
 v
 ```
 
+#### Practice question
+#### Question 1
+time=c(9.2,7,7.1,8.2,10.1,11,9.3,4.5,6.6,7.9,10.8,7.8,8.3)
+Please check whether a student's responding time (9.5) is in the vector, "time".  
+
+
+
+
 ### Use "for" loop
 
 The `for` statement in R is a bit different from what you usually use in other programming languages.
 
-Rather than iterating over a numeric progression, R’s `for` statement iterates over the items of a vector or a list. The items are iterated in the order that they appear in the vector.
+Rather than iterating over a numeric progression, R’s `for` statement can also iterate over the items of a vector or a list. The items are iterated in the order that they appear in the vector.
+
 
 ![Figure 8: For Loop Syntax](for loop syntax.png)
+A for loop will run for as many times as you defined. 
+Usually, we use 'i' as a variable to run over a 'range'. The range needs to be defined in the 'iterable' argment part. 
+The 'iterable' part can be defined as a vector, a list of objects.  
+What is inside of the '{}'? You could define items, function you would like to loop through. But, DO NOT FORGET to 'print out' the results.
 
-Basic Examples
+
+Basic Examples, looping over the elements of a defined vector. 
 
 ```{r}
 # Iterate through a vector
 colors <- c("red","green","blue","yellow")
-for (x in colors) {
-  print(x)
+for (i in colors) {
+  print(i)
 }
 ```
 
 ```{r}
 # Iterate through a list
 l <- list(3.14, "Hi", c(1,2,3))
-for (x in l) {
-  print(x)
+for (i in l) {
+  print(i)
 }
 ```
 
 If you need to execute a group of statements for a specified number of times, use sequence operator : or built-in function `seq()`
-
 ```{r}
-# Print 'Hello!' 3 times
-for (x in 1:3) {
-  print("Hello!")
+# Print 'Hi!' 3 times
+for (i in 1:3) {
+  print("Hi!")
 }
+
 # Iterate a sequence and square each element
-for (x in seq(from=2,to=8,by=2)) {
-  print(x^2)
+for (i in seq(from=2,to=8,by=2)) {
+  print(i^2)
 }
 ```
 
@@ -800,6 +840,12 @@ for (x in seq(from=2,to=8,by=2)) {
 # Print the numbers 0 to 4
 for (x in 0:4) print(x)
 ```
+
+#### Practice question
+#### Question 1
+time=c(9.2,7,7.1,8.2,10.1,11,9.3,4.5,6.6,7.9,10.8,7.8,8.3)
+Loop through the all the element of the vector "time", and print out square root of each element. 
+
 
 Nested for loop:
 
@@ -820,25 +866,20 @@ for(x in 1:3) {
 colors <- c("red","green","blue","yellow")
 for (x in colors) {
   if (x == "blue")
-    break
+    break  ##break means stop when the condition satifies 
   print(x)
 }
 ```
 
-Next (continue) in for Loop: The next statement skips the current iteration of a loop and continues with the next iteration.
-
-```{r}
-# Skip 'blue' using continue statement
-colors <- c("red","green","blue","yellow")
-for (x in colors) {
-  if (x == "blue")
-    next
-  print(x)
-}
-```
 
 ```{r}
 # Use the for loop to check whether they pass the exam
+time=c(9.2,7,7.1,8.2,10.1,11,9.3,4.5,6.6,7.9,10.8,7.8,8.3)
+status=c("pass","fail","fail","fail","fail","pass","fail","fail","pass","pass","fail","pass","fail")
+# Combine two variables into data frame "rate"
+rate=data.frame(time,status)
+rate
+
 for (i in 1:nrow(rate)) {
   if (rate[i,2]=="pass"){
   print("You are awesome!")
@@ -846,17 +887,17 @@ for (i in 1:nrow(rate)) {
     print("Working harder")
           } 
 }
-# Use the for loop to check how much time they spent on studying
-for (i in 1:nrow(rate)){
-  if(rate[i,1]<=7){
-  print("Study More")
-  } else if (rate[i,1]>7 & rate[i,1]<11){
-    print("No pain No gain!")
-  } else if (rate[i,1]>=11) {
-      print("You are on fire！")
-    }
-}
 ```
+
+#### Practice question
+#### Question 1
+
+Use the for loop to check how much time they spent on studying. 
+if a person spend less than or equal to 7 hours, print out "study more"; 
+if a person spend more than 7 hours and less than 11 hours, print out "No pain, no gain";
+if a person spend more than 11 hours, print out "You are on fire！".
+
+
 
 ### R Repeat Loop
 
@@ -883,12 +924,13 @@ However, you can put a condition explicitly inside the body of the loop and use 
 # Iterate until x becomes 5
 x <- 1
 repeat {
+  x <- x + 1
   print(x)
   if (x > 4)
     break
-  x <- x + 1
 }
 ```
+
 
 ## Part 7: R functions
 
@@ -899,6 +941,9 @@ In simple terms, a function is a block of statements that can be used repeatedly
 Here’s the syntax of a function in R:
 
 ![Figure 10: Syntax of R function](R function syntax.png)
+DO NOT FORGET to give a name to a defined function;
+args are the INPUT elements
+DO NOT FORGET to return the value
 
 Create a Function: To define a function in R, use the `function` command and assign the results to a function name.
 
@@ -922,16 +967,26 @@ Call a Function: You can call (run) the function by adding parentheses after the
 myfunc <- function() {
   print('Hello, World!')
 }
+
 myfunc()
 ```
+
 
 Pass Arguments: You can send information to a function through arguments. Arguments are declared after the function keyword in parentheses.
 
 You can send as many arguments as you like, just separate them by a comma`,`.
 
 ```{r}
+
 sum <- function(x, y) {
-  x + y
+  tot <- x + y
+  return(tot)  #Return a Value: To return a value from a function, simply use a `return()` function.
+}
+
+#one bad example  If you do not include any `return()` function, it automatically returns the last expression. 
+
+sum <- function(x, y) {
+ x + y
 }
 sum(2, 3)
 ```
@@ -940,7 +995,8 @@ Named Arguments: If you pass arguments to a function by name, you can put those 
 
 ```{r}
 pow <- function(x, y) {
-  x ^ y
+  p <- x ^ y
+  return(p) 
 }
 
 # using argument names
@@ -950,40 +1006,10 @@ pow(x=2, y=3)
 pow(y=3, x=2)
 ```
 
-Default Argument Value: You can assign a default value to an argument. So, when you call the function without argument, it uses the default value.
+#### Practice question
+#### Question 1
+Write a function to multiply 3 numbers together; then, use the function you wrote to calculate 1*5*10
 
-```{r}
-# Set default value ‘3’ to second argument
-pow <- function(x, y=3) {
-  x ^ y
-}
-
-# function will use default y value
-pow(2)
-
-# specifying a different y value
-pow(2, 4)
-```
-
-Return a Value: To return a value from a function, simply use a `return()` function.
-
-```{r}
-sum <- function(x, y) {
-  return(x + y)
-}
-
-sum(2, 3)
-```
-
-If you do not include any `return()` function, it automatically returns the last expression.
-
-```{r}
-sum <- function(x, y) {
-  x + y
-}
-
-sum(2, 3)
-```
 
 Return Multiple Values: You can return multiple values by saving the results in a vector (or a list) and returning it.
 
@@ -993,69 +1019,32 @@ math <- function(x, y) {
   sub <- x - y
   mul <- x * y
   div <- x / y
-  c(addition = add, subtraction = sub,
+  res <- c(addition = add, subtraction = sub,
     multiplication = mul, division = div)
+  return(res)
 }
 
 math(6, 3)
 ```
 
-Lazy Evaluation: R functions perform lazy evaluation that dramatically extends the expressive power of functions. It is the technique of not evaluating arguments unless and until they are needed in the function.
-
-```{r}
-myfunc <- function(x, y) {
-  if(!x){
-    return(y)
-  }
-  else{
-    return(x)
-  }
-}
-
-# y is not evaluated so not including it causes no harm
-myfunc(6)
-
-# y is evaluated so not including it raises error
-# myfunc(0)
-```
-
-Variable Length Argument
 
 In R, it is often convenient to accept a variable number of arguments passed to the function. To do this, you specify an ellipsis `(...)` in the arguments when defining a function.
 
-For example, below function prints the first argument and then passes all the other arguments to the `summary()` function.
+For example, below function directly use the arguments from the `summary()`and 'plot()' function as the inputs of the function you create.
 
 ```{r}
-myfunc <- function(x,...) {print(x); summary(...)}
+myfunc <- function(...) {
+  a <- summary(...)
+  b <- plot(...)
+  return(a)
+  return(b)
+  }
 v <- 1:10
 
-myfunc("Summary of v:", v)
+myfunc(v)
 ```
 
-You can also directly refer to the arguments within the argument list (...) through the variables ..1, ..2, to ..9.
 
-For example, ..1 refers to the first argument, ..2 refers to the second, and so on.
-
-```{r}
-myfunc <- function(...) {cat(..1, ..2)}
-
-myfunc("Hello", "World!")
-```
-
-It is also possible to read the arguments from the argument list by converting the object (...) to a list within the function body.
-
-For example, below function simply sums all its arguments:
-
-```{r}
-addAll <- function(x,...) {
-  args <- list(...)
-  for (a in args) x <- x + a
-  x
-}
-
-addAll(1,2)
-addAll(1,2,3,4,5)
-```
 
 ## Part 8: Splitting data & implicit loops
 
@@ -1093,21 +1082,14 @@ apply(m,2,min)
 apply(m,1,min) 
 ```
 
-### Another example
+#### Practice 
 
-```{r}
-# Generate a matrix x
-x <- cbind(x1 = rep(3,8), x2 = c(4:1, 2:5)) 
-# Give rownames:a to h
-dimnames(x)[[1]] <- letters[1:8]
-# Use function sum() apply to each column
-# Clean the environment, then run the following function
-# col.sums <- apply(x, 2, sum) 
-# Use function sum() apply to each row
-# row.sums <- apply(x, 1, sum)
-# Generate a table for the row sums, column sums and grand total
-# rbind(cbind(x, Rtot = row.sums), Ctot = c(col.sums, sum(col.sums)))
-```
+Use apply() function to calculate the mean of values in each column of the matrix: m. 
+
+
+Use apply() function to calculate the mean of values in each row of the matrix: m. 
+
+
 
 ### Use function "lapply"
 
@@ -1115,9 +1097,9 @@ The function lapply() applies over a list or a vector
 
 ```{r}
 # Build a list
-x <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
+x <- list(a = 1:10, beta = exp(-3:3))
 # Compute the list mean for each list element
 lapply(x,mean)
 # Quantiles for each list element 0.25 0.50 0.75
-lapply(x, quantile, probs = 1:3/4) 
+lapply(x, quantile, probs = c(0.25, 0.50, 0.75)) 
 ```
