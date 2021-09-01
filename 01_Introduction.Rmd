@@ -464,6 +464,8 @@ subset Prestige dataset for subjects whose income is higher than 10,000 and who 
 
 ![Figure 1: The if Statement](if_statement.png)
 
+![Figure 1: The if Statement flow chart](flowchart-simple.png)
+
 ```{r}
 time=c(9.2,7,7.1,8.2,10.1,11,9.3,4.5,6.6,7.9,10.8,7.8,8.3)
 status=c("pass","fail","fail","fail","fail","pass","fail","fail","pass","pass","fail","pass","fail")
@@ -497,17 +499,11 @@ Likewise, you can use following comparison operators to compare two values:
 Please write a if condition to evaluate whether the score of rate[3,2] is a "fail" or not, if the logical comparison is true, print out "work harder"
 
 
-### More Example
+### More Example (Do not recommand)
 
 In R, any non-zero value is considered `TRUE`, whereas a zero is considered `FALSE.` That’s why all the below if statements are valid.
 
 ```{r}
-# mathematical expression
-x <- 7
-y <- 5
-if(x + y) {
-  print("True")
-}
 
 # any non-zero value
 if(-3) {
@@ -536,11 +532,14 @@ if(x > y) {
 ```
 
 
+
 ### The `else` statement
 
 Use `else` statement to execute a block of code, if the condition is false.
 
 ![Figure 3: if else statement syntax](if else statement.png)
+
+![Figure 1: The if Statement flow chart](flowchart2.png)
 
 A Simple if-else comparison:
 
@@ -572,6 +571,8 @@ The `else if` statement allows you to further customize your control structure. 
 ![Figure 4: else if statement syntax](else if syntax.png)
 
 Using `else-if` statement
+
+![Figure 1: The if Statement flow chart](flowchart.png)
 
 ```{r}
 x <- 5
@@ -619,7 +620,9 @@ Multiple Conditions:
 
 To join two or more conditions into a single `if` statement, use logical operators viz. `&&` (and), `||` (or) and `!` (not). 
 
-`&&` (and) expression is True, if all the conditions are true.
+`&&` (and) expression is True, if all the conditions are true. 
+![Figure 1: '&&' example](and-example.png)
+
 
 ```{r}
 x <- 7
@@ -630,7 +633,11 @@ if(x > y && x > z) {
 }
 ```
 
+
+
 `||` (or) expression is True, if at least one of the conditions is True.
+
+![Figure 1: '&&' example](or-example.png)
 
 ```{r}
 x <- 7
@@ -653,12 +660,12 @@ if(!(x < y)) {
 
 #### Practice question
 #### Question 1
-Please write a if condition to evaluate whether both scores of rate[1,2] and rate[2,2] are "fails" at the same time or not, if the joint logical comparison is false, print out "please help each other"
+Please write a 'if' condition to evaluate whether both scores of rate[1,2] and rate[2,2] are "fails" at the same time or not, if the joint logical comparison is false, print out "please help each other"
 
 
 ### One Line If…Else
 
-If you have only one statement to execute, one for if , and one for else , you can put it all on the same line:
+If you have only one statement to execute, one for if , and one for else , you can put it all on the same line (The curly braces CAN BE OMITTED):
 
 ![Figure 5: One line if else syntax](one line if else.png)
 Examples
@@ -680,7 +687,7 @@ max
 
 ### The ifelse() Function
 
-In R, conditional statements are not vector operations. They deal only with a single value.
+In R, conditional statements are NOT vector operations. They deal only with a single value.
 
 If you pass in, for example, a vector, the `if` statement will only check the very first element and issue a warning.
 
@@ -723,7 +730,7 @@ Here’s the syntax of the `switch()` function:
 
 ![Figure 7: Switch function Syntax](switch function.png)
 
-`switch()` with String Expression
+`switch()` can work with String Expression
 
 If the expression is a character string, `switch()` will return the value based on the name of the element.
 
@@ -747,16 +754,6 @@ v <- switch(x, "a"="apple", "a"="apricot", "a"="avocado")
 v
 ```
 
-Default case
-
-In the case of no match, the unnamed element (if any) is returned. If there are more than one unnamed elements present, an error is raised.
-
-```{r}
-# Select unnamed element in the case of no match
-x <- "z"
-v <- switch(x, "a"="apple", "b"="banana", "c"="cherry", "grapes")
-v
-```
 
 `switch()` with Numeric Expression
 
@@ -807,6 +804,12 @@ Basic Examples, looping over the elements of a defined vector.
 
 ```{r}
 # Iterate through a vector
+number <- c(1:10)
+for (i in number) {
+  print(i)
+}
+# 'i' is the variable will take the value from the defined looping range. The body will print out the value what I takes at each iteration 
+
 colors <- c("red","green","blue","yellow")
 for (i in colors) {
   print(i)
@@ -844,12 +847,13 @@ for (x in 0:4) print(x)
 #### Practice question
 #### Question 1
 time=c(9.2,7,7.1,8.2,10.1,11,9.3,4.5,6.6,7.9,10.8,7.8,8.3)
-Loop through the all the element of the vector "time", and print out square root of each element. 
+Loop through all the element of the vector "time", and print out square root of each element. 
 
 
 Nested for loop:
 
 A nested for loop is a loop within a loop. They are useful for when you want to repeat something several times for several things.
+The order matters. Outside loop will be run first, then, moves to the inside loop. 
 
 ```{r}
 for(x in 1:3) {
@@ -873,14 +877,14 @@ for (x in colors) {
 
 
 ```{r}
-# Use the for loop to check whether they pass the exam
+# Use the for loop to check whether each student passes the exam or not
 time=c(9.2,7,7.1,8.2,10.1,11,9.3,4.5,6.6,7.9,10.8,7.8,8.3)
 status=c("pass","fail","fail","fail","fail","pass","fail","fail","pass","pass","fail","pass","fail")
 # Combine two variables into data frame "rate"
 rate=data.frame(time,status)
 rate
-
-for (i in 1:nrow(rate)) {
+sample.size <- nrow(rate)
+for (i in 1:sample.size) {
   if (rate[i,2]=="pass"){
   print("You are awesome!")
   } else {
@@ -943,7 +947,7 @@ Here’s the syntax of a function in R:
 ![Figure 10: Syntax of R function](R function syntax.png)
 DO NOT FORGET to give a name to a defined function;
 args are the INPUT elements
-DO NOT FORGET to return the value
+DO NOT FORGET to 'RETURN' the output
 
 Create a Function: To define a function in R, use the `function` command and assign the results to a function name.
 
